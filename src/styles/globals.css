@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================================
+   CUBERTO DESIGN SYSTEM - CSS & KINETIC INTERACTIONS
+   ========================================================================= */
+
+:root {
+  --font-display: 'Syne', 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --cubic-cuberto: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base resets & typography */
+html {
+  font-family: var(--font-body);
+  background-color: #ffffff;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Cuberto Giant Display Headers */
+.cuberto-heading {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+  font-weight: 700;
+}
+
+/* Lenis smooth scrolling */
+html.lenis, 
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+/* Custom Minimal Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Cuberto Signature Magnetic Cursor */
+.cuberto-cursor-dot {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s var(--cubic-cuberto), height 0.3s var(--cubic-cuberto), background-color 0.25s ease, opacity 0.25s ease, transform 0.15s ease-out;
+}
+
+@media (pointer: coarse) {
+  .cuberto-cursor-dot {
+    display: none !important;
+  }
+}
+
+/* Cuberto Card Zoom Physics */
+.cuberto-card {
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+.cuberto-preview {
+  border-radius: 2rem;
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+  transition: transform 0.8s var(--cubic-cuberto);
+}
+
+@media (min-width: 768px) {
+  .cuberto-preview {
+    border-radius: 2.5rem;
+  }
+}
+
+.cuberto-card:hover .cuberto-preview {
+  transform: scale(0.975);
+}
+
+.cuberto-card-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--cubic-cuberto);
+}
+
+.cuberto-card:hover .cuberto-card-media {
+  transform: scale(1.08);
+}
+
+/* Cuberto Magnetic / Ripple Pill Buttons */
+.cuberto-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.2rem;
+  border-radius: 9999px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  overflow: hidden;
+  transition: all 0.35s var(--cubic-cuberto);
+  border: 1px solid currentColor;
+}
+
+.cuberto-btn:hover {
+  transform: scale(1.03);
+}
+
+/* Cuberto Interactive Divider */
+.cuberto-divider {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+}
+
+.cuberto-divider svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Marquee / Ribbon Animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}

@@ -1,0 +1,97 @@
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { ShoppingBag, ArrowUpRight } from 'lucide-react';
+import { useCart } from '../hooks/useCart';
+
+export const CubertoNav: React.FC = () => {
+  const { itemCount, toggleCart } = useCart();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-white/85 backdrop-blur-xl border-b border-black/10 py-3.5 shadow-sm'
+          : 'bg-transparent py-6'
+      }`}
+    >
+      <div className="max-w-[1360px] mx-auto px-6 md:px-12 flex items-center justify-between">
+        {/* Brand Logo */}
+        <Link
+          to="/"
+          className="flex items-center gap-2 text-black hover:opacity-80 transition-opacity"
+          data-cursor-text="HOME"
+        >
+          <span className="font-display font-extrabold text-2xl tracking-tighter">
+            elevateweb<span className="text-[#0066cc]">.me</span>
+          </span>
+        </Link>
+
+        {/* Center Nav Links */}
+        <nav className="hidden md:flex items-center gap-8">
+          <a
+            href="#products"
+            className="text-sm font-semibold tracking-tight text-black/70 hover:text-black transition-colors"
+          >
+            Digital Products
+          </a>
+          <a
+            href="#flagship"
+            className="text-sm font-semibold tracking-tight text-black/70 hover:text-black transition-colors"
+          >
+            90 Days Plan
+          </a>
+          <a
+            href="#capabilities"
+            className="text-sm font-semibold tracking-tight text-black/70 hover:text-black transition-colors"
+          >
+            Syllabus & OS
+          </a>
+          <a
+            href="#testimonials"
+            className="text-sm font-semibold tracking-tight text-black/70 hover:text-black transition-colors"
+          >
+            Reviews
+          </a>
+        </nav>
+
+        {/* Right Actions: Cart & Magnetic CTA */}
+        <div className="flex items-center gap-4">
+          <button
+            type="button"
+            onClick={toggleCart}
+            className="relative p-2.5 rounded-full border border-black/15 hover:border-black transition-colors flex items-center justify-center text-black"
+            data-cursor-text="CART"
+            aria-label="Open cart"
+          >
+            <ShoppingBag className="w-5 h-5" />
+            {itemCount > 0 && (
+              <span className="absolute -top-1 -right-1 w-5 h-5 bg-black text-white text-[11px] font-bold rounded-full flex items-center justify-center">
+                {itemCount}
+              </span>
+            )}
+          </button>
+
+          <a
+            href="https://whop.com/elevateweb-b83f/90-days-comeback-plan/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-black text-white font-display font-semibold text-xs tracking-wider uppercase hover:scale-[1.03] transition-transform duration-200"
+            data-cursor-text="BUY"
+          >
+            <span>₹999 Access</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </a>
+        </div>
+      </div>
+    </header>
+  );
+};
