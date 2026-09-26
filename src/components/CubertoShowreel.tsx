@@ -53,7 +53,6 @@ export const CubertoShowreel: React.FC<CubertoShowreelProps> = ({ onOpenSampleMo
     e.preventDefault();
     if (playbook) {
       addToCart(playbook, 'standard');
-      openCart();
     }
   };
 

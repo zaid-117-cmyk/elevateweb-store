@@ -33,7 +33,6 @@ export const SampleModal: React.FC<SampleModalProps> = ({ isOpen, onClose }) => 
   const handleClaim = () => {
     if (playbook) {
       addToCart(playbook, 'standard');
-      openCart();
       onClose();
     }
   };
