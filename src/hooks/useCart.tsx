@@ -103,7 +103,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
       return [...prev, { product, license, quantity: 1 }];
     });
-    setIsOpen(true);
+    window.location.href = '/checkout';
   };
 
   const removeFromCart = (productId: string, license: LicenseType) => {
