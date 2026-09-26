@@ -11,7 +11,6 @@ import {
   Zap
 } from 'lucide-react';
 import { useCart } from '../hooks/useCart';
-import { RazorpayCheckoutModal } from '../components/RazorpayCheckoutModal';
 import { OrderDetails } from '../types';
 
 export const CheckoutPage: React.FC = () => {
@@ -40,8 +39,6 @@ export const CheckoutPage: React.FC = () => {
   const [formError, setFormError] = useState('');
   const [couponInput, setCouponInput] = useState('');
 
-  // Modal State
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   if (cart.length === 0) {
     return (
