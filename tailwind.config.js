@@ -45,6 +45,8 @@ export default {
       fontFamily: {
         sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
         display: ['Syne', 'Outfit', 'Cabinet Grotesk', 'system-ui', 'sans-serif'],
+        serif: ['Playfair Display', 'Georgia', 'serif'],
+        vintage: ['Cinzel', 'serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       boxShadow: {

@@ -69,19 +69,17 @@ html.lenis body {
 }
 
 /* Cuberto Signature Magnetic Cursor */
-.cuberto-cursor-dot {
+.cuberto-cursor-wrapper {
   pointer-events: none;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9999;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s var(--cubic-cuberto), height 0.3s var(--cubic-cuberto), background-color 0.25s ease, opacity 0.25s ease, transform 0.15s ease-out;
+  z-index: 99999;
+  will-change: transform;
 }
 
 @media (pointer: coarse) {
-  .cuberto-cursor-dot {
+  .cuberto-cursor-wrapper {
     display: none !important;
   }
 }
@@ -175,3 +173,33 @@ html.lenis body {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+/* Floating Book Physics */
+@keyframes floatBook {
+  0%, 100% {
+    transform: translateY(0px) rotateY(-18deg) rotateX(10deg);
+  }
+  50% {
+    transform: translateY(-16px) rotateY(-15deg) rotateX(13deg);
+  }
+}
+
+@keyframes floatShadow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.28;
+  }
+  50% {
+    transform: scale(0.88);
+    opacity: 0.16;
+  }
+}
+
+.animate-float-book {
+  animation: floatBook 5s ease-in-out infinite;
+}
+
+.animate-float-shadow {
+  animation: floatShadow 5s ease-in-out infinite;
+}
+

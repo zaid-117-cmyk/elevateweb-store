@@ -47,13 +47,13 @@ export const CubertoNav: React.FC = () => {
             href="#flagship"
             className="text-sm font-semibold tracking-tight text-black/70 hover:text-black transition-colors"
           >
-            90 Days Plan
+            1-Page Playbook
           </a>
           <a
             href="#capabilities"
             className="text-sm font-semibold tracking-tight text-black/70 hover:text-black transition-colors"
           >
-            Syllabus & OS
+            15 Books Curriculum
           </a>
           <a
             href="#testimonials"
@@ -81,13 +81,11 @@ export const CubertoNav: React.FC = () => {
           </button>
 
           <a
-            href="https://whop.com/elevateweb-b83f/90-days-comeback-plan/"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#flagship"
             className="hidden sm:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-black text-white font-display font-semibold text-xs tracking-wider uppercase hover:scale-[1.03] transition-transform duration-200"
             data-cursor-text="BUY"
           >
-            <span>₹999 Access</span>
+            <span>₹499 Access</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </a>
         </div>

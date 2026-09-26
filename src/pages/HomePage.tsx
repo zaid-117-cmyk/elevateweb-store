@@ -21,7 +21,7 @@ export const HomePage: React.FC = () => {
         <CubertoDivider color="rgba(0,0,0,0.15)" />
       </div>
 
-      {/* 2. Flagship 90 Days Comeback Plan Showreel Stage */}
+      {/* 2. Flagship The 1-Page Action Playbook Showreel Stage */}
       <CubertoShowreel onOpenSampleModal={() => setSampleModalOpen(true)} />
 
       {/* Interactive Rubber-Band Divider */}

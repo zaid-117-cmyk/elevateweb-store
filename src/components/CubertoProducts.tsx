@@ -1,12 +1,44 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, ShoppingBag } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useCart } from '../hooks/useCart';
 import { PRODUCTS } from '../lib/products';
 import { Product } from '../types';
+import { MagneticButton } from './MagneticButton';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const CubertoProducts: React.FC = () => {
   const { addToCart, openCart } = useCart();
+  const sectionRef = useRef<HTMLElement>(null);
+  const col2Ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const col2 = col2Ref.current;
+    if (!section || !col2) return;
+
+    // Check for desktop screen width
+    if (window.innerWidth >= 768) {
+      const ctx = gsap.context(() => {
+        // Asymmetric Masonry Parallax Scrub on Column 2
+        gsap.to(col2, {
+          yPercent: -8,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1.2,
+          },
+        });
+      }, section);
+
+      return () => ctx.revert();
+    }
+  }, []);
 
   const handleQuickAdd = (e: React.MouseEvent, prod: Product) => {
     e.preventDefault();
@@ -16,7 +48,11 @@ export const CubertoProducts: React.FC = () => {
   };
 
   return (
-    <section id="products" className="bg-black text-white py-24 md:py-36 px-6 md:px-12 transition-colors duration-500">
+    <section
+      ref={sectionRef}
+      id="products"
+      className="bg-black text-white py-24 md:py-36 px-6 md:px-12 transition-colors duration-500 overflow-hidden"
+    >
       <div className="max-w-[1360px] mx-auto">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 pb-8 border-b border-white/10 gap-6">
@@ -33,18 +69,21 @@ export const CubertoProducts: React.FC = () => {
           </p>
         </div>
 
-        {/* Asymmetric 2-Column Grid */}
+        {/* Asymmetric 2-Column Grid with Parallax */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
           {/* Column 1 */}
           <div className="flex flex-col gap-12 md:gap-20">
             {PRODUCTS.filter((_, idx) => idx % 2 === 0).map((prod) => (
               <div key={prod.id} className="cuberto-card group" data-cursor-text="VIEW">
-                <Link to={prod.whopUrl ? '#' : `/product/${prod.slug}`} onClick={(e) => {
-                  if (prod.whopUrl) {
-                    e.preventDefault();
-                    window.open(prod.whopUrl, '_blank');
-                  }
-                }}>
+                <Link
+                  to={prod.whopUrl ? '#' : `/product/${prod.slug}`}
+                  onClick={(e) => {
+                    if (prod.whopUrl) {
+                      e.preventDefault();
+                      window.open(prod.whopUrl, '_blank');
+                    }
+                  }}
+                >
                   <div className="cuberto-preview aspect-[500/620] bg-neutral-900 mb-6">
                     <img
                       src={prod.bannerImage}
@@ -77,26 +116,30 @@ export const CubertoProducts: React.FC = () => {
 
                   <div className="flex items-center gap-3">
                     {prod.whopUrl ? (
-                      <a
-                        href={prod.whopUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-black text-xs font-bold uppercase tracking-wider hover:bg-white/90 transition-colors"
-                        data-cursor-text="BUY"
-                      >
-                        <span>Whop Instant Access</span>
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </a>
+                      <MagneticButton strength={0.25}>
+                        <a
+                          href={prod.whopUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-black text-xs font-bold uppercase tracking-wider hover:bg-white/90 transition-colors shadow-sm"
+                          data-cursor-text="BUY"
+                        >
+                          <span>Whop Instant Access</span>
+                          <ArrowUpRight className="w-3.5 h-3.5" />
+                        </a>
+                      </MagneticButton>
                     ) : (
-                      <button
-                        type="button"
-                        onClick={(e) => handleQuickAdd(e, prod)}
-                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 text-xs font-bold uppercase tracking-wider transition-all"
-                        data-cursor-text="ADD"
-                      >
-                        <ShoppingBag className="w-3.5 h-3.5" />
-                        <span>Quick Add to Cart</span>
-                      </button>
+                      <MagneticButton strength={0.25}>
+                        <button
+                          type="button"
+                          onClick={(e) => handleQuickAdd(e, prod)}
+                          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 text-xs font-bold uppercase tracking-wider transition-all"
+                          data-cursor-text="ADD"
+                        >
+                          <ShoppingBag className="w-3.5 h-3.5" />
+                          <span>Quick Add to Cart</span>
+                        </button>
+                      </MagneticButton>
                     )}
                   </div>
                 </Link>
@@ -104,16 +147,19 @@ export const CubertoProducts: React.FC = () => {
             ))}
           </div>
 
-          {/* Column 2 */}
-          <div className="flex flex-col gap-12 md:gap-20 md:pt-20">
+          {/* Column 2 with Parallax Scrub */}
+          <div ref={col2Ref} className="flex flex-col gap-12 md:gap-20 md:pt-20 will-change-transform">
             {PRODUCTS.filter((_, idx) => idx % 2 === 1).map((prod) => (
               <div key={prod.id} className="cuberto-card group" data-cursor-text="VIEW">
-                <Link to={prod.whopUrl ? '#' : `/product/${prod.slug}`} onClick={(e) => {
-                  if (prod.whopUrl) {
-                    e.preventDefault();
-                    window.open(prod.whopUrl, '_blank');
-                  }
-                }}>
+                <Link
+                  to={prod.whopUrl ? '#' : `/product/${prod.slug}`}
+                  onClick={(e) => {
+                    if (prod.whopUrl) {
+                      e.preventDefault();
+                      window.open(prod.whopUrl, '_blank');
+                    }
+                  }}
+                >
                   <div className="cuberto-preview aspect-[500/620] bg-neutral-900 mb-6">
                     <img
                       src={prod.bannerImage}
@@ -140,15 +186,17 @@ export const CubertoProducts: React.FC = () => {
                   </p>
 
                   <div className="flex items-center gap-3">
-                    <button
-                      type="button"
-                      onClick={(e) => handleQuickAdd(e, prod)}
-                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 text-xs font-bold uppercase tracking-wider transition-all"
-                      data-cursor-text="ADD"
-                    >
-                      <ShoppingBag className="w-3.5 h-3.5" />
-                      <span>Quick Add to Cart</span>
-                    </button>
+                    <MagneticButton strength={0.25}>
+                      <button
+                        type="button"
+                        onClick={(e) => handleQuickAdd(e, prod)}
+                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 text-xs font-bold uppercase tracking-wider transition-all"
+                        data-cursor-text="ADD"
+                      >
+                        <ShoppingBag className="w-3.5 h-3.5" />
+                        <span>Quick Add to Cart</span>
+                      </button>
+                    </MagneticButton>
                   </div>
                 </Link>
               </div>

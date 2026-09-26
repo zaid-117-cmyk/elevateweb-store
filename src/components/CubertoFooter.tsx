@@ -20,12 +20,10 @@ export const CubertoFooter: React.FC = () => {
 
         <div className="flex items-center gap-8 text-xs font-semibold text-white/70">
           <a
-            href="https://whop.com/elevateweb-b83f/90-days-comeback-plan/"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#flagship"
             className="hover:text-white transition-colors"
           >
-            Whop Store
+            1-Page Playbook
           </a>
           <a
             href="https://elevateweb.me"

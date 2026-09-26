@@ -1,4 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface FeatureItem {
   num: string;
@@ -11,55 +16,81 @@ interface FeatureItem {
 const FEATURES: FeatureItem[] = [
   {
     num: '01',
-    title: 'Dopamine Baseline Reset & Friction Audit',
-    desc: 'You cannot build execution velocity on a compromised neurological baseline. The opening 30 days are dedicated to eliminating passive micro-leaks, removing notifications, and establishing the daily Non-Negotiable 3 tasks.',
-    tag: 'DAYS 1–30',
-    image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1000&q=80',
+    title: 'Atomic Habits (James Clear) — Habit Ka Remote Control',
+    desc: 'Cue, Craving, Response, Reward ka 4-box loop. Table par phone rakhoge toh scroll karoge; table saaf rakhoge toh kaam hoga. Includes 2-Minute Rule and Habit Stacking formulas.',
+    tag: 'BEHAVIOR & HABITS',
+    image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1000&q=80',
   },
   {
     num: '02',
-    title: 'Sleep Architecture & Circadian Anchoring',
-    desc: 'Deep focus requires sustained biological energy. We map circadian light exposure windows, sleep sanitation logs, and restorative protocols that guarantee sharp cognitive endurance throughout high-stress days.',
-    tag: 'BIOLOGICAL FOUNDATION',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80',
+    title: 'Deep Work (Cal Newport) — Focus Ke 4 Tarike',
+    desc: 'Monastic, Bimodal, Rhythmic, aur Journalistic modes. Distraction-free deep work blocks, 30-day phone detox protocols, aur rigid evening shutdown routines.',
+    tag: 'COGNITIVE VELOCITY',
+    image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1000&q=80',
   },
   {
     num: '03',
-    title: 'Monastic Sprint Cycles & Deep Focus',
-    desc: 'Replace chaotic multi-tasking with structured 90-minute isolated sprint blocks. Learn exact spatial, audial, and tactile flow triggers that allow you to dive into concentrated technical or creative output effortlessly.',
-    tag: 'DAYS 31–60',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80',
+    title: 'Can\'t Hurt Me (David Goggins) — The 40% Rule',
+    desc: 'Jab dimaag bolta hai "bas aur nahi hoga", tab sirf 40% tank khatam hota hai. Master the Accountability Mirror and Taking Souls mental dominance playbook.',
+    tag: 'MENTAL TOUGHNESS',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80',
   },
   {
     num: '04',
-    title: 'Notion Operating System & Metric Tracking',
-    desc: 'A complete duplicate-and-run Notion workspace containing sprint boards, habit matrix databases, project pipelines, and weekly audit templates with zero setup friction.',
-    tag: 'DIGITAL WORKSPACE OS',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80',
+    title: '48 Laws of Power (Robert Greene) — Chalak Logo Se Bacho',
+    desc: 'Master Law 4 (Always say less than necessary) and Law 1 (Never outshine the master). Emotional self-defense, workplace navigation, aur chup rehne ki taqat.',
+    tag: 'SOCIAL DYNAMICS',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80',
   },
   {
     num: '05',
-    title: 'Zero-Regression Compounding Protocols',
-    desc: 'Willpower is temporary; systems are permanent. Phase 3 installs systematic identity markers and fallback protocols to prevent relapse during disruptive weeks and sustain lifelong compounding momentum.',
-    tag: 'DAYS 61–90',
-    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1000&q=80',
+    title: 'Action Over Thinking — Build Don\'t Talk & Ikigai',
+    desc: 'Kill overthinking paralysis. Find your sweet spot (Kya pasand hai + Kis cheez ke paise milte hain) and execute with Raj Shamani\'s 3-line cold outreach formula.',
+    tag: 'EXECUTION & CAREER',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80',
   },
 ];
 
 export const CubertoFeatures: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const ctx = gsap.context(() => {
+      gsap.from(titleRef.current, {
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 80%',
+        },
+        opacity: 0,
+        y: 40,
+        duration: 0.9,
+        ease: 'power3.out',
+      });
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section id="capabilities" className="px-6 md:px-12 max-w-[1360px] mx-auto py-20 border-t border-black/10">
+    <section
+      ref={sectionRef}
+      id="capabilities"
+      className="px-6 md:px-12 max-w-[1360px] mx-auto py-20 border-t border-black/10"
+    >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         {/* Left Column: Section Title & Items Accordion */}
         <div className="lg:col-span-7">
-          <div className="mb-12">
-            <span className="text-xs font-bold font-display uppercase tracking-widest text-black/50 block mb-3">
-              Curriculum & Frameworks
+          <div ref={titleRef} className="mb-12">
+            <span className="text-xs font-bold font-mono uppercase tracking-widest text-[#0066cc] block mb-3">
+              15 Master Books • 1-Page Action Sheets
             </span>
             <h2 className="cuberto-heading text-4xl sm:text-5xl md:text-6xl text-black">
-              What the system delivers
+              Inside the playbook
             </h2>
           </div>
 
@@ -91,28 +122,43 @@ export const CubertoFeatures: React.FC = () => {
                     </span>
                   </div>
 
-                  {isActive && (
-                    <div className="pl-12 sm:pl-16 pt-3 pr-4 animate-fadeIn">
-                      <p className="text-base sm:text-lg text-black/70 leading-relaxed max-w-xl">
-                        {feat.desc}
-                      </p>
-                    </div>
-                  )}
+                  <AnimatePresence initial={false}>
+                    {isActive && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                        className="pl-12 sm:pl-16 pt-2 pr-4 overflow-hidden"
+                      >
+                        <p className="text-base sm:text-lg text-black/70 leading-relaxed max-w-xl">
+                          {feat.desc}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               );
             })}
           </div>
         </div>
 
-        {/* Right Column: Sticky Visual Preview */}
+        {/* Right Column: Sticky Visual Preview with Framer Motion Image Morph */}
         <div className="lg:col-span-5 sticky top-28 hidden lg:block">
           <div className="aspect-[4/3] rounded-3xl overflow-hidden bg-black/5 border border-black/10 shadow-lg relative group">
-            <img
-              src={FEATURES[activeIndex].image}
-              alt={FEATURES[activeIndex].title}
-              className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8 text-white">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={FEATURES[activeIndex].num}
+                src={FEATURES[activeIndex].image}
+                alt={FEATURES[activeIndex].title}
+                initial={{ opacity: 0, scale: 1.08 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                className="w-full h-full object-cover"
+              />
+            </AnimatePresence>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8 text-white pointer-events-none">
               <span className="text-xs font-mono uppercase tracking-widest text-[#2997ff] mb-1">
                 {FEATURES[activeIndex].tag}
               </span>

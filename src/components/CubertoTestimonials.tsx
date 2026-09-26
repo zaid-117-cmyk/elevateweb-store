@@ -10,24 +10,24 @@ interface Testimonial {
 const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      'The dopamine detox and sleep architecture protocols completely transformed my output. I went from chronic brain fog to locking in 4.5 hours of monastic, uninterrupted sprint execution every single morning.',
-    author: 'Marcus Vance',
-    role: 'Founder @ SynthHQ',
-    badge: '90 DAYS PLAN OPERATOR',
+      'Main pehle Atomic Habits aur Deep Work lakar table par sajata tha, padhta kabhi nahi tha. Yeh 1-page action sheets ne 15 minute mein pura concept clear kar diya aur maine phone dusre kamre mein rakhna shuru kar diya.',
+    author: 'Rahul Sharma',
+    role: 'Computer Science Student',
+    badge: 'PLAYBOOK OPERATOR',
   },
   {
     quote:
-      'Most productivity books are 200 pages of recycled filler. Elevateweb built an actionable operational protocol. The circadian anchoring schedules and weekly milestone reviews are pure gold.',
+      'The Hinglish explanation with "Karna Kya Hai" action boxes is pure genius. Zero boring theory, 100% direct implementation. Worth 10x the price for anyone who wants quick execution.',
+    author: 'Priya Verma',
+    role: 'Digital Marketer & Freelancer',
+    badge: 'VERIFIED READER',
+  },
+  {
+    quote:
+      'Most self-help books are 300 pages of recycled stories. The 1-Page Playbook gives you the exact 4-step framework in 1 sheet. The Goggins 40% rule and 48 Laws breakdown are life-changing.',
     author: 'Ananya Sharma',
     role: 'Principal Engineer & Consultant',
-    badge: 'VERIFIED PURCHASE',
-  },
-  {
-    quote:
-      'The included Notion workspace alone saved me weeks of manual tracking setup. Clean databases, instant sprint pipelines, and habit matrix dashboards that just work without clutter.',
-    author: 'David Chen',
-    role: 'Head of Product @ LayerZero',
-    badge: '90 DAYS PLAN OPERATOR',
+    badge: 'PLAYBOOK OPERATOR',
   },
 ];
 
@@ -37,7 +37,7 @@ export const CubertoTestimonials: React.FC = () => {
       <div className="max-w-[1360px] mx-auto">
         <div className="mb-16 md:mb-20 text-center max-w-2xl mx-auto">
           <span className="text-xs font-mono uppercase tracking-widest text-[#2997ff] block mb-3">
-            Real Proof
+            Real Proof • Real Readers
           </span>
           <h2 className="cuberto-heading text-4xl sm:text-5xl md:text-6xl">
             Trusted by operators
