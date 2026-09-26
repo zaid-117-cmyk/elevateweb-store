@@ -71,26 +71,7 @@ export const CheckoutPage: React.FC = () => {
     }
   };
 
-  const handleProceedToRazorpay = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormError('');
-
-    if (!name.trim() || !email.trim()) {
-      setFormError('Please enter your full name and digital delivery email address.');
-      return;
-    }
-
-    if (!email.includes('@')) {
-      setFormError('Please provide a valid email address.');
-      return;
-    }
-
-    setIsModalOpen(true);
-  };
-
   const handlePaymentSuccess = (paymentId: string) => {
-    setIsModalOpen(false);
-
     const newOrder: OrderDetails = {
       orderId: 'ORD-' + Math.floor(100000 + Math.random() * 900000),
       date: new Date().toLocaleDateString('en-US', {
@@ -112,6 +93,65 @@ export const CheckoutPage: React.FC = () => {
     setLastOrder(newOrder);
     clearCart();
     navigate('/order-success');
+  };
+
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  const handleProceedToRazorpay = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormError('');
+
+    if (!name.trim() || !email.trim()) {
+      setFormError('Please enter your full name and digital delivery email address.');
+      return;
+    }
+
+    if (!email.includes('@')) {
+      setFormError('Please provide a valid email address.');
+      return;
+    }
+
+    setIsProcessing(true);
+    try {
+      // 1. Create real order on backend
+      const response = await fetch('https://api.elevateweb.me/api/checkout/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          productId: cart[0].product.id,
+          email: email
+        })
+      });
+
+      const orderData = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(orderData.error || 'Failed to create backend order');
+      }
+
+      // 2. Open Real Razorpay Popup
+      const { triggerRazorpayCheckout } = await import('../lib/razorpay');
+      
+      triggerRazorpayCheckout({
+        amount: orderData.amount,
+        currency: orderData.currency,
+        name: 'ElevateWeb',
+        description: cart[0].product.title,
+        order_id: orderData.orderId,
+        prefill: {
+          name: name,
+          email: email,
+          contact: phone,
+        },
+        handler: (res) => {
+          handlePaymentSuccess(res.razorpay_payment_id);
+        }
+      });
+    } catch (err: any) {
+      setFormError(err.message || 'Checkout failed');
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   return (
@@ -243,10 +283,11 @@ export const CheckoutPage: React.FC = () => {
 
               <button
                 type="submit"
-                className="w-full py-4 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 hover:brightness-105 text-obsidian-950 font-display font-extrabold text-sm tracking-wide shadow-glow-amber transition-all flex items-center justify-center gap-2"
+                disabled={isProcessing}
+                className="w-full py-4 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 hover:brightness-105 text-obsidian-950 font-display font-extrabold text-sm tracking-wide shadow-glow-amber transition-all flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 <Zap className="w-4 h-4 fill-obsidian-950" />
-                <span>Pay ${total} with Razorpay</span>
+                <span>{isProcessing ? 'Processing Securely...' : `Pay $${total} with Razorpay`}</span>
               </button>
 
               <div className="flex items-center justify-center gap-2 text-[11px] text-slate-400">
@@ -383,15 +424,6 @@ export const CheckoutPage: React.FC = () => {
 
       </div>
 
-      {/* Razorpay Modal Trigger */}
-      <RazorpayCheckoutModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onPaymentSuccess={handlePaymentSuccess}
-        total={total}
-        customerDetails={{ name, email, phone }}
-        cartItems={cart}
-      />
     </div>
   );
 };

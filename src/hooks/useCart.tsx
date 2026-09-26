@@ -87,21 +87,55 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const closeCart = () => setIsOpen(false);
   const toggleCart = () => setIsOpen((prev) => !prev);
 
-  const addToCart = (product: Product, license: LicenseType = 'standard') => {
-    setCart((prev) => {
-      const existingIndex = prev.findIndex(
-        (item) => item.product.id === product.id && item.license === license
-      );
+  const addToCart = async (product: Product, license: LicenseType = 'standard') => {
+    try {
+      // 1. Create real order on backend
+      const response = await fetch('https://api.elevateweb.me/api/checkout/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          productId: product.id,
+          // email is optional in backend, Razorpay will collect it
+        })
+      });
 
-      if (existingIndex > -1) {
-        const updated = [...prev];
-        updated[existingIndex].quantity += 1;
-        return updated;
+      const orderData = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(orderData.error || 'Failed to create backend order');
       }
 
-      return [...prev, { product, license, quantity: 1 }];
-    });
-    setIsOpen(true);
+      // 2. Open Real Razorpay Popup
+      const { triggerRazorpayCheckout } = await import('../lib/razorpay');
+      
+      triggerRazorpayCheckout({
+        amount: orderData.amount,
+        currency: orderData.currency,
+        name: 'ElevateWeb',
+        description: product.title,
+        order_id: orderData.orderId,
+        handler: (res) => {
+          // Success
+          const newOrder: OrderDetails = {
+            orderId: orderData.dbOrderId || 'ORD-' + Math.floor(100000 + Math.random() * 900000),
+            date: new Date().toLocaleDateString('en-US'),
+            customerName: 'Customer', // Razorpay collects this securely
+            customerEmail: 'Delivered securely to your email',
+            items: [{ product, license, quantity: 1 }],
+            subtotal: product.price[license],
+            discount: 0,
+            tax: 0,
+            total: product.price[license],
+            paymentMethod: 'Razorpay Secure Checkout',
+            razorpayPaymentId: res.razorpay_payment_id
+          };
+          setLastOrder(newOrder);
+          window.location.href = '/order-success';
+        }
+      });
+    } catch (err: any) {
+      alert('Checkout failed: ' + err.message);
+    }
   };
 
   const removeFromCart = (productId: string, license: LicenseType) => {
