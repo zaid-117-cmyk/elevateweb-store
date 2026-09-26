@@ -32,9 +32,9 @@ export const CheckoutPage: React.FC = () => {
   const navigate = useNavigate();
 
   // Form State
-  const [name, setName] = useState('Alex Rivera');
-  const [email, setEmail] = useState('alex@developer.io');
-  const [phone, setPhone] = useState('+91 98765 43210');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('India');
   const [formError, setFormError] = useState('');
   const [couponInput, setCouponInput] = useState('');
@@ -284,7 +284,7 @@ export const CheckoutPage: React.FC = () => {
                 className="w-full py-4 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 hover:brightness-105 text-obsidian-950 font-display font-extrabold text-sm tracking-wide shadow-glow-amber transition-all flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 <Zap className="w-4 h-4 fill-obsidian-950" />
-                <span>{isProcessing ? 'Processing Securely...' : `Pay $${total} with Razorpay`}</span>
+                <span>{isProcessing ? 'Processing Securely...' : `Pay ₹${total} with Razorpay`}</span>
               </button>
 
               <div className="flex items-center justify-center gap-2 text-[11px] text-slate-400">
@@ -329,7 +329,7 @@ export const CheckoutPage: React.FC = () => {
 
                     <div className="flex items-center gap-3 shrink-0">
                       <span className="font-mono font-bold text-white">
-                        ${item.product.price[item.license] * item.quantity}
+                        ₹{item.product.price[item.license] * item.quantity}
                       </span>
                       <button
                         onClick={() => removeFromCart(item.product.id, item.license)}
@@ -350,7 +350,7 @@ export const CheckoutPage: React.FC = () => {
                     <div className="flex items-center gap-1.5 text-emerald-300">
                       <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                       <span className="font-semibold font-mono">{couponCode}</span>
-                      <span className="text-slate-400">(-${discountAmount})</span>
+                      <span className="text-slate-400">(-₹{discountAmount})</span>
                     </div>
                     <button
                       onClick={removeCoupon}
@@ -396,21 +396,21 @@ export const CheckoutPage: React.FC = () => {
               <div className="pt-3 border-t border-white/[0.08] space-y-2 text-xs text-slate-400">
                 <div className="flex justify-between">
                   <span>Subtotal</span>
-                  <span className="text-slate-200">${subtotal}</span>
+                  <span className="text-slate-200">₹{subtotal}</span>
                 </div>
                 {discountAmount > 0 && (
                   <div className="flex justify-between text-emerald-400">
                     <span>Discount Applied</span>
-                    <span>-${discountAmount}</span>
+                    <span>-₹{discountAmount}</span>
                   </div>
                 )}
                 <div className="flex justify-between">
                   <span>Digital Goods Tax (0%)</span>
-                  <span className="text-slate-200">$0.00</span>
+                  <span className="text-slate-200">₹0.00</span>
                 </div>
                 <div className="flex justify-between text-base font-bold text-white pt-2 border-t border-white/[0.08]">
                   <span>Total Amount</span>
-                  <span className="font-display text-amber-400 text-xl">${total}</span>
+                  <span className="font-display text-amber-400 text-xl">₹{total}</span>
                 </div>
               </div>
 

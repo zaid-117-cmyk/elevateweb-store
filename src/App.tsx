@@ -7,6 +7,7 @@ import { CubertoFooter } from './components/CubertoFooter';
 import { CubertoCursor } from './components/CubertoCursor';
 import { HomePage } from './pages/HomePage';
 import { ProductDetailPage } from './pages/ProductDetailPage';
+import { CheckoutPage } from './pages/CheckoutPage';
 import { OrderSuccessPage } from './pages/OrderSuccessPage';
 
 const AppContent: React.FC = () => {
@@ -26,7 +27,7 @@ const AppContent: React.FC = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/product/:slug" element={<ProductDetailPage />} />
-
+          <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/order-success" element={<OrderSuccessPage />} />
         </Routes>
       </main>
