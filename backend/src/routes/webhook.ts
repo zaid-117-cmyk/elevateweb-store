@@ -47,7 +47,7 @@ router.post("/razorpay", bodyParser.raw({ type: "application/json" }), async (re
           },
         });
 
-        const emailToSendTo = order.guestEmail;
+        const emailToSendTo = order.guestEmail || paymentEntity.email;
 
         if (emailToSendTo) {
           // 3. Generate Secure S3 Signed URL for the product

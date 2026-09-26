@@ -14,8 +14,8 @@ router.post("/create-order", async (req, res) => {
   try {
     const { productId, email } = req.body;
 
-    if (!productId || !email) {
-      return res.status(400).json({ error: "Product ID and Email are required" });
+    if (!productId) {
+      return res.status(400).json({ error: "Product ID is required" });
     }
 
     const product = await prisma.product.findUnique({
@@ -41,7 +41,7 @@ router.post("/create-order", async (req, res) => {
         razorpayOrderId: razorpayOrder.id,
         status: "PENDING",
         productId: product.id,
-        guestEmail: email,
+        guestEmail: email || null,
       },
     });
 
