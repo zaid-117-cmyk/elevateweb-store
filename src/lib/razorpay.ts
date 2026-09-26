@@ -73,15 +73,15 @@ export const triggerRazorpayCheckout = async (
   }
 
   // Use environment key, custom key, or test demo key
-  const razorpayKey = customKey || (import.meta as any).env?.VITE_RAZORPAY_KEY_ID || 'rzp_test_1DP5mmOlF5G5ag';
+  const razorpayKey = customKey || (import.meta as any).env?.VITE_RAZORPAY_KEY_ID || 'rzp_live_Tfqz8Wq1ONYG1U';
 
   try {
     const rzp = new window.Razorpay({
       ...options,
       key: razorpayKey,
       theme: {
-        color: '#F59E0B', // ElevateWeb Electric Amber
-        backdrop_color: 'rgba(8, 12, 20, 0.85)',
+        color: '#000000', // Editorial Black
+        backdrop_color: 'rgba(255, 255, 255, 0.85)',
         ...options.theme
       }
     });
