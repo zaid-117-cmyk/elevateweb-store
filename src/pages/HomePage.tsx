@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { CubertoHero } from '../components/CubertoHero';
 import { CubertoShowreel } from '../components/CubertoShowreel';
 import { CubertoFeatures } from '../components/CubertoFeatures';
-import { CubertoProducts } from '../components/CubertoProducts';
+
 import { CubertoTestimonials } from '../components/CubertoTestimonials';
 import { CubertoOutro } from '../components/CubertoOutro';
 import { CubertoDivider } from '../components/CubertoDivider';
@@ -32,13 +32,7 @@ export const HomePage: React.FC = () => {
       {/* 3. Interactive Curriculum & Frameworks Accordion */}
       <CubertoFeatures />
 
-      {/* Interactive Rubber-Band Divider before Inversion */}
-      <div className="max-w-[1360px] mx-auto px-6 md:px-12 my-6">
-        <CubertoDivider color="rgba(0,0,0,0.15)" />
-      </div>
 
-      {/* 4. Pitch Black Inverted Showcase: Selected Digital Products */}
-      <CubertoProducts />
 
       {/* 5. Trusted by Operators Testimonials */}
       <CubertoTestimonials />

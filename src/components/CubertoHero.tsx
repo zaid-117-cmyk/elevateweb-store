@@ -3,6 +3,8 @@ import { ArrowDown, ArrowUpRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MagneticButton } from './MagneticButton';
+import { useCart } from '../hooks/useCart';
+import { PRODUCTS } from '../lib/products';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,6 +16,15 @@ export const CubertoHero: React.FC = () => {
   const ctaBlockRef = useRef<HTMLDivElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
   const tagsRef = useRef<HTMLDivElement>(null);
+  const { addToCart } = useCart();
+  const playbook = PRODUCTS.find((p) => p.id === 'prod-1-page-action-playbook') || PRODUCTS[0];
+
+  const handleBuy = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (playbook) {
+      addToCart(playbook, 'standard');
+    }
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -135,24 +146,14 @@ export const CubertoHero: React.FC = () => {
           className="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4 lg:justify-end"
         >
           <MagneticButton strength={0.25}>
-            <a
-              href="#flagship"
+            <button
+              onClick={handleBuy}
               className="cuberto-btn bg-black text-white hover:bg-black/90 inline-flex items-center gap-2 group shadow-lg"
               data-cursor-text="PLAYBOOK"
             >
               <span>The 1-Page Action Playbook</span>
               <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
-          </MagneticButton>
-
-          <MagneticButton strength={0.2}>
-            <a
-              href="#products"
-              className="cuberto-btn bg-transparent text-black border-black/20 hover:border-black inline-flex items-center gap-2"
-            >
-              <span>Explore All Work</span>
-              <ArrowDown className="w-4 h-4" />
-            </a>
+            </button>
           </MagneticButton>
         </div>
       </div>

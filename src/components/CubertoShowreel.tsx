@@ -135,16 +135,7 @@ export const CubertoShowreel: React.FC<CubertoShowreelProps> = ({ onOpenSampleMo
                 </button>
               </MagneticButton>
 
-              <MagneticButton strength={0.2}>
-                <Link
-                  to="/product/the-1-page-action-playbook"
-                  className="cuberto-btn bg-transparent text-white border-white/20 hover:border-white inline-flex items-center gap-2"
-                  data-cursor-text="VIEW"
-                >
-                  <span>View Details</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </Link>
-              </MagneticButton>
+
 
               {onOpenSampleModal && (
                 <MagneticButton strength={0.2}>
