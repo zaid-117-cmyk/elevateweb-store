@@ -51,9 +51,9 @@ router.post("/create-order", async (req, res) => {
       currency: razorpayOrder.currency,
       dbOrderId: order.id
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
-    res.status(500).json({ error: "Failed to create order" });
+    res.status(500).json({ error: error.message || "Failed to create order" });
   }
 });
 
