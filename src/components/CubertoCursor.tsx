@@ -20,7 +20,7 @@ export const CubertoCursor: React.FC = () => {
     const el = cursorRef.current;
     if (!el) return;
 
-    gsap.set(el, { xPercent: -50, yPercent: -50 });
+
 
     const xTo = gsap.quickTo(el, 'x', { duration: 0.15, ease: 'power3.out' });
     const yTo = gsap.quickTo(el, 'y', { duration: 0.15, ease: 'power3.out' });
