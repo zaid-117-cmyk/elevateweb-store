@@ -84,7 +84,7 @@ export const CubertoShowreel: React.FC<CubertoShowreelProps> = ({ onOpenSampleMo
               SAVE 50%
             </span>
             <span className="text-sm font-bold font-mono text-white">
-              ₹499 <span className="line-through text-white/40 text-xs font-normal">₹999</span>
+              ₹199 <span className="line-through text-white/40 text-xs font-normal">₹999</span>
             </span>
           </div>
         </div>
@@ -130,7 +130,7 @@ export const CubertoShowreel: React.FC<CubertoShowreelProps> = ({ onOpenSampleMo
                   className="cuberto-btn bg-white text-black hover:bg-white/90 border-transparent inline-flex items-center gap-2 shadow-lg"
                   data-cursor-text="BUY"
                 >
-                  <span>Claim Instant Access — ₹499</span>
+                  <span>Claim Instant Access — ₹199</span>
                   <ArrowUpRight className="w-4 h-4" />
                 </button>
               </MagneticButton>

@@ -97,7 +97,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
       if (existingIndex > -1) {
         const updated = [...prev];
-        updated[existingIndex].quantity += 1;
+        updated[existingIndex].quantity = 1; // Always max 1 for digital products
         return updated;
       }
 
@@ -188,7 +188,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // Calculations
   const subtotal = cart.reduce((sum, item) => {
     const price = item.product.price[item.license];
-    return sum + price * item.quantity;
+    return sum + price * 1; // Force quantity to 1 for calculation
   }, 0);
 
   let discountAmount = 0;

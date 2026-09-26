@@ -4,8 +4,6 @@ import {
   ShieldCheck, 
   ArrowLeft, 
   Trash2, 
-  Tag, 
-  CheckCircle2, 
   AlertCircle,
   ShoppingBag,
   Zap
@@ -20,11 +18,6 @@ export const CheckoutPage: React.FC = () => {
     subtotal,
     discountAmount,
     total,
-    couponCode,
-    couponError,
-    couponSuccess,
-    applyCoupon,
-    removeCoupon,
     clearCart,
     setLastOrder
   } = useCart();
@@ -37,7 +30,6 @@ export const CheckoutPage: React.FC = () => {
   const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('India');
   const [formError, setFormError] = useState('');
-  const [couponInput, setCouponInput] = useState('');
 
 
   if (cart.length === 0) {
@@ -60,13 +52,7 @@ export const CheckoutPage: React.FC = () => {
     );
   }
 
-  const handleApplyCoupon = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (couponInput.trim()) {
-      applyCoupon(couponInput);
-      setCouponInput('');
-    }
-  };
+
 
   const handlePaymentSuccess = (paymentId: string) => {
     const newOrder: OrderDetails = {
@@ -98,8 +84,8 @@ export const CheckoutPage: React.FC = () => {
     e.preventDefault();
     setFormError('');
 
-    if (!name.trim() || !email.trim()) {
-      setFormError('Please enter your full name and digital delivery email address.');
+    if (!name.trim() || !email.trim() || !phone.trim()) {
+      setFormError('Please fill out all fields: Name, Email, and Phone Number.');
       return;
     }
 
@@ -209,6 +195,7 @@ export const CheckoutPage: React.FC = () => {
                     onChange={(e) => setName(e.target.value)}
                     placeholder="e.g. Alex Rivera"
                     className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 border border-black/10 text-black text-xs sm:text-sm placeholder-slate-400 focus:outline-none focus:border-black"
+                    autoComplete="off"
                   />
                 </div>
 
@@ -233,10 +220,12 @@ export const CheckoutPage: React.FC = () => {
                     </label>
                     <input
                       type="tel"
+                      required
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="+91 98765 43210"
                       className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 border border-black/10 text-black text-xs sm:text-sm placeholder-slate-400 focus:outline-none focus:border-black font-mono"
+                      autoComplete="off"
                     />
                   </div>
 
@@ -299,7 +288,7 @@ export const CheckoutPage: React.FC = () => {
             <div className="p-7 rounded-2xl bg-white border border-black/10 shadow-xl space-y-5">
               
               <h3 className="font-display font-bold text-black text-base border-b border-black/10 pb-3">
-                Order Summary ({cart.reduce((a, b) => a + b.quantity, 0)} items)
+                Order Summary ({cart.length} items)
               </h3>
 
               {/* Items List */}
@@ -322,14 +311,14 @@ export const CheckoutPage: React.FC = () => {
                         <div className="flex items-center gap-2 text-[11px] text-slate-500">
                           <span className="capitalize text-slate-700 font-semibold">{item.license} License</span>
                           <span>•</span>
-                          <span>Qty: {item.quantity}</span>
+                          <span>Qty: 1</span>
                         </div>
                       </div>
                     </div>
 
                     <div className="flex items-center gap-3 shrink-0">
                       <span className="font-mono font-bold text-black">
-                        ₹{item.product.price[item.license] * item.quantity}
+                        ₹{item.product.price[item.license]}
                       </span>
                       <button
                         onClick={() => removeFromCart(item.product.id, item.license)}
@@ -343,54 +332,7 @@ export const CheckoutPage: React.FC = () => {
                 ))}
               </div>
 
-              {/* Coupon Form */}
-              <div className="pt-2 border-t border-black/10">
-                {couponCode ? (
-                  <div className="flex items-center justify-between p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs">
-                    <div className="flex items-center gap-1.5 text-emerald-300">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                      <span className="font-semibold font-mono">{couponCode}</span>
-                      <span className="text-slate-400">(-₹{discountAmount})</span>
-                    </div>
-                    <button
-                      onClick={removeCoupon}
-                      className="text-xs text-red-400 hover:text-red-300 underline"
-                    >
-                      Remove
-                    </button>
-                  </div>
-                ) : (
-                  <form onSubmit={handleApplyCoupon} className="flex gap-2">
-                    <div className="relative flex-1">
-                      <Tag className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
-                      <input
-                        type="text"
-                        placeholder="Discount code (e.g. ELEVATE20)"
-                        value={couponInput}
-                        onChange={(e) => setCouponInput(e.target.value)}
-                        className="w-full pl-8 pr-3 py-2 text-xs rounded-xl bg-gray-50 border border-black/10 text-black placeholder-slate-400 uppercase font-mono focus:outline-none focus:border-black"
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      className="px-3 py-2 text-xs font-semibold rounded-xl bg-black text-white border border-black"
-                    >
-                      Apply
-                    </button>
-                  </form>
-                )}
-                {couponError && (
-                  <p className="mt-1.5 text-[11px] text-red-400 flex items-center gap-1">
-                    <AlertCircle className="w-3 h-3" />
-                    {couponError}
-                  </p>
-                )}
-                {couponSuccess && !couponCode && (
-                  <p className="mt-1.5 text-[11px] text-emerald-400">
-                    {couponSuccess}
-                  </p>
-                )}
-              </div>
+              {/* Coupon Form Removed */}
 
               {/* Price Breakdown */}
               <div className="pt-3 border-t border-black/10 space-y-2 text-xs text-slate-500">
@@ -398,12 +340,7 @@ export const CheckoutPage: React.FC = () => {
                   <span>Subtotal</span>
                   <span className="text-slate-800 font-semibold">₹{subtotal}</span>
                 </div>
-                {discountAmount > 0 && (
-                  <div className="flex justify-between text-emerald-400">
-                    <span>Discount Applied</span>
-                    <span>-₹{discountAmount}</span>
-                  </div>
-                )}
+
                 <div className="flex justify-between">
                   <span>Digital Goods Tax (0%)</span>
                   <span className="text-slate-800 font-semibold">₹0.00</span>

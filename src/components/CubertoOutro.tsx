@@ -36,7 +36,7 @@ export const CubertoOutro: React.FC = () => {
             className="cuberto-btn bg-white text-black hover:bg-white/90 border-transparent text-base sm:text-lg px-8 py-5 shadow-2xl transition-transform hover:scale-[1.02]"
             data-cursor-text="BUY"
           >
-            <span>Get The 1-Page Action Playbook — ₹499</span>
+            <span>Get The 1-Page Action Playbook — ₹199</span>
             <ArrowUpRight className="w-5 h-5 ml-1.5" />
           </button>
 

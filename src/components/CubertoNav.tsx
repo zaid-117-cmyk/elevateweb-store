@@ -76,7 +76,7 @@ export const CubertoNav: React.FC = () => {
             className="hidden sm:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-black text-white font-display font-semibold text-xs tracking-wider uppercase hover:scale-[1.03] transition-transform duration-200"
             data-cursor-text="BUY"
           >
-            <span>₹499 Access</span>
+            <span>₹199 Access</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </button>
         </div>

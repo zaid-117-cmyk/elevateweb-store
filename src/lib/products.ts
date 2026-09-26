@@ -15,7 +15,7 @@ Includes 15 Master Chapters covering Atomic Habits, Deep Work, Can't Hurt Me, 48
     featured: true,
     isNew: true,
     price: {
-      standard: 499,
+      standard: 199,
       team: 999
     },
     originalPrice: {
