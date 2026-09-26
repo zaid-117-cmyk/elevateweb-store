@@ -17,7 +17,7 @@ interface CubertoShowreelProps {
 export const CubertoShowreel: React.FC<CubertoShowreelProps> = ({ onOpenSampleModal }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
-  const { addToCart, openCart } = useCart();
+  const { addToCart } = useCart();
   const playbook = PRODUCTS.find((p) => p.id === 'prod-1-page-action-playbook') || PRODUCTS[0];
 
   useEffect(() => {

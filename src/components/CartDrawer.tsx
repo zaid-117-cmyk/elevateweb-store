@@ -238,7 +238,7 @@ export const CartDrawer: React.FC = () => {
                       <Tag className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-black/40" />
                       <input
                         type="text"
-                        placeholder="Coupon code (e.g. COMEBACK20)"
+                        placeholder="Coupon code (e.g. PLAYBOOK20)"
                         value={inputCode}
                         onChange={(e) => setInputCode(e.target.value)}
                         className="w-full pl-9 pr-3 py-2 text-xs bg-white border border-black/15 rounded-full text-black placeholder-black/40 focus:outline-none focus:border-black uppercase font-mono"

@@ -32,8 +32,10 @@ const CART_STORAGE_KEY = 'elevateweb_cart_items_v1';
 const ORDER_STORAGE_KEY = 'elevateweb_last_order_v1';
 
 const VALID_COUPONS: Record<string, { type: 'percent' | 'flat'; value: number; label: string }> = {
+  PLAYBOOK20: { type: 'percent', value: 20, label: '20% Playbook Special Discount' },
+  ACTION20: { type: 'percent', value: 20, label: '20% Action Launch Discount' },
   ELEVATE20: { type: 'percent', value: 20, label: '20% Special Discount' },
-  LAUNCH50: { type: 'flat', value: 50, label: '$50 Launch Credit' },
+  LAUNCH50: { type: 'flat', value: 50, label: '₹50 Launch Credit' },
   DEV10: { type: 'percent', value: 10, label: '10% Developer Perk' },
 };
 
@@ -87,55 +89,21 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const closeCart = () => setIsOpen(false);
   const toggleCart = () => setIsOpen((prev) => !prev);
 
-  const addToCart = async (product: Product, license: LicenseType = 'standard') => {
-    try {
-      // 1. Create real order on backend
-      const response = await fetch('https://api.elevateweb.me/api/checkout/create-order', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          productId: product.id,
-          // email is optional in backend, Razorpay will collect it
-        })
-      });
+  const addToCart = (product: Product, license: LicenseType = 'standard') => {
+    setCart((prev) => {
+      const existingIndex = prev.findIndex(
+        (item) => item.product.id === product.id && item.license === license
+      );
 
-      const orderData = await response.json();
-      
-      if (!response.ok) {
-        throw new Error(orderData.error || 'Failed to create backend order');
+      if (existingIndex > -1) {
+        const updated = [...prev];
+        updated[existingIndex].quantity += 1;
+        return updated;
       }
 
-      // 2. Open Real Razorpay Popup
-      const { triggerRazorpayCheckout } = await import('../lib/razorpay');
-      
-      triggerRazorpayCheckout({
-        amount: orderData.amount,
-        currency: orderData.currency,
-        name: 'ElevateWeb',
-        description: product.title,
-        order_id: orderData.orderId,
-        handler: (res) => {
-          // Success
-          const newOrder: OrderDetails = {
-            orderId: orderData.dbOrderId || 'ORD-' + Math.floor(100000 + Math.random() * 900000),
-            date: new Date().toLocaleDateString('en-US'),
-            customerName: 'Customer', // Razorpay collects this securely
-            customerEmail: 'Delivered securely to your email',
-            items: [{ product, license, quantity: 1 }],
-            subtotal: product.price[license],
-            discount: 0,
-            tax: 0,
-            total: product.price[license],
-            paymentMethod: 'Razorpay Secure Checkout',
-            razorpayPaymentId: res.razorpay_payment_id
-          };
-          setLastOrder(newOrder);
-          window.location.href = '/order-success';
-        }
-      });
-    } catch (err: any) {
-      alert('Checkout failed: ' + err.message);
-    }
+      return [...prev, { product, license, quantity: 1 }];
+    });
+    setIsOpen(true);
   };
 
   const removeFromCart = (productId: string, license: LicenseType) => {

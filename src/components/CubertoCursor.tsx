@@ -17,10 +17,15 @@ export const CubertoCursor: React.FC = () => {
   });
 
   useEffect(() => {
+    // Disable on touch screens (phones / tablets)
+    if (window.matchMedia('(pointer: coarse)').matches) {
+      return;
+    }
+
     const el = cursorRef.current;
     if (!el) return;
 
-
+    gsap.set(el, { xPercent: -50, yPercent: -50 });
 
     const xTo = gsap.quickTo(el, 'x', { duration: 0.15, ease: 'power3.out' });
     const yTo = gsap.quickTo(el, 'y', { duration: 0.15, ease: 'power3.out' });
@@ -99,7 +104,7 @@ export const CubertoCursor: React.FC = () => {
   return (
     <div
       ref={cursorRef}
-      className={`cuberto-cursor-wrapper select-none transition-opacity duration-200 ${
+      className={`cuberto-cursor-wrapper hidden md:flex select-none transition-opacity duration-200 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
     >
