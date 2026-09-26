@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingBag, ArrowUpRight } from 'lucide-react';
 import { useCart } from '../hooks/useCart';
+import { PRODUCTS } from '../lib/products';
 
 export const CubertoNav: React.FC = () => {
-  const { itemCount, toggleCart } = useCart();
+  const { addToCart } = useCart();
+  const playbook = PRODUCTS.find((p) => p.id === 'prod-1-page-action-playbook') || PRODUCTS[0];
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -67,27 +69,16 @@ export const CubertoNav: React.FC = () => {
         <div className="flex items-center gap-4">
           <button
             type="button"
-            onClick={toggleCart}
-            className="relative p-2.5 rounded-full border border-black/15 hover:border-black transition-colors flex items-center justify-center text-black"
-            data-cursor-text="CART"
-            aria-label="Open cart"
-          >
-            <ShoppingBag className="w-5 h-5" />
-            {itemCount > 0 && (
-              <span className="absolute -top-1 -right-1 w-5 h-5 bg-black text-white text-[11px] font-bold rounded-full flex items-center justify-center">
-                {itemCount}
-              </span>
-            )}
-          </button>
-
-          <a
-            href="#flagship"
+            onClick={(e) => {
+              e.preventDefault();
+              if (playbook) addToCart(playbook, 'standard');
+            }}
             className="hidden sm:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-black text-white font-display font-semibold text-xs tracking-wider uppercase hover:scale-[1.03] transition-transform duration-200"
             data-cursor-text="BUY"
           >
             <span>₹499 Access</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>
+          </button>
         </div>
       </div>
     </header>
