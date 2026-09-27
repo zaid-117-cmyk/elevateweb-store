@@ -32,13 +32,34 @@ router.post("/razorpay", bodyParser.raw({ type: "application/json" }), async (re
       const paymentId = paymentEntity.id;
 
       // 1. Find the order in our database
-      const order = await prisma.order.findUnique({
+      let order = await prisma.order.findUnique({
         where: { razorpayOrderId },
         include: { product: true },
       });
 
+      // If no order exists, it's a direct Razorpay Payment Page purchase!
+      if (!order) {
+        console.log(`No pending order found for ${razorpayOrderId}. Assuming direct Payment Page purchase.`);
+        const product = await prisma.product.findUnique({
+          where: { id: 'prod-1-page-action-playbook' }
+        });
+
+        if (product) {
+          order = await prisma.order.create({
+            data: {
+              razorpayOrderId: razorpayOrderId || `direct_${paymentId}`,
+              status: "PAID",
+              paymentId: paymentId,
+              productId: product.id,
+              guestEmail: paymentEntity.email,
+            },
+            include: { product: true }
+          });
+        }
+      }
+
       if (order && order.status !== "PAID") {
-        // 2. Mark the order as paid
+        // 2. Mark the order as paid (if it was pending)
         await prisma.order.update({
           where: { id: order.id },
           data: {
@@ -46,6 +67,9 @@ router.post("/razorpay", bodyParser.raw({ type: "application/json" }), async (re
             paymentId: paymentId,
           },
         });
+      }
+
+      if (order) {
 
         const emailToSendTo = order.guestEmail || paymentEntity.email;
 
@@ -55,6 +79,7 @@ router.post("/razorpay", bodyParser.raw({ type: "application/json" }), async (re
 
           // 4. Send the Email with the link
           await sendDownloadEmail(emailToSendTo, order.product.name, downloadUrl);
+          console.log(`Success! Delivery email sent to ${emailToSendTo}`);
         }
       }
     }
