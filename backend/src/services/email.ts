@@ -27,7 +27,7 @@ export const sendDownloadEmail = async (toEmail: string, productName: string, do
           <h2 style="color: #38bdf8; font-size: 18px; margin-top: 0;">Payment Successful! 🎉</h2>
           <p style="color: #cbd5e1; font-size: 15px; line-height: 1.6;">Thank you for your purchase. Your digital product <strong>${productName}</strong> is ready for instant download.</p>
           <div style="text-align: center; margin: 28px 0;">
-            <a href="${downloadUrl}" style="background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%); color: #ffffff; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 14px rgba(14, 165, 233, 0.4);">Download Product</a>
+            <a href="${downloadUrl.replace(/&/g, '&amp;')}" style="background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%); color: #ffffff; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 14px rgba(14, 165, 233, 0.4);">Download Product</a>
           </div>
           <p style="font-size: 13px; color: #94a3b8; text-align: center; margin-bottom: 0;">⏱️ For your security, this download link will remain active for <strong>24 hours</strong>.</p>
         </div>
