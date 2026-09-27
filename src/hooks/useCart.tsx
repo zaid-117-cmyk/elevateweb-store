@@ -103,7 +103,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
       return [...prev, { product, license, quantity: 1 }];
     });
-    window.location.href = '/checkout';
+    window.location.href = 'https://rzp.io/rzp/xAZsmrCQ';
   };
 
   const removeFromCart = (productId: string, license: LicenseType) => {
