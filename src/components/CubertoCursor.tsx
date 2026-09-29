@@ -94,7 +94,7 @@ export const CubertoCursor: React.FC = () => {
   return (
     <div
       ref={cursorRef}
-      className={`cuberto-cursor-wrapper hidden md:flex select-none mix-blend-difference pointer-events-none transition-opacity duration-200 ${
+      className={`cuberto-cursor-wrapper hidden md:flex select-none pointer-events-none transition-opacity duration-200 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
     >
@@ -103,8 +103,8 @@ export const CubertoCursor: React.FC = () => {
           cursorText
             ? 'w-20 h-20 bg-white text-black shadow-2xl scale-100'
             : isHovered
-            ? 'w-12 h-12 bg-white/20 backdrop-blur-sm border border-white/30 scale-100'
-            : 'w-4 h-4 bg-white scale-100'
+            ? 'w-12 h-12 bg-white/20 backdrop-blur-sm border border-white/40 shadow-xl scale-100'
+            : 'w-4 h-4 bg-black border-[1.5px] border-white shadow-sm scale-100'
         }`}
       >
         {cursorText && (
