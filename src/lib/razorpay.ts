@@ -73,7 +73,7 @@ export const triggerRazorpayCheckout = async (
   }
 
   // Use environment key, custom key, or test demo key
-  const razorpayKey = customKey || (import.meta as any).env?.VITE_RAZORPAY_KEY_ID || 'rzp_live_Tfqz8Wq1ONYG1U';
+  const razorpayKey = customKey || (import.meta as any).env?.VITE_RAZORPAY_KEY_ID || 'rzp_live_ThsyLhw1bO4hBl';
 
   try {
     const rzp = new window.Razorpay({
