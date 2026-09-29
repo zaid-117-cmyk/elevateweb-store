@@ -55,7 +55,7 @@ const mockProducts = [
     name: 'The Gilbert’s Law Blueprint',
     description: 'Convert directionless ambition into an artificial boss. Stop watching tutorial videos, start executing binary checkboxes.',
     price: 29900, // 299 * 100
-    fileKey: 'https://notion.so/your-gilberts-law-blueprint-template-link-here', // Notion Template URL
+    fileKey: 'https://elevatewebs.notion.site/The-Gilbert-s-Law-Blueprint-3e92121cfb4a8145ad0ffa38a784c0ef', // Notion Template URL
     imageUrl: 'https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?auto=format&fit=crop&w=1200&q=80',
   }
 ];
