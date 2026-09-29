@@ -76,11 +76,11 @@ export const CubertoProducts: React.FC = () => {
             {PRODUCTS.filter((_, idx) => idx % 2 === 0).map((prod) => (
               <div key={prod.id} className="cuberto-card group" data-cursor-text="VIEW">
                 <Link
-                  to={prod.whopUrl ? '#' : `/product/${prod.slug}`}
+                  to={prod.paymentUrl ? '#' : `/product/${prod.slug}`}
                   onClick={(e) => {
-                    if (prod.whopUrl) {
+                    if (prod.paymentUrl) {
                       e.preventDefault();
-                      window.open(prod.whopUrl, '_blank');
+                      window.open(prod.paymentUrl, '_blank');
                     }
                   }}
                 >
@@ -115,16 +115,16 @@ export const CubertoProducts: React.FC = () => {
                   </p>
 
                   <div className="flex items-center gap-3">
-                    {prod.whopUrl ? (
+                    {prod.paymentUrl ? (
                       <MagneticButton strength={0.25}>
                         <a
-                          href={prod.whopUrl}
+                          href={prod.paymentUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-black text-xs font-bold uppercase tracking-wider hover:bg-white/90 transition-colors shadow-sm"
                           data-cursor-text="BUY"
                         >
-                          <span>Whop Instant Access</span>
+                          <span>Instant Razorpay Checkout</span>
                           <ArrowUpRight className="w-3.5 h-3.5" />
                         </a>
                       </MagneticButton>
@@ -152,11 +152,11 @@ export const CubertoProducts: React.FC = () => {
             {PRODUCTS.filter((_, idx) => idx % 2 === 1).map((prod) => (
               <div key={prod.id} className="cuberto-card group" data-cursor-text="VIEW">
                 <Link
-                  to={prod.whopUrl ? '#' : `/product/${prod.slug}`}
+                  to={prod.paymentUrl ? '#' : `/product/${prod.slug}`}
                   onClick={(e) => {
-                    if (prod.whopUrl) {
+                    if (prod.paymentUrl) {
                       e.preventDefault();
-                      window.open(prod.whopUrl, '_blank');
+                      window.open(prod.paymentUrl, '_blank');
                     }
                   }}
                 >

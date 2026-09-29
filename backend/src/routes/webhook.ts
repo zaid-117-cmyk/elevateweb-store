@@ -40,8 +40,18 @@ router.post("/razorpay", bodyParser.raw({ type: "application/json" }), async (re
       // If no order exists, it's a direct Razorpay Payment Page purchase!
       if (!order) {
         console.log(`No pending order found for ${razorpayOrderId}. Assuming direct Payment Page purchase.`);
+        
+        // Match product based on the amount paid (in paise)
+        let productIdToFulfill = 'prod-1-page-action-playbook'; // fallback
+        
+        if (paymentEntity.amount === 29900) {
+          productIdToFulfill = 'prod-gilberts-law-blueprint';
+        } else if (paymentEntity.amount === 19900) {
+          productIdToFulfill = 'prod-1-page-action-playbook';
+        }
+
         const product = await prisma.product.findUnique({
-          where: { id: 'prod-1-page-action-playbook' }
+          where: { id: productIdToFulfill }
         });
 
         if (product) {

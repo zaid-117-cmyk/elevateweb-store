@@ -309,16 +309,16 @@ export const ProductDetailPage: React.FC = () => {
 
               {/* Action Buttons */}
               <div className="space-y-3 pt-2">
-                {product.whopUrl ? (
+                {product.paymentUrl ? (
                   <MagneticButton strength={0.3} className="w-full">
                     <a
-                      href={product.whopUrl}
+                      href={product.paymentUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full cuberto-btn bg-black text-white hover:bg-black/90 py-4 text-sm font-bold flex items-center justify-center gap-2 shadow-lg"
                       data-cursor-text="BUY"
                     >
-                      <span>Claim via Whop — ₹{currentPrice.toLocaleString()}</span>
+                      <span>Direct Razorpay Purchase — ₹{currentPrice.toLocaleString()}</span>
                       <ArrowUpRight className="w-4 h-4" />
                     </a>
                   </MagneticButton>
@@ -385,9 +385,9 @@ export const ProductDetailPage: React.FC = () => {
               </div>
 
               <div>
-                {product.whopUrl ? (
+                {product.paymentUrl ? (
                   <a
-                    href={product.whopUrl}
+                    href={product.paymentUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-white text-black font-display font-bold text-xs tracking-wider uppercase hover:bg-white/90 transition-transform active:scale-95 shadow-md shrink-0"

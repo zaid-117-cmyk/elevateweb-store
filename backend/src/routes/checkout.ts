@@ -27,10 +27,11 @@ router.post("/create-order", async (req, res) => {
     }
 
     // Razorpay expects amount in smallest currency unit (paise for INR)
-    const options = {
+    const options: any = {
       amount: product.price, 
       currency: "INR",
       receipt: `receipt_${Date.now()}`,
+      config_id: "config_ThpITYiJBa5HvQ"
     };
 
     const razorpayOrder = await razorpay.orders.create(options);

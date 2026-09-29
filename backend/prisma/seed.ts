@@ -49,7 +49,14 @@ const mockProducts = [
     description: 'Ultra-fast MDX portfolio template with 3D code viewer, GSAP smooth scroll, & SEO.',
     price: 3900,
     fileKey: 'hyperflow-developer-portfolio-engine.zip',
-    imageUrl: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    id: 'prod-gilberts-law-blueprint',
+    name: 'The Gilbert’s Law Blueprint',
+    description: 'Convert directionless ambition into an artificial boss. Stop watching tutorial videos, start executing binary checkboxes.',
+    price: 29900, // 299 * 100
+    fileKey: 'gilberts-law-blueprint-workspace.pdf',
+    imageUrl: 'https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?auto=format&fit=crop&w=1200&q=80',
   }
 ];
 

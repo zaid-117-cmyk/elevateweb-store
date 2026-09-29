@@ -73,7 +73,64 @@ Includes 15 Master Chapters covering Atomic Habits, Deep Work, Can't Hurt Me, 48
       }
     ]
   },
+  {
+    id: 'prod-gilberts-law-blueprint',
+    slug: 'the-gilberts-law-blueprint',
+    title: 'The Gilbert’s Law Blueprint',
+    tagline: 'Convert directionless ambition into an artificial boss. Stop watching tutorial videos, start executing binary checkboxes.',
+    description: `The biggest problem at work is that no one tells you what to do. You are used to spoon-fed systems. Without an authority figure, you freeze, consume infinite self-improvement/roadmap videos ("tutorial hell"), and execute zero real-world actions.
 
+The Gilbert's Law Blueprint is your artificial boss—a rigid operating system that forces you to pick one track, deconstruct it, and execute it daily with binary checkboxes.
+
+Includes 4 Core Modules: The Reality Check (Aaina), Goal Deconstruction Engine, Daily Execution Dashboard, and The Solo Troubleshooting Protocol.`,
+    category: 'Dashboards',
+    featured: true,
+    isNew: true,
+    price: {
+      standard: 299,
+      team: 1499
+    },
+    originalPrice: {
+      standard: 999,
+      team: 2999
+    },
+    rating: 4.95,
+    reviewCount: 156,
+    salesCount: 890,
+    tags: ['Notion Template', 'Execution', 'Career OS', 'Productivity'],
+    bannerImage: 'https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?auto=format&fit=crop&w=1200&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80'
+    ],
+    deliverables: [
+      { name: 'Complete Notion Workspace Template', format: 'Notion', size: 'Access Link' },
+      { name: 'Cold Outreach Rolodex (5 Templates)', format: 'Text', size: 'Included' },
+      { name: 'Goal Deconstruction Matrix', format: 'Notion Database', size: 'Included' }
+    ],
+    features: [
+      'The Reality Check (Aaina): 48-Hour Uncensored Audit & Time/Distraction Leak Tracker',
+      'Goal Deconstruction Engine: Reverse-engineer 1-Year Outcome to Daily Binary Checklists',
+      'Daily Execution Dashboard: Realistic Headstart Tracker & Eisenhower Focus Quadrant',
+      'Solo Troubleshooting Protocol: 15-minute Information Hunting SOP & Cold Pitch Templates'
+    ],
+    techStack: ['Notion', 'Mobile Optimized', 'Dark Mode Ready'],
+    compatibility: ['Mac', 'Windows', 'iPhone', 'Android', 'iPad'],
+    paymentUrl: 'https://rzp.io/rzp/BgYZCO8A',
+    version: '1.0.0',
+    lastUpdated: 'September 2026',
+    reviews: [
+      {
+        id: 'rev-gilbert-1',
+        author: 'Karan Singh',
+        role: 'College Sophomore',
+        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80',
+        rating: 5,
+        date: '2 days ago',
+        content: 'I used to watch 5 hours of podcast advice daily and do nothing. This template forced me to actually write code and send cold DMs. The daily binary checklist is ruthless but necessary.'
+      }
+    ]
+  }
 ];
 
 export const CATEGORIES: ProductCategory[] = [

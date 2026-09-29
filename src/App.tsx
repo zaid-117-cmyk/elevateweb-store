@@ -8,6 +8,7 @@ import { CubertoCursor } from './components/CubertoCursor';
 import { HomePage } from './pages/HomePage';
 import { ProductDetailPage } from './pages/ProductDetailPage';
 import { OrderSuccessPage } from './pages/OrderSuccessPage';
+import { CheckoutPage } from './pages/CheckoutPage';
 
 const AppContent: React.FC = () => {
   // Initialize Lenis + GSAP buttery smooth scrolling
@@ -26,6 +27,7 @@ const AppContent: React.FC = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/product/:slug" element={<ProductDetailPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/order-success" element={<OrderSuccessPage />} />
         </Routes>
       </main>

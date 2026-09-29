@@ -48,7 +48,7 @@ export interface Product {
   bannerImage: string;
   galleryImages: string[];
   demoUrl?: string;
-  whopUrl?: string;
+  paymentUrl?: string;
   deliverables: ProductDeliverable[];
   features: string[];
   techStack: string[];
