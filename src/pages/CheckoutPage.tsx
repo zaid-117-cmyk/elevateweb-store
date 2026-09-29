@@ -37,7 +37,8 @@ export const CheckoutPage: React.FC = () => {
       // Create order for the first item in cart (backend supports 1 product per order)
       const productId = cart[0].product.id;
       
-      const response = await fetch('http://localhost:3000/api/checkout/create-order', {
+      const API_URL = import.meta.env.VITE_API_URL || 'https://api.elevateweb.me';
+      const response = await fetch(`${API_URL}/api/checkout/create-order`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -59,7 +60,7 @@ export const CheckoutPage: React.FC = () => {
         description: cart[0].product.title,
         image: 'https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?auto=format&fit=crop&w=150&q=80',
         order_id: data.orderId,
-        handler: function (response: any) {
+        handler: function () {
           // On success
           clearCart();
           navigate('/order-success');
@@ -74,7 +75,7 @@ export const CheckoutPage: React.FC = () => {
 
       // @ts-ignore
       const rzp = new window.Razorpay(options);
-      rzp.on('payment.failed', function (response: any) {
+      rzp.on('payment.failed', function () {
         setError('Payment failed. Please try again.');
       });
       rzp.open();
