@@ -37,7 +37,7 @@ export const CheckoutPage: React.FC = () => {
       // Create order for the first item in cart (backend supports 1 product per order)
       const productId = cart[0].product.id;
       
-      const API_URL = import.meta.env.VITE_API_URL || 'https://api.elevateweb.me';
+      const API_URL = 'https://api.elevateweb.me';
       const response = await fetch(`${API_URL}/api/checkout/create-order`, {
         method: 'POST',
         headers: {
