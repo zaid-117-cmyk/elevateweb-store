@@ -12,13 +12,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 interface CubertoShowreelProps {
   onOpenSampleModal?: () => void;
+  productId?: string;
 }
 
-export const CubertoShowreel: React.FC<CubertoShowreelProps> = ({ onOpenSampleModal }) => {
+export const CubertoShowreel: React.FC<CubertoShowreelProps> = ({ onOpenSampleModal, productId = 'prod-1-page-action-playbook' }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const { addToCart } = useCart();
-  const playbook = PRODUCTS.find((p) => p.id === 'prod-1-page-action-playbook') || PRODUCTS[0];
+  const playbook = PRODUCTS.find((p) => p.id === productId) || PRODUCTS[0];
 
   useEffect(() => {
     const card = cardRef.current;
@@ -72,10 +73,10 @@ export const CubertoShowreel: React.FC<CubertoShowreelProps> = ({ onOpenSampleMo
           <div className="flex items-center gap-3">
             <span className="px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-bold uppercase tracking-widest text-white flex items-center gap-2 font-mono">
               <Sparkles className="w-3.5 h-3.5 text-[#2997ff]" />
-              Classic Vintage Edition
+              {playbook.version}
             </span>
             <span className="text-xs font-mono uppercase tracking-wider text-white/50">
-              15 Master Action Sheets • Hinglish
+              {playbook.id === 'prod-1-page-action-playbook' ? '15 Master Action Sheets • Hinglish' : 'Artificial Boss OS • Dashboard'}
             </span>
           </div>
 
@@ -84,7 +85,7 @@ export const CubertoShowreel: React.FC<CubertoShowreelProps> = ({ onOpenSampleMo
               SAVE 50%
             </span>
             <span className="text-sm font-bold font-mono text-white">
-              ₹199 <span className="line-through text-white/40 text-xs font-normal">₹999</span>
+              ₹{playbook.price.standard} <span className="line-through text-white/40 text-xs font-normal">₹{playbook.originalPrice.standard}</span>
             </span>
           </div>
         </div>
@@ -98,22 +99,15 @@ export const CubertoShowreel: React.FC<CubertoShowreelProps> = ({ onOpenSampleMo
             </div>
 
             <h2 className="cuberto-heading text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6">
-              The 1-Page Action Playbook.
+              {playbook.title}.
             </h2>
             <p className="text-lg sm:text-xl text-white/70 max-w-xl font-normal leading-relaxed mb-8">
-              Top 15 Self-Help Books Ka Asli Nichod. Moti kitabein padhna chhodo, direct action shuru karo. 15 concise Hinglish action sheets with 4-box models, real Indian context, and zero boring gyan.
+              {playbook.tagline}
             </p>
 
             {/* Feature Checklist */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-10">
-              {[
-                '15 High-Res 1-Page Action Sheets (PDF & ePub)',
-                'Atomic Habits: Remote Control & 2-Minute Rule',
-                'Deep Work: Monastic Focus & 30-Day Phone Detox',
-                'Can\'t Hurt Me: The 40% Rule & Mirror Test',
-                '48 Laws of Power: Strategic Silence & Power Rules',
-                'Karna Kya Hai Checklists & Shabdkosh Glossaries',
-              ].map((feat, idx) => (
+              {playbook.features.slice(0, 6).map((feat, idx) => (
                 <div key={idx} className="flex items-center gap-2.5 text-sm text-white/80">
                   <CheckCircle className="w-4 h-4 text-[#2997ff] flex-shrink-0" />
                   <span>{feat}</span>
@@ -126,11 +120,18 @@ export const CubertoShowreel: React.FC<CubertoShowreelProps> = ({ onOpenSampleMo
               <MagneticButton strength={0.3}>
                 <button
                   type="button"
-                  onClick={handleInstantBuy}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (playbook.paymentUrl) {
+                      window.open(playbook.paymentUrl, '_blank');
+                    } else {
+                      handleInstantBuy(e);
+                    }
+                  }}
                   className="cuberto-btn bg-white text-black hover:bg-white/90 border-transparent inline-flex items-center gap-2 shadow-lg"
                   data-cursor-text="BUY"
                 >
-                  <span>Claim Instant Access — ₹199</span>
+                  <span>Claim Instant Access — ₹{playbook.price.standard}</span>
                   <ArrowUpRight className="w-4 h-4" />
                 </button>
               </MagneticButton>
@@ -155,7 +156,7 @@ export const CubertoShowreel: React.FC<CubertoShowreelProps> = ({ onOpenSampleMo
 
           {/* Right Column: Floating 3D Book Component */}
           <div className="lg:col-span-5 flex justify-center items-center">
-            <FloatingPlaybook3D />
+            <FloatingPlaybook3D productId={playbook.id} />
           </div>
         </div>
       </div>

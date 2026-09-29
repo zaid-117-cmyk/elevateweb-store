@@ -2,9 +2,10 @@ import React, { useRef, useState } from 'react';
 
 interface FloatingPlaybook3DProps {
   className?: string;
+  productId?: string;
 }
 
-export const FloatingPlaybook3D: React.FC<FloatingPlaybook3DProps> = ({ className = '' }) => {
+export const FloatingPlaybook3D: React.FC<FloatingPlaybook3DProps> = ({ className = '', productId = 'prod-1-page-action-playbook' }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mouseTilt, setMouseTilt] = useState({ x: 0, y: 0 });
 
@@ -51,19 +52,23 @@ export const FloatingPlaybook3D: React.FC<FloatingPlaybook3DProps> = ({ classNam
           {/* Top Section */}
           <div className="relative z-10 text-center pt-2">
             <p className="font-vintage text-[10px] tracking-[0.28em] uppercase text-[#4A4742] font-semibold">
-              Classic Vintage Edition
+              {productId === 'prod-1-page-action-playbook' ? 'Classic Vintage Edition' : 'First Edition'}
             </p>
             <div className="text-[10px] tracking-widest text-[#6B655B] my-2">
               ♦ ❖ ♦
             </div>
             <h2 className="font-vintage text-2xl sm:text-[1.75rem] font-extrabold tracking-tight text-[#1A1918] leading-[1.1] mt-2">
-              THE 1-PAGE<br />ACTION PLAYBOOK
+              {productId === 'prod-1-page-action-playbook' ? (
+                <>THE 1-PAGE<br />ACTION PLAYBOOK</>
+              ) : (
+                <>THE GILBERT'S LAW<br />BLUEPRINT</>
+              )}
             </h2>
             <p className="font-serif italic text-[11px] sm:text-xs text-[#4A4742] mt-2 tracking-wide font-medium">
-              Top 15 Self-Help Books Ka Asli Nichod
+              {productId === 'prod-1-page-action-playbook' ? 'Top 15 Self-Help Books Ka Asli Nichod' : 'Convert Directionless Ambition into Action'}
             </p>
             <p className="text-[9px] font-sans font-medium text-[#6B655B] mt-1 tracking-wider uppercase">
-              Simple Hinglish Action Sheets • Zero Boring Gyan
+              {productId === 'prod-1-page-action-playbook' ? 'Simple Hinglish Action Sheets • Zero Boring Gyan' : 'Stop Watching Tutorials • Start Executing'}
             </p>
           </div>
 
@@ -77,11 +82,11 @@ export const FloatingPlaybook3D: React.FC<FloatingPlaybook3DProps> = ({ classNam
           {/* Bottom Section */}
           <div className="relative z-10 text-center pb-2 border-t border-[#2B2925]/25 pt-3">
             <p className="font-vintage text-[8.5px] sm:text-[9.5px] tracking-[0.2em] uppercase text-[#3D3A35] font-bold">
-              Zero Reading Friction • Pure Execution
+              {productId === 'prod-1-page-action-playbook' ? 'Zero Reading Friction • Pure Execution' : 'Artificial Boss • Binary Checklists'}
             </p>
             <div className="text-xs text-[#524E48] my-1">❦</div>
             <p className="font-sans text-[8.5px] tracking-wider uppercase text-[#524E48] font-semibold">
-              Moti Kitabein Padhna Chhodo • Action Shuru Karo
+              {productId === 'prod-1-page-action-playbook' ? 'Moti Kitabein Padhna Chhodo • Action Shuru Karo' : 'The Biggest Problem is No One Tells You What To Do'}
             </p>
           </div>
         </div>
@@ -95,7 +100,7 @@ export const FloatingPlaybook3D: React.FC<FloatingPlaybook3DProps> = ({ classNam
           }}
         >
           <span className="font-vintage text-[9px] tracking-[0.2em] uppercase text-[#3A3731] font-bold whitespace-nowrap -rotate-90">
-            THE 1-PAGE ACTION PLAYBOOK
+            {productId === 'prod-1-page-action-playbook' ? 'THE 1-PAGE ACTION PLAYBOOK' : 'THE GILBERT\'S LAW BLUEPRINT'}
           </span>
         </div>
 

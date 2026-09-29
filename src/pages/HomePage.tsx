@@ -22,7 +22,15 @@ export const HomePage: React.FC = () => {
       </div>
 
       {/* 2. Flagship The 1-Page Action Playbook Showreel Stage */}
-      <CubertoShowreel onOpenSampleModal={() => setSampleModalOpen(true)} />
+      <CubertoShowreel productId="prod-1-page-action-playbook" onOpenSampleModal={() => setSampleModalOpen(true)} />
+
+      {/* Interactive Rubber-Band Divider */}
+      <div className="max-w-[1360px] mx-auto px-6 md:px-12 my-6">
+        <CubertoDivider color="rgba(0,0,0,0.15)" />
+      </div>
+
+      {/* Flagship The Gilbert's Law Blueprint Showreel Stage */}
+      <CubertoShowreel productId="prod-gilberts-law-blueprint" />
 
       {/* Interactive Rubber-Band Divider */}
       <div className="max-w-[1360px] mx-auto px-6 md:px-12 my-6">
