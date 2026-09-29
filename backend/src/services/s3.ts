@@ -2,6 +2,10 @@ import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
 export const generateSignedDownloadUrl = async (fileKey: string): Promise<string> => {
+  // If the fileKey is a direct HTTP link (e.g. a Notion template), bypass S3 and return the link
+  if (fileKey.startsWith('http://') || fileKey.startsWith('https://')) {
+    return fileKey;
+  }
   const s3Client = new S3Client({
     endpoint: process.env.S3_ENDPOINT,
     region: process.env.S3_REGION || "ap-south-1",
