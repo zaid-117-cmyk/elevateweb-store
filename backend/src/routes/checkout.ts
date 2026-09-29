@@ -12,7 +12,7 @@ const razorpay = new Razorpay({
 // Create a new Razorpay order
 router.post("/create-order", async (req, res) => {
   try {
-    const { productId, email } = req.body;
+    const { productId, email, couponCode } = req.body;
 
     if (!productId) {
       return res.status(400).json({ error: "Product ID is required" });
@@ -26,9 +26,31 @@ router.post("/create-order", async (req, res) => {
       return res.status(404).json({ error: "Product not found" });
     }
 
+    // Handle coupons securely on the backend
+    const VALID_COUPONS: Record<string, { type: 'percent' | 'flat'; value: number }> = {
+      PLAYBOOK20: { type: 'percent', value: 20 },
+      ACTION20: { type: 'percent', value: 20 },
+      ELEVATE20: { type: 'percent', value: 20 },
+      LAUNCH50: { type: 'flat', value: 50 },
+      DEV10: { type: 'percent', value: 10 },
+    };
+
+    let finalAmount = product.price; // in paise
+    if (couponCode && VALID_COUPONS[couponCode.toUpperCase()]) {
+      const coupon = VALID_COUPONS[couponCode.toUpperCase()];
+      if (coupon.type === 'percent') {
+        const discount = Math.round((finalAmount * coupon.value) / 100);
+        finalAmount = Math.max(0, finalAmount - discount);
+      } else {
+        // Flat discount in rupees, convert to paise
+        const discountInPaise = coupon.value * 100;
+        finalAmount = Math.max(0, finalAmount - discountInPaise);
+      }
+    }
+
     // Razorpay expects amount in smallest currency unit (paise for INR)
     const options: any = {
-      amount: product.price, 
+      amount: finalAmount, 
       currency: "INR",
       receipt: `receipt_${Date.now()}`,
       config_id: "config_ThpITYiJBa5HvQ"

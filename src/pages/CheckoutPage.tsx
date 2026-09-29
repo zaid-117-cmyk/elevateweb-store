@@ -5,7 +5,7 @@ import { ShoppingBag, ShieldCheck, ArrowRight, Loader2, Mail } from 'lucide-reac
 import { motion } from 'framer-motion';
 
 export const CheckoutPage: React.FC = () => {
-  const { cart, total, clearCart } = useCart();
+  const { cart, total, clearCart, setLastOrder, couponCode } = useCart();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
@@ -37,13 +37,13 @@ export const CheckoutPage: React.FC = () => {
       // Create order for the first item in cart (backend supports 1 product per order)
       const productId = cart[0].product.id;
       
-      const API_URL = 'https://api.elevateweb.me';
+      const API_URL = (import.meta as any).env?.VITE_API_URL || 'http://localhost:3000';
       const response = await fetch(`${API_URL}/api/checkout/create-order`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ productId, email }),
+        body: JSON.stringify({ productId, email, couponCode }),
       });
 
       const data = await response.json();
@@ -53,15 +53,28 @@ export const CheckoutPage: React.FC = () => {
       }
 
       const options = {
-        key: 'rzp_test_YOUR_KEY_HERE', // In a real app, this should come from the backend or env
+        key: (import.meta as any).env?.VITE_RAZORPAY_KEY_ID || 'rzp_live_ThsyLhw1bO4hBl',
         amount: data.amount,
         currency: data.currency,
         name: 'ElevateWeb Store',
         description: cart[0].product.title,
         image: 'https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?auto=format&fit=crop&w=150&q=80',
         order_id: data.orderId,
-        handler: function () {
+        handler: function (response: any) {
           // On success
+          setLastOrder({
+            orderId: data.orderId,
+            date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+            customerName: email.split('@')[0],
+            customerEmail: email,
+            items: [...cart],
+            subtotal: total,
+            discount: 0,
+            tax: 0,
+            total: total,
+            paymentMethod: 'Razorpay',
+            razorpayPaymentId: response.razorpay_payment_id
+          });
           clearCart();
           navigate('/order-success');
         },
