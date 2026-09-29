@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { CubertoHero } from '../components/CubertoHero';
 import { CubertoShowreel } from '../components/CubertoShowreel';
 import { CubertoFeatures } from '../components/CubertoFeatures';
-
+import { CubertoProducts } from '../components/CubertoProducts';
 import { CubertoTestimonials } from '../components/CubertoTestimonials';
 import { CubertoOutro } from '../components/CubertoOutro';
 import { CubertoDivider } from '../components/CubertoDivider';
@@ -32,7 +32,8 @@ export const HomePage: React.FC = () => {
       {/* 3. Interactive Curriculum & Frameworks Accordion */}
       <CubertoFeatures />
 
-
+      {/* 4. Products Catalog */}
+      <CubertoProducts />
 
       {/* 5. Trusted by Operators Testimonials */}
       <CubertoTestimonials />
