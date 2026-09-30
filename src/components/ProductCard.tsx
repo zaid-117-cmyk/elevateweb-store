@@ -10,7 +10,7 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { addToCart, cart } = useCart();
+  const { addToCart, cart, openCart } = useCart();
   const [justAdded, setJustAdded] = React.useState(false);
 
   const isInCart = cart.some((item) => item.product.id === product.id);
@@ -21,6 +21,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     addToCart(product, 'standard');
     setJustAdded(true);
     setTimeout(() => setJustAdded(false), 1500);
+    openCart();
   };
 
   const discountPercent = Math.round(

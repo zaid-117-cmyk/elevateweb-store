@@ -5,7 +5,7 @@ import { useCart } from '../hooks/useCart';
 import { PRODUCTS } from '../lib/products';
 
 export const CubertoNav: React.FC = () => {
-  const { addToCart } = useCart();
+  const { addToCart, openCart } = useCart();
   const playbook = PRODUCTS.find((p) => p.id === 'prod-1-page-action-playbook') || PRODUCTS[0];
   const [scrolled, setScrolled] = useState(false);
 
@@ -71,7 +71,10 @@ export const CubertoNav: React.FC = () => {
             type="button"
             onClick={(e) => {
               e.preventDefault();
-              if (playbook) addToCart(playbook, 'standard');
+              if (playbook) {
+                addToCart(playbook, 'standard');
+                openCart();
+              }
             }}
             className="hidden sm:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-black text-white font-display font-semibold text-xs tracking-wider uppercase hover:scale-[1.03] transition-transform duration-200"
             data-cursor-text="BUY"

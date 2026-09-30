@@ -9,7 +9,7 @@ interface SampleModalProps {
 }
 
 export const SampleModal: React.FC<SampleModalProps> = ({ isOpen, onClose }) => {
-  const { addToCart } = useCart();
+  const { addToCart, openCart } = useCart();
   const playbook = PRODUCTS.find((p) => p.id === 'prod-1-page-action-playbook') || PRODUCTS[0];
 
   useEffect(() => {
@@ -34,6 +34,7 @@ export const SampleModal: React.FC<SampleModalProps> = ({ isOpen, onClose }) => 
     if (playbook) {
       addToCart(playbook, 'standard');
       onClose();
+      openCart();
     }
   };
 

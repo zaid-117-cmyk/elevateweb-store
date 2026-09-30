@@ -16,13 +16,14 @@ export const CubertoHero: React.FC = () => {
   const ctaBlockRef = useRef<HTMLDivElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
   const tagsRef = useRef<HTMLDivElement>(null);
-  const { addToCart } = useCart();
+  const { addToCart, openCart } = useCart();
   const playbook = PRODUCTS.find((p) => p.id === 'prod-1-page-action-playbook') || PRODUCTS[0];
 
   const handleBuy = (e: React.MouseEvent) => {
     e.preventDefault();
     if (playbook) {
       addToCart(playbook, 'standard');
+      openCart();
     }
   };
 
