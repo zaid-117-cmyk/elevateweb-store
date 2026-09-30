@@ -9,6 +9,7 @@ import { HomePage } from './pages/HomePage';
 import { ProductDetailPage } from './pages/ProductDetailPage';
 import { OrderSuccessPage } from './pages/OrderSuccessPage';
 import { CheckoutPage } from './pages/CheckoutPage';
+import { CartDrawer } from './components/CartDrawer';
 
 const AppContent: React.FC = () => {
   // Initialize Lenis + GSAP buttery smooth scrolling
@@ -35,7 +36,8 @@ const AppContent: React.FC = () => {
       {/* Global Footer */}
       <CubertoFooter />
 
-
+      {/* Global Cart Drawer */}
+      <CartDrawer />
     </div>
   );
 };
