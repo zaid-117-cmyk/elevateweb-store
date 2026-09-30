@@ -10,7 +10,7 @@ interface SampleModalProps {
 
 export const SampleModal: React.FC<SampleModalProps> = ({ isOpen, onClose }) => {
   const { addToCart, openCart } = useCart();
-  const playbook = PRODUCTS.find((p) => p.id === 'prod-1-page-action-playbook') || PRODUCTS[0];
+  const playbook = PRODUCTS.find((p) => p.id === 'prod-action-masterplan') || PRODUCTS[0];
 
   useEffect(() => {
     if (isOpen) {
@@ -62,7 +62,7 @@ export const SampleModal: React.FC<SampleModalProps> = ({ isOpen, onClose }) => 
               <span>Classic Vintage Edition • Sample Action Sheet</span>
             </div>
             <h3 className="font-vintage font-extrabold text-xl sm:text-2xl text-[#1A1918] mt-1">
-              THE 1-PAGE ACTION PLAYBOOK
+              The Action Masterplan
             </h3>
           </div>
           <button

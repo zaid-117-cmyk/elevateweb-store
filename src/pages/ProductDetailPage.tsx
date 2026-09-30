@@ -104,7 +104,7 @@ export const ProductDetailPage: React.FC = () => {
           
           {/* Left Column: Media Gallery & 3D Floating Model */}
           <div className="lg:col-span-7 space-y-8">
-            {product.slug === 'the-1-page-action-playbook' ? (
+            {product.slug === 'the-action-masterplan' ? (
               <div className="space-y-6">
                 <div className="bg-black rounded-3xl p-6 sm:p-10 flex flex-col items-center justify-center relative overflow-hidden shadow-2xl border border-black/10">
                   <div className="absolute top-5 left-5 z-10 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] font-mono font-bold tracking-widest text-white uppercase flex items-center gap-1.5">

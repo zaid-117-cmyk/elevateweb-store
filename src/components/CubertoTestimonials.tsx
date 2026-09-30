@@ -10,24 +10,24 @@ interface Testimonial {
 const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      'Main pehle Atomic Habits aur Deep Work lakar table par sajata tha, padhta kabhi nahi tha. Yeh 1-page action sheets ne 15 minute mein pura concept clear kar diya aur maine phone dusre kamre mein rakhna shuru kar diya.',
-    author: 'Rahul Sharma',
-    role: 'Computer Science Student',
-    badge: 'PLAYBOOK OPERATOR',
+      'Main pehle sirf YouTube par tutorial videos dekhta rehta tha, karta kuch nahi tha. The Action Masterplan ne mujhe actual action lene pe majbur kar diya apne daily binary checklists se.',
+    author: 'Karan Singh',
+    role: 'College Sophomore',
+    badge: 'OPERATOR',
   },
   {
     quote:
-      'The Hinglish explanation with "Karna Kya Hai" action boxes is pure genius. Zero boring theory, 100% direct implementation. Worth 10x the price for anyone who wants quick execution.',
+      'The Aaina audit was a wake-up call. I thought I was working hard, but I was just distracted. Now, the Goal Deconstruction Engine tells me exactly what to execute every morning.',
     author: 'Priya Verma',
-    role: 'Digital Marketer & Freelancer',
-    badge: 'VERIFIED READER',
+    role: 'Freelancer',
+    badge: 'VERIFIED USER',
   },
   {
     quote:
-      'Most self-help books are 300 pages of recycled stories. The 1-Page Playbook gives you the exact 4-step framework in 1 sheet. The Goggins 40% rule and 48 Laws breakdown are life-changing.',
+      'Most productivity systems are complex. The Action Masterplan gives you the exact binary checkboxes to execute daily without thinking. The Solo Troubleshooting Protocol alone is life-changing.',
     author: 'Ananya Sharma',
-    role: 'Principal Engineer & Consultant',
-    badge: 'PLAYBOOK OPERATOR',
+    role: 'Consultant',
+    badge: 'OPERATOR',
   },
 ];
 

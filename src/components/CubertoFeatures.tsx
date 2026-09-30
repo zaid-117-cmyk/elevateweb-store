@@ -87,10 +87,10 @@ export const CubertoFeatures: React.FC = () => {
         <div className="lg:col-span-7">
           <div ref={titleRef} className="mb-12">
             <span className="text-xs font-bold font-mono uppercase tracking-widest text-[#0066cc] block mb-3">
-              15 Master Books • 1-Page Action Sheets
+              Artificial Boss • Binary Checklists
             </span>
             <h2 className="cuberto-heading text-4xl sm:text-5xl md:text-6xl text-black">
-              Inside the playbook
+              Inside the masterplan
             </h2>
           </div>
 

@@ -23,7 +23,7 @@ export const CubertoFooter: React.FC = () => {
             href="#flagship"
             className="hover:text-white transition-colors"
           >
-            1-Page Playbook
+            Action Masterplan
           </a>
           <a
             href="https://elevateweb.me"

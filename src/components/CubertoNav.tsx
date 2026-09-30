@@ -6,7 +6,7 @@ import { PRODUCTS } from '../lib/products';
 
 export const CubertoNav: React.FC = () => {
   const { addToCart, openCart } = useCart();
-  const playbook = PRODUCTS.find((p) => p.id === 'prod-1-page-action-playbook') || PRODUCTS[0];
+  const playbook = PRODUCTS.find((p) => p.id === 'prod-action-masterplan') || PRODUCTS[0];
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export const CubertoNav: React.FC = () => {
             href="#flagship"
             className="text-sm font-semibold tracking-tight text-black/70 hover:text-black transition-colors"
           >
-            1-Page Playbook
+            Action Masterplan
           </a>
           <a
             href="#capabilities"

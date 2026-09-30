@@ -17,7 +17,7 @@ export const CubertoHero: React.FC = () => {
   const badgeRef = useRef<HTMLDivElement>(null);
   const tagsRef = useRef<HTMLDivElement>(null);
   const { addToCart, openCart } = useCart();
-  const playbook = PRODUCTS.find((p) => p.id === 'prod-1-page-action-playbook') || PRODUCTS[0];
+  const playbook = PRODUCTS.find((p) => p.id === 'prod-action-masterplan') || PRODUCTS[0];
 
   const handleBuy = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -152,7 +152,7 @@ export const CubertoHero: React.FC = () => {
               className="cuberto-btn bg-black text-white hover:bg-black/90 inline-flex items-center gap-2 group shadow-lg"
               data-cursor-text="PLAYBOOK"
             >
-              <span>The 1-Page Action Playbook</span>
+              <span>The Action Masterplan</span>
               <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </button>
           </MagneticButton>

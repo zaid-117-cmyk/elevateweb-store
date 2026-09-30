@@ -5,7 +5,7 @@ import { PRODUCTS } from '../lib/products';
 
 export const CubertoOutro: React.FC = () => {
   const { addToCart, openCart } = useCart();
-  const playbook = PRODUCTS.find((p) => p.id === 'prod-1-page-action-playbook') || PRODUCTS[0];
+  const playbook = PRODUCTS.find((p) => p.id === 'prod-action-masterplan') || PRODUCTS[0];
 
   const handleInstantBuy = () => {
     if (playbook) {
@@ -26,7 +26,7 @@ export const CubertoOutro: React.FC = () => {
         </h2>
 
         <p className="text-lg sm:text-2xl text-white/70 max-w-2xl mx-auto font-normal leading-relaxed mb-12">
-          Top 15 self-help books ka asli nichod. Simple 1-page Hinglish action sheets with 4-box models, real-life Indian examples, and zero boring gyan.
+          Convert directionless ambition into an artificial boss. Stop watching tutorial videos, start executing binary checkboxes.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
@@ -36,7 +36,7 @@ export const CubertoOutro: React.FC = () => {
             className="cuberto-btn bg-white text-black hover:bg-white/90 border-transparent text-base sm:text-lg px-8 py-5 shadow-2xl transition-transform hover:scale-[1.02]"
             data-cursor-text="BUY"
           >
-            <span>Get The 1-Page Action Playbook — ₹199</span>
+            <span>Get The Action Masterplan — ₹199</span>
             <ArrowUpRight className="w-5 h-5 ml-1.5" />
           </button>
 

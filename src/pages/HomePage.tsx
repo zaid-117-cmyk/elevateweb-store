@@ -21,21 +21,14 @@ export const HomePage: React.FC = () => {
         <CubertoDivider color="rgba(0,0,0,0.15)" />
       </div>
 
-      {/* 2. Flagship The 1-Page Action Playbook Showreel Stage */}
-      <CubertoShowreel productId="prod-1-page-action-playbook" onOpenSampleModal={() => setSampleModalOpen(true)} />
+      {/* 2. Flagship The Action Masterplan Showreel Stage */}
+      <CubertoShowreel productId="prod-action-masterplan" onOpenSampleModal={() => setSampleModalOpen(true)} />
 
       {/* Interactive Rubber-Band Divider */}
       <div className="max-w-[1360px] mx-auto px-6 md:px-12 my-6">
         <CubertoDivider color="rgba(0,0,0,0.15)" />
       </div>
 
-      {/* Flagship The Action Masterplan Showreel Stage */}
-      <CubertoShowreel productId="prod-action-masterplan" />
-
-      {/* Interactive Rubber-Band Divider */}
-      <div className="max-w-[1360px] mx-auto px-6 md:px-12 my-6">
-        <CubertoDivider color="rgba(0,0,0,0.15)" />
-      </div>
 
       {/* 3. Interactive Curriculum & Frameworks Accordion */}
       <CubertoFeatures />

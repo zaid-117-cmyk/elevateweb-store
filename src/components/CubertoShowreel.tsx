@@ -15,7 +15,7 @@ interface CubertoShowreelProps {
   productId?: string;
 }
 
-export const CubertoShowreel: React.FC<CubertoShowreelProps> = ({ onOpenSampleModal, productId = 'prod-1-page-action-playbook' }) => {
+export const CubertoShowreel: React.FC<CubertoShowreelProps> = ({ onOpenSampleModal, productId = 'prod-action-masterplan' }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const { addToCart, openCart } = useCart();
@@ -77,7 +77,7 @@ export const CubertoShowreel: React.FC<CubertoShowreelProps> = ({ onOpenSampleMo
               {playbook.version}
             </span>
             <span className="text-xs font-mono uppercase tracking-wider text-white/50">
-              {playbook.id === 'prod-1-page-action-playbook' ? '15 Master Action Sheets • Hinglish' : 'Artificial Boss OS • Dashboard'}
+              Artificial Boss OS • Dashboard
             </span>
           </div>
 
