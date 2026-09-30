@@ -34,29 +34,69 @@ export const CheckoutPage: React.FC = () => {
     setError('');
 
     try {
-      // Mock payment for now to fix fetch error without backend
-      setTimeout(() => {
-        setLastOrder({
-          orderId: 'ord_mock_' + Math.floor(Math.random() * 1000000),
-          date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
-          customerName: email.split('@')[0],
-          customerEmail: email,
-          items: [...cart],
-          subtotal: total,
-          discount: 0,
-          tax: 0,
-          total: total,
-          paymentMethod: 'Razorpay (Mocked)',
-          razorpayPaymentId: 'pay_mock_' + Math.floor(Math.random() * 1000000)
-        });
-        clearCart();
-        navigate('/order-success');
-      }, 1500);
+      // Create order for the first item in cart
+      const productId = cart[0].product.id;
+      
+      const API_URL = (import.meta as any).env?.VITE_API_URL || 'http://localhost:10000';
+      const response = await fetch(`${API_URL}/api/checkout/create-order`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ productId, email, couponCode }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to create order');
+      }
+
+      const options = {
+        key: (import.meta as any).env?.VITE_RAZORPAY_KEY_ID || 'rzp_live_ThsyLhw1bO4hBl',
+        amount: data.amount,
+        currency: data.currency,
+        name: 'ElevateWeb Store',
+        description: cart[0].product.title,
+        image: 'https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?auto=format&fit=crop&w=150&q=80',
+        order_id: data.orderId,
+        handler: function (response: any) {
+          // On success
+          setLastOrder({
+            orderId: data.orderId,
+            date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+            customerName: email.split('@')[0],
+            customerEmail: email,
+            items: [...cart],
+            subtotal: total,
+            discount: 0,
+            tax: 0,
+            total: total,
+            paymentMethod: 'Razorpay',
+            razorpayPaymentId: response.razorpay_payment_id
+          });
+          clearCart();
+          navigate('/order-success');
+        },
+        prefill: {
+          email: email,
+        },
+        theme: {
+          color: '#000000',
+        }
+      };
+
+      // @ts-ignore
+      const rzp = new window.Razorpay(options);
+      rzp.on('payment.failed', function () {
+        setError('Payment failed. Please try again.');
+      });
+      rzp.open();
     } catch (err: any) {
       console.error(err);
       setError(err.message || 'An error occurred during checkout.');
     } finally {
-      // We don't set loading to false immediately because we are navigating away
+      setLoading(false);
     }
   };
 
