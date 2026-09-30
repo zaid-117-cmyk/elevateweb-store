@@ -25,7 +25,7 @@ export const ProductDetailPage: React.FC = () => {
 
   const product = PRODUCTS.find((p) => p.slug === slug);
 
-  const [selectedLicense, setSelectedLicense] = useState<LicenseType>('standard');
+  const [selectedLicense] = useState<LicenseType>('standard');
   const [activeTab, setActiveTab] = useState<'features' | 'tech' | 'reviews'>('features');
   const [addedAnimation, setAddedAnimation] = useState(false);
   const [showStickyDock, setShowStickyDock] = useState(false);
