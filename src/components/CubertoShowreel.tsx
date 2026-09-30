@@ -157,7 +157,7 @@ export const CubertoShowreel: React.FC<CubertoShowreelProps> = ({ onOpenSampleMo
 
           {/* Right Column: Floating 3D Book Component */}
           <div className="lg:col-span-5 flex justify-center items-center">
-            <FloatingPlaybook3D productId={playbook.id} />
+            <FloatingPlaybook3D />
           </div>
         </div>
       </div>

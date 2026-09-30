@@ -87,7 +87,7 @@ export const CubertoProducts: React.FC = () => {
                 >
                   <div className="cuberto-preview aspect-[500/620] bg-neutral-900 mb-6">
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none scale-[0.65] sm:scale-75 translate-y-8">
-                      <FloatingPlaybook3D productId={prod.id} />
+                      <FloatingPlaybook3D />
                     </div>
                     {prod.featured && (
                       <span className="absolute top-6 left-6 px-3.5 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-xs font-mono font-bold tracking-wider text-white uppercase">
@@ -161,7 +161,7 @@ export const CubertoProducts: React.FC = () => {
                 >
                   <div className="cuberto-preview aspect-[500/620] bg-neutral-900 mb-6">
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none scale-[0.65] sm:scale-75 translate-y-8">
-                      <FloatingPlaybook3D productId={prod.id} />
+                      <FloatingPlaybook3D />
                     </div>
                     <span className="absolute bottom-6 right-6 px-4 py-2 rounded-full bg-white text-black font-display font-bold text-sm tracking-tight shadow-lg font-mono">
                       ₹{prod.price.standard.toLocaleString()}

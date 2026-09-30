@@ -2,10 +2,9 @@ import React, { useRef, useState } from 'react';
 
 interface FloatingPlaybook3DProps {
   className?: string;
-  productId?: string;
 }
 
-export const FloatingPlaybook3D: React.FC<FloatingPlaybook3DProps> = ({ className = '', productId = 'prod-action-masterplan' }) => {
+export const FloatingPlaybook3D: React.FC<FloatingPlaybook3DProps> = ({ className = '' }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mouseTilt, setMouseTilt] = useState({ x: 0, y: 0 });
 

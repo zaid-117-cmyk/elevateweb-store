@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { CartItem, Product, LicenseType, OrderDetails } from '../types';
+import { PRODUCTS } from '../lib/products';
 
 interface CartContextType {
   cart: CartItem[];
@@ -43,7 +44,12 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [cart, setCart] = useState<CartItem[]>(() => {
     try {
       const saved = localStorage.getItem(CART_STORAGE_KEY);
-      return saved ? JSON.parse(saved) : [];
+      if (saved) {
+        const parsed: CartItem[] = JSON.parse(saved);
+        // Filter out products that no longer exist in the store (like 1-Page Playbook)
+        return parsed.filter((item) => PRODUCTS.some((p) => p.id === item.product.id));
+      }
+      return [];
     } catch {
       return [];
     }
