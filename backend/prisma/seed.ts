@@ -51,8 +51,8 @@ const mockProducts = [
     fileKey: 'hyperflow-developer-portfolio-engine.zip',
   },
   {
-    id: 'prod-gilberts-law-blueprint',
-    name: 'The Gilbert’s Law Blueprint',
+    id: 'prod-action-masterplan',
+    name: 'The Action Masterplan',
     description: 'Convert directionless ambition into an artificial boss. Stop watching tutorial videos, start executing binary checkboxes.',
     price: 29900, // 299 * 100
     fileKey: 'https://elevatewebs.notion.site/The-Gilbert-s-Law-Blueprint-3e92121cfb4a8145ad0ffa38a784c0ef', // Notion Template URL

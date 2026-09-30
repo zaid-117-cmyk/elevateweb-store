@@ -29,8 +29,8 @@ export const HomePage: React.FC = () => {
         <CubertoDivider color="rgba(0,0,0,0.15)" />
       </div>
 
-      {/* Flagship The Gilbert's Law Blueprint Showreel Stage */}
-      <CubertoShowreel productId="prod-gilberts-law-blueprint" />
+      {/* Flagship The Action Masterplan Showreel Stage */}
+      <CubertoShowreel productId="prod-action-masterplan" />
 
       {/* Interactive Rubber-Band Divider */}
       <div className="max-w-[1360px] mx-auto px-6 md:px-12 my-6">

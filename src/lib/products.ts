@@ -74,13 +74,13 @@ Includes 15 Master Chapters covering Atomic Habits, Deep Work, Can't Hurt Me, 48
     ]
   },
   {
-    id: 'prod-gilberts-law-blueprint',
-    slug: 'the-gilberts-law-blueprint',
-    title: 'The Gilbert’s Law Blueprint',
+    id: 'prod-action-masterplan',
+    slug: 'the-action-masterplan',
+    title: 'The Action Masterplan',
     tagline: 'Convert directionless ambition into an artificial boss. Stop watching tutorial videos, start executing binary checkboxes.',
     description: `The biggest problem at work is that no one tells you what to do. You are used to spoon-fed systems. Without an authority figure, you freeze, consume infinite self-improvement/roadmap videos ("tutorial hell"), and execute zero real-world actions.
 
-The Gilbert's Law Blueprint is your artificial boss—a rigid operating system that forces you to pick one track, deconstruct it, and execute it daily with binary checkboxes.
+The Action Masterplan is your artificial boss—a rigid operating system that forces you to pick one track, deconstruct it, and execute it daily with binary checkboxes.
 
 Includes 4 Core Modules: The Reality Check (Aaina), Goal Deconstruction Engine, Daily Execution Dashboard, and The Solo Troubleshooting Protocol.`,
     category: 'Dashboards',
@@ -123,7 +123,7 @@ Includes 4 Core Modules: The Reality Check (Aaina), Goal Deconstruction Engine, 
     lastUpdated: 'September 2026',
     reviews: [
       {
-        id: 'rev-gilbert-1',
+        id: 'rev-action-masterplan-1',
         author: 'Karan Singh',
         role: 'College Sophomore',
         avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80',

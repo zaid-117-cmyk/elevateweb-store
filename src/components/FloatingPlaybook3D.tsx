@@ -61,7 +61,7 @@ export const FloatingPlaybook3D: React.FC<FloatingPlaybook3DProps> = ({ classNam
               {productId === 'prod-1-page-action-playbook' ? (
                 <>THE 1-PAGE<br />ACTION PLAYBOOK</>
               ) : (
-                <>THE GILBERT'S LAW<br />BLUEPRINT</>
+                <>THE ACTION<br />MASTERPLAN</>
               )}
             </h2>
             <p className="font-serif italic text-[11px] sm:text-xs text-[#4A4742] mt-2 tracking-wide font-medium">
@@ -100,7 +100,7 @@ export const FloatingPlaybook3D: React.FC<FloatingPlaybook3DProps> = ({ classNam
           }}
         >
           <span className="font-vintage text-[9px] tracking-[0.2em] uppercase text-[#3A3731] font-bold whitespace-nowrap -rotate-90">
-            {productId === 'prod-1-page-action-playbook' ? 'THE 1-PAGE ACTION PLAYBOOK' : 'THE GILBERT\'S LAW BLUEPRINT'}
+            {productId === 'prod-1-page-action-playbook' ? 'THE 1-PAGE ACTION PLAYBOOK' : 'THE ACTION MASTERPLAN'}
           </span>
         </div>
 
