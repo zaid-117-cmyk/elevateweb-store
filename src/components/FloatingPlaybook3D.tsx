@@ -25,7 +25,6 @@ export const FloatingPlaybook3D: React.FC<FloatingPlaybook3DProps> = ({ classNam
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      data-product-id={productId}
       className={`relative flex flex-col items-center justify-center perspective-[1200px] select-none py-6 ${className}`}
     >
       {/* 3D Floating Book Container */}
