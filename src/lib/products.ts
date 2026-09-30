@@ -98,12 +98,10 @@ Includes 4 Core Modules: The Reality Check (Aaina), Goal Deconstruction Engine, 
     reviewCount: 156,
     salesCount: 890,
     tags: ['Notion Template', 'Execution', 'Career OS', 'Productivity'],
-    bannerImage: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1200&q=80',
+    bannerImage: '/action_masterplan_dashboard.jpg',
     galleryImages: [
-      'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80'
+      '/action_masterplan_dashboard.jpg',
+      '/action_masterplan_laptop.jpg'
     ],
     deliverables: [
       { name: 'Complete Notion Workspace Template', format: 'Notion', size: 'Access Link' },
@@ -118,7 +116,7 @@ Includes 4 Core Modules: The Reality Check (Aaina), Goal Deconstruction Engine, 
     ],
     techStack: ['Notion', 'Mobile Optimized', 'Dark Mode Ready'],
     compatibility: ['Mac', 'Windows', 'iPhone', 'Android', 'iPad'],
-    paymentUrl: 'https://rzp.io/rzp/BgYZCO8A',
+
     version: '1.0.0',
     lastUpdated: 'September 2026',
     reviews: [

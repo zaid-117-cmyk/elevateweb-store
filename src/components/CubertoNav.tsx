@@ -33,7 +33,7 @@ export const CubertoNav: React.FC = () => {
           data-cursor-text="HOME"
         >
           <span className="font-display font-extrabold text-2xl tracking-tighter">
-            elevateweb<span className="text-[#0066cc]">.me</span>
+            ElevateWeb
           </span>
         </Link>
 

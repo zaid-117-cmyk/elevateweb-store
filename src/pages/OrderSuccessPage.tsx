@@ -92,7 +92,7 @@ export const OrderSuccessPage: React.FC = () => {
           </h1>
           
           <p className="text-sm text-slate-400 max-w-md mx-auto leading-relaxed">
-            Thank you for purchasing from <strong className="text-white">ElevateWeb.me</strong>. Your digital files and cryptographic licenses are ready for download below.
+            Thank you for purchasing from <strong className="text-white">ElevateWeb</strong>. Your digital files and cryptographic licenses are ready for download below.
           </p>
 
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-mono font-medium">
@@ -154,7 +154,7 @@ export const OrderSuccessPage: React.FC = () => {
             </div>
 
             <button
-              onClick={() => handleDownloadAsset(`receipt-${order.orderId}.txt`, `ELEVATEWEB STORE RECEIPT\nOrder: ${order.orderId}\nDate: ${order.date}\nPayment: ${order.paymentMethod}\nPayment ID: ${order.razorpayPaymentId}\nTotal: $${order.total}\nStatus: Completed\n\nThank you for choosing elevateweb.me!`)}
+              onClick={() => handleDownloadAsset(`receipt-${order.orderId}.txt`, `ELEVATEWEB STORE RECEIPT\nOrder: ${order.orderId}\nDate: ${order.date}\nPayment: ${order.paymentMethod}\nPayment ID: ${order.razorpayPaymentId}\nTotal: $${order.total}\nStatus: Completed\n\nThank you for choosing ElevateWeb!`)}
               className="text-xs text-slate-400 hover:text-white flex items-center gap-1.5 p-2 rounded-lg bg-obsidian-950 border border-white/10"
             >
               <FileText className="w-3.5 h-3.5 text-amber-400" />

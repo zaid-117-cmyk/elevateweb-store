@@ -107,7 +107,7 @@ export const RazorpayCheckoutModal: React.FC<RazorpayCheckoutModalProps> = ({
                   Trusted Checkout
                 </span>
               </div>
-              <p className="text-xs text-slate-400">ElevateWeb.me Secure Gateway</p>
+              <p className="text-xs text-slate-400">ElevateWeb Secure Gateway</p>
             </div>
           </div>
 

@@ -11,7 +11,7 @@ export const CubertoFooter: React.FC = () => {
       <div className="max-w-[1360px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
         <div>
           <span className="font-display font-bold text-xl tracking-tight block">
-            elevateweb<span className="text-[#2997ff]">.me</span>
+            ElevateWeb
           </span>
           <p className="text-xs text-white/50 mt-1">
             © 2026 Elevateweb. All operating rights reserved.
@@ -31,7 +31,7 @@ export const CubertoFooter: React.FC = () => {
             rel="noopener noreferrer"
             className="hover:text-white transition-colors"
           >
-            elevateweb.me
+            ElevateWeb
           </a>
           <button
             type="button"

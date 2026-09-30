@@ -110,7 +110,7 @@ export const CubertoHero: React.FC = () => {
       <div ref={badgeRef} className="flex items-center gap-3 mb-6">
         <span className="w-2 h-2 rounded-full bg-[#0066cc] animate-ping"></span>
         <span className="text-xs uppercase tracking-widest font-bold text-black/60 font-display">
-          Elevateweb.me • Digital Product Studio
+          ElevateWeb • Digital Product Studio
         </span>
       </div>
 

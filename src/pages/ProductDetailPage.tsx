@@ -274,38 +274,6 @@ export const ProductDetailPage: React.FC = () => {
                 </span>
               </div>
 
-              {/* License Tier Selector */}
-              <div className="space-y-2">
-                <label className="text-xs font-mono uppercase tracking-wider text-black/60 block">
-                  Select License Tier:
-                </label>
-                <div className="grid grid-cols-2 gap-3">
-                  <button
-                    type="button"
-                    onClick={() => setSelectedLicense('standard')}
-                    className={`p-3.5 rounded-2xl border text-left transition-all ${
-                      selectedLicense === 'standard'
-                        ? 'border-black bg-black text-white'
-                        : 'border-black/15 bg-white text-black hover:border-black/40'
-                    }`}
-                  >
-                    <span className="text-xs font-bold font-display block">Individual</span>
-                    <span className="text-sm font-bold font-mono">₹{product.price.standard.toLocaleString()}</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setSelectedLicense('team')}
-                    className={`p-3.5 rounded-2xl border text-left transition-all ${
-                      selectedLicense === 'team'
-                        ? 'border-black bg-black text-white'
-                        : 'border-black/15 bg-white text-black hover:border-black/40'
-                    }`}
-                  >
-                    <span className="text-xs font-bold font-display block">Team / Agency</span>
-                    <span className="text-sm font-bold font-mono">₹{product.price.team.toLocaleString()}</span>
-                  </button>
-                </div>
-              </div>
 
               {/* Action Buttons */}
               <div className="space-y-3 pt-2">
