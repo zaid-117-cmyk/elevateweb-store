@@ -7,11 +7,10 @@ export type ProductCategory =
   | '3D & Graphics' 
   | 'Dashboards';
 
-export type LicenseType = 'standard' | 'team';
+export type LicenseType = 'standard';
 
 export interface ProductLicensePrice {
   standard: number;
-  team: number;
 }
 
 export interface ProductDeliverable {

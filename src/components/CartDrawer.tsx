@@ -173,22 +173,9 @@ export const CartDrawer: React.FC = () => {
 
                             {/* License selector */}
                             <div className="flex items-center gap-1.5 mb-2.5">
-                              <label htmlFor={`license-${item.product.id}`} className="text-[11px] text-black/50">License:</label>
-                              <select
-                                id={`license-${item.product.id}`}
-                                value={item.license}
-                                onChange={(e) =>
-                                  updateLicense(
-                                    item.product.id,
-                                    item.license,
-                                    e.target.value as LicenseType
-                                  )
-                                }
-                                className="bg-white border border-black/15 text-black text-xs rounded-full px-2 py-0.5 focus:outline-none"
-                              >
-                                <option value="standard">Standard (₹{item.product.price.standard})</option>
-                                <option value="team">Team / Commercial (₹{item.product.price.team})</option>
-                              </select>
+                              <span className="bg-white border border-black/15 text-black text-[11px] font-mono rounded-full px-2 py-0.5">
+                                Standard License
+                              </span>
                             </div>
 
                             {/* Quantity and Price */}

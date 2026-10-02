@@ -17,12 +17,10 @@ Includes 4 Core Modules: The Reality Check (Aaina), Goal Deconstruction Engine, 
     isNew: true,
     paymentUrl: 'https://rzp.io/rzp/BgYZCO8A',
     price: {
-      standard: 299,
-      team: 1499
+      standard: 299
     },
     originalPrice: {
-      standard: 999,
-      team: 2999
+      standard: 999
     },
     rating: 4.95,
     reviewCount: 156,
