@@ -286,7 +286,7 @@ export const ProductDetailPage: React.FC = () => {
                       className="w-full cuberto-btn bg-black text-white hover:bg-black/90 py-4 text-sm font-bold flex items-center justify-center gap-2 shadow-lg"
                       data-cursor-text="BUY"
                     >
-                      <span>Direct Razorpay Purchase — ₹{currentPrice.toLocaleString()}</span>
+                      <span>Instant UPI Purchase — ₹{currentPrice.toLocaleString()}</span>
                       <ArrowUpRight className="w-4 h-4" />
                     </a>
                   </MagneticButton>
@@ -311,7 +311,7 @@ export const ProductDetailPage: React.FC = () => {
                         className="w-full cuberto-btn bg-transparent text-black border-black/20 hover:border-black py-4 text-sm font-bold flex items-center justify-center gap-2"
                         data-cursor-text="BUY"
                       >
-                        <span>Instant Razorpay Checkout</span>
+                        <span>Instant UPI Checkout</span>
                         <ArrowUpRight className="w-4 h-4" />
                       </button>
                     </MagneticButton>

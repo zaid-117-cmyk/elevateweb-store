@@ -221,7 +221,7 @@ export const SampleModal: React.FC<SampleModalProps> = ({ isOpen, onClose }) => 
             data-cursor-text="BUY"
           >
             <Sparkles className="w-3.5 h-3.5 text-[#E5DECD]" />
-            <span>Unlock All 15 Sheets — ₹199</span>
+            <span>Unlock All 15 Sheets — ₹299</span>
             <ArrowUpRight className="w-4 h-4" />
           </button>
         </div>

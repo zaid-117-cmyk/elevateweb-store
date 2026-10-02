@@ -123,7 +123,7 @@ export const CubertoProducts: React.FC = () => {
                           className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-black text-xs font-bold uppercase tracking-wider hover:bg-white/90 transition-colors shadow-sm"
                           data-cursor-text="BUY"
                         >
-                          <span>Instant Razorpay Checkout</span>
+                          <span>Instant UPI Checkout</span>
                           <ArrowUpRight className="w-3.5 h-3.5" />
                         </a>
                       </MagneticButton>
