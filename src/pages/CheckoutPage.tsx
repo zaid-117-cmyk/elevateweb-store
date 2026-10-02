@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../hooks/useCart';
 import { ShoppingBag, ShieldCheck, ArrowRight, Loader2, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { PRODUCTS } from '../lib/products';
 
 export const CheckoutPage: React.FC = () => {
   const { cart, total } = useCart();
@@ -34,10 +35,17 @@ export const CheckoutPage: React.FC = () => {
     setError('');
 
     try {
-      if (cart.length > 0 && cart[0].product.paymentUrl) {
-        window.location.href = cart[0].product.paymentUrl;
+      if (cart.length > 0) {
+        const freshProduct = PRODUCTS.find(p => p.id === cart[0].product.id);
+        const paymentLink = freshProduct?.paymentUrl || cart[0].product.paymentUrl;
+        
+        if (paymentLink) {
+          window.location.href = paymentLink;
+        } else {
+          throw new Error('Payment link not found for this product.');
+        }
       } else {
-        throw new Error('Payment link not found for this product.');
+        throw new Error('Cart is empty.');
       }
     } catch (err: any) {
       console.error(err);
