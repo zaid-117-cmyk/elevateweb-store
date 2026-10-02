@@ -5,7 +5,7 @@ import { ShoppingBag, ShieldCheck, ArrowRight, Loader2, Mail } from 'lucide-reac
 import { motion } from 'framer-motion';
 
 export const CheckoutPage: React.FC = () => {
-  const { cart, total, clearCart, setLastOrder, couponCode } = useCart();
+  const { cart, total } = useCart();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);

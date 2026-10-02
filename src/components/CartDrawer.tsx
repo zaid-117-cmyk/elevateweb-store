@@ -14,7 +14,6 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../hooks/useCart';
-import { LicenseType } from '../types';
 
 export const CartDrawer: React.FC = () => {
   const {
@@ -23,7 +22,6 @@ export const CartDrawer: React.FC = () => {
     closeCart,
     removeFromCart,
     updateQuantity,
-    updateLicense,
     subtotal,
     discountAmount,
     total,
