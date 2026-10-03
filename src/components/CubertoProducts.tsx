@@ -77,13 +77,7 @@ export const CubertoProducts: React.FC = () => {
             {PRODUCTS.filter((_, idx) => idx % 2 === 0).map((prod) => (
               <div key={prod.id} className="cuberto-card group" data-cursor-text="VIEW">
                 <Link
-                  to={prod.paymentUrl ? '#' : `/product/${prod.slug}`}
-                  onClick={(e) => {
-                    if (prod.paymentUrl) {
-                      e.preventDefault();
-                      window.open(prod.paymentUrl, '_blank');
-                    }
-                  }}
+                  to={prod.slug === 'the-15-minute-meditation' ? '/meditation' : `/product/${prod.slug}`}
                 >
                   <div className="cuberto-preview aspect-[500/620] bg-neutral-900 mb-6">
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
