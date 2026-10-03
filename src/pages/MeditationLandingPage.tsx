@@ -129,7 +129,7 @@ export const MeditationLandingPage: React.FC = () => {
       {/* THE SOLUTION */}
       <div className="max-w-4xl mx-auto px-6 mb-32 text-center">
         <h2 className="text-3xl sm:text-4xl font-display font-bold mb-8">
-          The Solution: <span className="text-teal-400">Feeling > Seeing</span>
+          The Solution: <span className="text-teal-400">Feeling &gt; Seeing</span>
         </h2>
         <p className="text-xl text-white/60 mb-12 max-w-2xl mx-auto">
           The 15-Minute Mental Rehearsal Protocol solves these problems by focusing on what actually works in chaotic environments.
@@ -205,7 +205,7 @@ export const MeditationLandingPage: React.FC = () => {
         <div className="p-12 rounded-[2rem] bg-gradient-to-b from-white/10 to-white/5 border border-white/10 backdrop-blur-md relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-teal-500/20 via-transparent to-transparent opacity-50" />
           <h2 className="relative text-3xl sm:text-5xl font-display font-bold mb-6">
-            Consistency > Perfection
+            Consistency &gt; Perfection
           </h2>
           <p className="relative text-xl text-white/60 mb-10 max-w-2xl mx-auto italic font-serif">
             "Mujhe pata hai Indian family dynamics aasan nahi hote. Par apni mental health ko ignore karna koi bahaduri nahi hai. Tum kar sakte ho. Bas shuru karo. Aaj se. Abhi se."
