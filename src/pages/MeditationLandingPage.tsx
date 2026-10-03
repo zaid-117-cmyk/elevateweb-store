@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ArrowRight, Sparkles, Brain, Clock, ShieldCheck, VolumeX, EyeOff, FileText, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Sparkles, Clock, VolumeX, EyeOff, FileText, CheckCircle2 } from 'lucide-react';
 import { PRODUCTS } from '../lib/products';
 
 export const MeditationLandingPage: React.FC = () => {
