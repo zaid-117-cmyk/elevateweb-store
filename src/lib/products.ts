@@ -1,6 +1,57 @@
 import { Product, ProductCategory } from '../types';
 
 export const PRODUCTS: Product[] = [
+  {
+    id: 'prod-15-min-meditation',
+    slug: 'the-15-minute-meditation',
+    title: 'The 15-Minute Meditation',
+    tagline: 'A guided cosmic journey to peace and clarity. Transform your chaotic mind into deep focus.',
+    description: `Modern life is chaotic. Between notifications, deadlines, and infinite scrolling, your mind never gets a chance to truly rest. 
+
+The 15-Minute Meditation is designed for the busy professional or student who doesn't have an hour to sit in silence. In just 15 minutes, you will be guided through a proven breathing and visualization sequence that resets your nervous system, clears brain fog, and prepares you for deep work.`,
+    category: 'Master eBooks',
+    featured: false,
+    isNew: true,
+    paymentUrl: 'https://rzp.io/rzp/Ck3JGEer',
+    price: {
+      standard: 299
+    },
+    originalPrice: {
+      standard: 599
+    },
+    rating: 4.8,
+    reviewCount: 42,
+    salesCount: 310,
+    tags: ['Meditation', 'Focus', 'Audio', 'Mindfulness'],
+    bannerImage: '/meditation_cover.jpg',
+    galleryImages: [
+      '/meditation_cover.jpg'
+    ],
+    deliverables: [
+      { name: 'The 15-Minute Meditation Guide', format: 'PDF', size: 'Included' }
+    ],
+    features: [
+      'Rapid Nervous System Reset: Go from anxious to calm in under 5 minutes.',
+      'Designed for Busy Schedules: Only requires 15 minutes of your day.',
+      'Science-Backed Visualization: Uses proven techniques to clear brain fog.',
+      'Lifetime Access: Download the PDF guide instantly upon purchase.'
+    ],
+    techStack: ['PDF', 'Mobile Optimized', 'Printable'],
+    compatibility: ['Mac', 'Windows', 'iPhone', 'Android', 'iPad'],
+    version: '1.0.0',
+    lastUpdated: 'October 2026',
+    reviews: [
+      {
+        id: 'rev-meditation-1',
+        author: 'Arjun M.',
+        role: 'Software Engineer',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80',
+        rating: 5,
+        date: '1 week ago',
+        content: 'This is the only meditation routine that has actually worked for me. Short, practical, and incredibly effective for resetting before a deep coding session.'
+      }
+    ]
+  },
 
   {
     id: 'prod-action-masterplan',
