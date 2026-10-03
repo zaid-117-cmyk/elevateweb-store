@@ -9,6 +9,7 @@ import { HomePage } from './pages/HomePage';
 import { ProductDetailPage } from './pages/ProductDetailPage';
 import { OrderSuccessPage } from './pages/OrderSuccessPage';
 import { CheckoutPage } from './pages/CheckoutPage';
+import { MeditationLandingPage } from './pages/MeditationLandingPage';
 import { CartDrawer } from './components/CartDrawer';
 
 const AppContent: React.FC = () => {
@@ -29,6 +30,7 @@ const AppContent: React.FC = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/product/:slug" element={<ProductDetailPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/meditation" element={<MeditationLandingPage />} />
           <Route path="/order-success" element={<OrderSuccessPage />} />
         </Routes>
       </main>

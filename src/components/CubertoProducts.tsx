@@ -86,8 +86,17 @@ export const CubertoProducts: React.FC = () => {
                   }}
                 >
                   <div className="cuberto-preview aspect-[500/620] bg-neutral-900 mb-6">
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none scale-[0.65] sm:scale-75 translate-y-8">
-                      <FloatingPlaybook3D />
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      {prod.slug === 'the-action-masterplan' ? (
+                        <div className="scale-[0.65] sm:scale-75 translate-y-8">
+                          <FloatingPlaybook3D />
+                        </div>
+                      ) : (
+                        <div className="w-[60%] aspect-[3/4] rounded-xl overflow-hidden shadow-2xl group-hover:scale-105 transition-transform duration-500 border border-white/10 relative">
+                           <img src={prod.bannerImage} alt={prod.title} className="w-full h-full object-cover" />
+                           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                        </div>
+                      )}
                     </div>
                     {prod.featured && (
                       <span className="absolute top-6 left-6 px-3.5 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-xs font-mono font-bold tracking-wider text-white uppercase">
