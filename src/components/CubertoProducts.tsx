@@ -77,16 +77,22 @@ export const CubertoProducts: React.FC = () => {
             {PRODUCTS.filter((_, idx) => idx % 2 === 0).map((prod) => (
               <div key={prod.id} className="cuberto-card group" data-cursor-text="VIEW">
                 <Link
-                  to={prod.slug === 'the-15-minute-meditation' ? '/meditation' : `/product/${prod.slug}`}
+                  to={
+                    prod.slug === 'the-15-minute-meditation'
+                      ? '/meditation'
+                      : prod.slug === 'pricing-calculator'
+                      ? '/pricing-calculator'
+                      : `/product/${prod.slug}`
+                  }
                 >
                   <div className="cuberto-preview aspect-[500/620] bg-neutral-900 mb-6">
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none p-6">
                       {prod.slug === 'the-action-masterplan' ? (
                         <div className="scale-[0.65] sm:scale-75 translate-y-8">
                           <FloatingPlaybook3D />
                         </div>
                       ) : (
-                        <div className="w-[60%] aspect-[3/4] rounded-xl overflow-hidden shadow-2xl group-hover:scale-105 transition-transform duration-500 border border-white/10 relative">
+                        <div className="w-[85%] aspect-[16/10] rounded-xl overflow-hidden shadow-2xl group-hover:scale-105 transition-transform duration-500 border border-white/10 relative">
                            <img src={prod.bannerImage} alt={prod.title} className="w-full h-full object-cover" />
                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                         </div>

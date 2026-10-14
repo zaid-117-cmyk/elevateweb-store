@@ -57,6 +57,13 @@ export const CubertoNav: React.FC = () => {
           >
             15 Books Curriculum
           </a>
+          <Link
+            to="/pricing-calculator"
+            className="text-sm font-bold tracking-tight text-emerald-600 hover:text-emerald-700 transition-colors flex items-center gap-1.5"
+          >
+            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Pricing Calculator</span>
+          </Link>
           <a
             href="#testimonials"
             className="text-sm font-semibold tracking-tight text-black/70 hover:text-black transition-colors"

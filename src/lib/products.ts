@@ -109,6 +109,71 @@ Includes 4 Core Modules: The Reality Check (Aaina), Goal Deconstruction Engine, 
         content: 'I used to watch 5 hours of podcast advice daily and do nothing. This template forced me to actually write code and send cold DMs. The daily binary checklist is ruthless but necessary.'
       }
     ]
+  },
+
+  {
+    id: 'prod-pricing-calculator',
+    slug: 'pricing-calculator',
+    title: 'The 3-Minute Freelancer & Agency Pricing Calculator',
+    tagline: 'Calculate your walk-away floor price, generate a 3-tier anchor proposal, and use automated scope-creep clauses.',
+    description: `Stop losing 30% of your income to underquoting, tax oversights, and free revisions. 
+
+The 3-Minute Freelancer & Agency Pricing Calculator is a plug-and-play Google Sheet template engineered for solo operators, freelancers, and agency founders. It automatically computes your survival floor rate, factors in 20% taxes + payment gateway fees, generates psychology-backed 3-tier proposals (Essential, Growth, VIP), and gives you battle-tested scope-creep protection scripts.`,
+    category: 'Dashboards',
+    featured: true,
+    isNew: true,
+    paymentUrl: 'https://rzp.io/rzp/your-checkout-url',
+    price: {
+      standard: 1499
+    },
+    originalPrice: {
+      standard: 4999
+    },
+    rating: 4.96,
+    reviewCount: 384,
+    salesCount: 1420,
+    tags: ['Google Sheets', 'Pricing Calculator', 'Freelancer Tools', 'Agency OS', 'Proposal Generator'],
+    bannerImage: '/pricing_calculator_mockup.jpg',
+    galleryImages: [
+      '/pricing_calculator_mockup.jpg'
+    ],
+    deliverables: [
+      { name: 'The 6-Input Price Engine Spreadsheet', format: 'Google Sheets', size: '1-Click Copy' },
+      { name: 'The 3-Tier Proposal Generator Tab', format: 'Google Sheets', size: 'Included' },
+      { name: 'The Scope-Creep Shield & 4 Scripts', format: 'Text & Sheets', size: 'Included' },
+      { name: 'Video Walkthrough & Implementation Guide', format: 'HD Video', size: '12 Mins' }
+    ],
+    features: [
+      'The 6-Input Price Engine: Computes survival hourly rate, tax buffer, and walk-away floor price.',
+      'The 3-Tier Proposal Generator: Outputs Essential, Growth, and VIP packages with anchor pricing psychology.',
+      'The Scope-Creep Shield: 4 battle-tested copy-paste scripts charging $87/hr for extra requests and project pause clauses.',
+      'Multi-Currency Support: Switch between USD ($) and INR (₹) or any international currency in seconds.',
+      'Zero Monthly Fees: Free forever on Google Sheets, Microsoft Excel, and importable to Notion.'
+    ],
+    techStack: ['Google Sheets', 'Microsoft Excel', 'Notion Compatible'],
+    compatibility: ['Mac', 'Windows', 'iPhone', 'Android', 'iPad'],
+    version: '2.4.0',
+    lastUpdated: 'October 2026',
+    reviews: [
+      {
+        id: 'rev-calc-1',
+        author: 'Devansh K.',
+        role: 'Design Agency Founder',
+        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80',
+        rating: 5,
+        date: '3 days ago',
+        content: 'I closed a $3,400 project using the Growth tier anchor proposal from this sheet literally 4 hours after purchasing. The scope-creep script alone saved me from 3 weeks of free tweaks.'
+      },
+      {
+        id: 'rev-calc-2',
+        author: 'Sarah Jenkins',
+        role: 'Full-Stack Freelancer',
+        avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80',
+        rating: 5,
+        date: '1 week ago',
+        content: 'I was undercharging by almost 40% because I never calculated non-billable hours and taxes into my baseline. This sheet took 3 minutes to reveal my real floor price.'
+      }
+    ]
   }
 ];
 
