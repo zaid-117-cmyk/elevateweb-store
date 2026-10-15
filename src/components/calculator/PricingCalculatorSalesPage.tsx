@@ -6,7 +6,6 @@ import {
   Sparkles, 
   ShieldCheck, 
   FileSpreadsheet, 
-  TrendingUp, 
   AlertTriangle, 
   CheckCircle2, 
   Clock, 
@@ -17,8 +16,7 @@ import {
   ChevronDown, 
   HelpCircle, 
   Sliders,
-  RefreshCw,
-  Star
+  RefreshCw
 } from 'lucide-react';
 
 export interface PricingCalculatorSalesPageProps {
@@ -83,21 +81,39 @@ export const PricingCalculatorSalesPage: React.FC<PricingCalculatorSalesPageProp
     // VIP: 2.1995x floor ($1,905 * 2.1995 = $4,190.04 -> $4,190)
     const vipUSD = Math.round((floorPriceUSD * 2.1995) / 10) * 10;
 
+    // 4. 1.5x Overtime Rate & 50% deposits
+    const overtimeRateUSD = Math.round(hourlyRateUSD * 1.5);
+    const depositEssentialUSD = Math.round(essentialUSD * 0.5);
+    const depositGrowthUSD = Math.round(growthUSD * 0.5);
+    const depositVipUSD = Math.round(vipUSD * 0.5);
+    const retainerUSD = Math.round((growthUSD * 0.35) / 10) * 10;
+
     // INR equivalents
     const hourlyRateINR = Math.round(hourlyRateUSD * inrRate);
     const floorPriceINR = Math.round((floorPriceUSD * inrRate) / 100) * 100;
     const essentialINR = Math.round((essentialUSD * inrRate) / 100) * 100;
     const growthINR = Math.round((growthUSD * inrRate) / 100) * 100;
     const vipINR = Math.round((vipUSD * inrRate) / 100) * 100;
+    const overtimeRateINR = Math.round(overtimeRateUSD * inrRate);
+    const depositEssentialINR = Math.round(essentialINR * 0.5);
+    const depositGrowthINR = Math.round(growthINR * 0.5);
+    const depositVipINR = Math.round(vipINR * 0.5);
+    const retainerINR = Math.round((growthINR * 0.35) / 100) * 100;
 
     return {
       hourlyRate: currency === 'USD' ? hourlyRateUSD : hourlyRateINR,
+      overtimeRate: currency === 'USD' ? overtimeRateUSD : overtimeRateINR,
       floorPrice: currency === 'USD' ? floorPriceUSD : floorPriceINR,
       essential: currency === 'USD' ? essentialUSD : essentialINR,
       growth: currency === 'USD' ? growthUSD : growthINR,
       vip: currency === 'USD' ? vipUSD : vipINR,
+      depositEssential: currency === 'USD' ? depositEssentialUSD : depositEssentialINR,
+      depositGrowth: currency === 'USD' ? depositGrowthUSD : depositGrowthINR,
+      depositVip: currency === 'USD' ? depositVipUSD : depositVipINR,
+      retainer: currency === 'USD' ? retainerUSD : retainerINR,
       symbol: currency === 'USD' ? '$' : '₹',
       hourlyRateUSD,
+      overtimeRateUSD,
       floorPriceUSD,
       essentialUSD,
       growthUSD,
@@ -111,26 +127,29 @@ export const PricingCalculatorSalesPage: React.FC<PricingCalculatorSalesPageProp
   const handleCopyProposal = () => {
     const text = `Hi [Client Name],
 
-Thank you for discussing your project requirements with me. Based on your scope and timeline goals, here are the 3 tiers we can execute:
+Thank you for discussing your project requirements with me. Based on your scope and timeline goals, here is our structured 3-tier psychological anchor proposal:
 
-Tier 1: Essential (${calculations.symbol}${calculations.essential.toLocaleString()})
+Tier 1: Essential (1.0x Floor: ${calculations.symbol}${calculations.essential.toLocaleString()})
+• 50% Upfront Deposit: ${calculations.symbol}${calculations.depositEssential.toLocaleString()}
 • Core deliverables & foundational architecture
-• 1 round of revisions
+• 1 structured round of revisions
 • Standard turnaround (14 business days)
 
-Tier 2: Growth (${calculations.symbol}${calculations.growth.toLocaleString()}) — [RECOMMENDED]
+Tier 2: Growth (1.4x Sweet Spot: ${calculations.symbol}${calculations.growth.toLocaleString()}) — [RECOMMENDED]
+• 50% Upfront Deposit: ${calculations.symbol}${calculations.depositGrowth.toLocaleString()}
 • Everything in Essential + Speed & SEO optimization
 • High-converting interactive micro-animations
 • 2 structured revision rounds & priority 7-day turnaround
-• 14-day post-launch critical bug guarantee
+• Optional monthly retainer upsell: ${calculations.symbol}${calculations.retainer.toLocaleString()}/mo
 
-Tier 3: VIP / Turnkey (${calculations.symbol}${calculations.vip.toLocaleString()})
+Tier 3: VIP Sprint (2.2x Anchor: ${calculations.symbol}${calculations.vip.toLocaleString()})
+• 50% Upfront Deposit: ${calculations.symbol}${calculations.depositVip.toLocaleString()}
 • Everything in Growth + Custom analytics dashboard
 • Conversion copywriting audit & high-ticket UX teardown
 • 30-day extended developer retainer & 24/7 Slack/WhatsApp channel access
-• Rush delivery allocation
+• Dedicated weekend & sprint bandwidth
 
-Our protected baseline floor rate is calculated at ${calculations.symbol}${calculations.hourlyRate.toLocaleString()}/hr. Which tier aligns best with your targets for this quarter?`;
+Our protected baseline floor is calculated at ${calculations.symbol}${calculations.hourlyRate.toLocaleString()}/hr (1.5x overtime rate: ${calculations.symbol}${calculations.overtimeRate.toLocaleString()}/hr). Which tier aligns best with your targets for this quarter?`;
 
     navigator.clipboard.writeText(text);
     setCopiedProposal(true);
@@ -198,8 +217,12 @@ Our protected baseline floor rate is calculated at ${calculations.symbol}${calcu
       a: "You receive instant automated access. The moment your checkout completes, you get a secure 1-click link to create a private, editable copy directly inside your personal Google Drive. No waiting, no manual emails."
     },
     {
-      q: "Is this a monthly subscription?",
-      a: "No. It is a one-time purchase of $29 (₹1,499). You get permanent lifetime access, plus free future updates to the template and scripts."
+      q: "Is this an AI bot, SaaS software, or a recurring subscription?",
+      a: "No. This is an advanced, automated Master Google Sheet Template—NOT an AI bot, SaaS app, or recurring subscription. It is a one-time purchase of $29 (₹1,499) with lifetime access and zero ongoing fees."
+    },
+    {
+      q: "Will this magically close clients for me?",
+      a: "No spreadsheet magically closes deals. What it DOES do is eliminate guesswork pricing: it takes 6 raw inputs to calculate your exact walk-away floor and 1.5x overtime rate, structures a 3-tier anchor proposal with 50% deposits, and arms you with word-for-word scripts to charge $87/hr for extra requests."
     },
     {
       q: "Does this work for international currencies and Indian Rupees?",
@@ -207,7 +230,7 @@ Our protected baseline floor rate is calculated at ${calculations.symbol}${calcu
     },
     {
       q: "What if I am a beginner freelancer without an agency yet?",
-      a: "This sheet is actually most critical for beginners. Most freelancers undercharge by 30-50% in their first two years because they don't know how to calculate non-billable hours, self-employment tax, and revision buffers. This template protects you on day one so you never work 60 hours for minimum wage."
+      a: "This sheet is designed for freelancers, web developers, video editors, and solo agencies alike. Most solo creators undercharge by 30-50% because they overlook taxes, payment gateway fees, and revision buffers. The 6-input price engine protects your baseline from day one."
     },
     {
       q: "Can I customize the formulas and add my own branding?",
@@ -306,9 +329,9 @@ Our protected baseline floor rate is calculated at ${calculations.symbol}${calcu
         <div className="text-center max-w-4xl mx-auto">
           
           {/* Top Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-semibold tracking-wide mb-8 shadow-[0_0_20px_rgba(16,185,129,0.2)] animate-pulse">
-            <span className="flex h-2 w-2 rounded-full bg-emerald-400"></span>
-            <span>🔥 The Ultimate Freelancer Profit Tool</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-semibold tracking-wide mb-8 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+            <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>MASTER GOOGLE SHEET TEMPLATE • 3-MIN SETUP</span>
           </div>
 
           {/* Headline */}
@@ -319,13 +342,13 @@ Our protected baseline floor rate is calculated at ${calculations.symbol}${calcu
             </span>
           </h1>
 
-          {/* Sub-headline */}
-          <p className="text-slate-300 text-lg sm:text-xl lg:text-2xl mb-10 leading-relaxed font-light max-w-3xl mx-auto">
-            Calculate your walk-away floor price, generate a 3-tier anchor proposal, and use automated scope-creep clauses to stop losing <span className="text-emerald-400 font-semibold underline decoration-emerald-500/50 underline-offset-4">30% of your income</span> to underquoting and free revisions.
+          {/* Sub-headline: Precise & Truthful Framing */}
+          <p className="text-slate-300 text-lg sm:text-xl lg:text-2xl mb-8 leading-relaxed font-light max-w-3xl mx-auto">
+            An automated multi-tab Google Sheet that eliminates guesswork pricing by calculating your exact walk-away floor, structuring a 3-tier anchor proposal, and deploying pre-written scope-creep protection scripts in under 3 minutes.
           </p>
 
           {/* Primary CTA Area */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
             <a
               href={checkoutUrl}
               onClick={handleCtaClick}
@@ -338,31 +361,48 @@ Our protected baseline floor rate is calculated at ${calculations.symbol}${calcu
           </div>
 
           {/* Sub-CTA text */}
-          <p className="text-slate-400 text-sm sm:text-base font-medium flex items-center justify-center gap-2 mb-10">
+          <p className="text-slate-400 text-sm sm:text-base font-medium flex items-center justify-center gap-2 mb-8">
             <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span>Instant access via Google Sheets (Works on Excel & Notion too). Zero monthly fees.</span>
+            <span>Instant access via Google Sheets (Works natively on Excel & Notion too). Zero monthly fees.</span>
           </p>
 
-          {/* Social Proof Trust Badges */}
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 pt-4 border-t border-slate-800/80 text-xs sm:text-sm text-slate-400 font-medium">
-            <div className="flex items-center gap-1.5 text-amber-300">
-              <div className="flex items-center">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                ))}
+          {/* Transparency Specification: What It Is vs What It Is NOT */}
+          <div className="mb-10 p-4 sm:p-5 rounded-2xl bg-slate-900/80 border border-slate-800 text-left text-xs sm:text-sm max-w-2xl mx-auto space-y-3 shadow-xl">
+            <div className="flex items-center gap-2 font-mono font-bold text-slate-200 uppercase tracking-wider text-[11px]">
+              <span className="h-2 w-2 rounded-full bg-emerald-400"></span>
+              <span>100% Factual Specification (Zero AI Fluff)</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-slate-300">
+              <div className="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800/80 space-y-1.5">
+                <span className="text-emerald-400 font-bold block text-xs">✓ What It IS:</span>
+                <p className="text-slate-400 text-xs leading-relaxed">
+                  A 3-Tab Master Google Sheet template (Price Engine, 3-Tier Proposal, and Scope-Creep Shield) built for freelancers, web developers, video editors, and solo agencies.
+                </p>
               </div>
-              <span className="font-semibold text-slate-200">4.96/5</span>
-              <span className="text-slate-400">(380+ reviews)</span>
+              <div className="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800/80 space-y-1.5">
+                <span className="text-amber-400 font-bold block text-xs">✗ What It Is NOT:</span>
+                <p className="text-slate-400 text-xs leading-relaxed">
+                  Not AI software, not a SaaS app, and not a magic client closer. It is an automated calculation and proposal spreadsheet template.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Factual Trust Badges */}
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 pt-4 border-t border-slate-800/80 text-xs sm:text-sm text-slate-400 font-medium">
+            <div className="flex items-center gap-2 text-slate-300">
+              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+              <span>Google Sheets, Excel & Notion Native</span>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 text-slate-300">
               <Zap className="w-4 h-4 text-cyan-400" />
-              <span>3-Minute Setup</span>
+              <span>3-Minute Setup & Calculation</span>
             </div>
 
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>Tested on $420k+ in Agency Quotes</span>
+            <div className="flex items-center gap-2 text-slate-300">
+              <ShieldCheck className="w-4 h-4 text-amber-400" />
+              <span>Includes 4 Copy-Paste Scope Clauses</span>
             </div>
           </div>
         </div>
@@ -605,32 +645,46 @@ Our protected baseline floor rate is calculated at ${calculations.symbol}${calcu
                 <span>LIVE SPREADSHEET ENGINE</span>
               </div>
 
-              {/* Top Outputs: Hourly Rate & Floor Price */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 pt-2">
-                {/* Metric 1 */}
-                <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800/90 relative">
-                  <span className="text-xs uppercase tracking-wider font-mono text-slate-400 block mb-1">
+              {/* Top Outputs: Hourly Rate, 1.5x Overtime Rate & Walk-Away Floor Price */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6 pt-2">
+                {/* Metric 1: Protected Hourly Rate */}
+                <div className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800/90 relative">
+                  <span className="text-[11px] uppercase tracking-wider font-mono text-slate-400 block mb-1">
                     Protected Hourly Rate
                   </span>
-                  <div className="font-mono font-extrabold text-3xl sm:text-4xl text-emerald-400 tracking-tight">
+                  <div className="font-mono font-extrabold text-2xl sm:text-3xl text-emerald-400 tracking-tight">
                     {calculations.symbol}{calculations.hourlyRate.toLocaleString()}
-                    <span className="text-sm font-normal text-slate-400">/hr</span>
+                    <span className="text-xs font-normal text-slate-400">/hr</span>
                   </div>
-                  <span className="text-[11px] text-slate-400 mt-1 block">
-                    ✓ Factors 20% taxes + 12% non-billable ops
+                  <span className="text-[10px] text-slate-400 mt-1 block">
+                    Base survival rate
                   </span>
                 </div>
 
-                {/* Metric 2 */}
-                <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800/90 relative">
-                  <span className="text-xs uppercase tracking-wider font-mono text-slate-400 block mb-1">
+                {/* Metric 2: 1.5x Overtime Rate */}
+                <div className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800/90 relative">
+                  <span className="text-[11px] uppercase tracking-wider font-mono text-amber-300 block mb-1">
+                    1.5x Overtime Rate
+                  </span>
+                  <div className="font-mono font-extrabold text-2xl sm:text-3xl text-amber-400 tracking-tight">
+                    {calculations.symbol}{calculations.overtimeRate.toLocaleString()}
+                    <span className="text-xs font-normal text-slate-400">/hr</span>
+                  </div>
+                  <span className="text-[10px] text-slate-400 mt-1 block">
+                    Out-of-scope script rate
+                  </span>
+                </div>
+
+                {/* Metric 3: Walk-Away Floor Price */}
+                <div className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800/90 relative">
+                  <span className="text-[11px] uppercase tracking-wider font-mono text-cyan-300 block mb-1">
                     Walk-Away Floor Price
                   </span>
-                  <div className="font-mono font-extrabold text-3xl sm:text-4xl text-cyan-400 tracking-tight">
+                  <div className="font-mono font-extrabold text-2xl sm:text-3xl text-cyan-400 tracking-tight">
                     {calculations.symbol}{calculations.floorPrice.toLocaleString()}
                   </div>
-                  <span className="text-[11px] text-amber-300 mt-1 block font-medium">
-                    ⚠️ Never quote below this number
+                  <span className="text-[10px] text-rose-300 mt-1 block font-medium">
+                    ⚠️ Never quote below this
                   </span>
                 </div>
               </div>
@@ -643,61 +697,79 @@ Our protected baseline floor rate is calculated at ${calculations.symbol}${calcu
                     <span>Auto-Generated 3-Tier Proposal Preview:</span>
                   </span>
                   <span className="text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
-                    High-Margin Anchor Psychology
+                    Essential 1.0x • Growth 1.4x • VIP 2.2x
                   </span>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   
                   {/* Tier 1: Essential */}
-                  <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-colors">
-                    <div className="text-xs font-bold text-slate-400 uppercase tracking-wider font-mono mb-1">
-                      Tier 1: Essential
+                  <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-colors flex flex-col justify-between">
+                    <div>
+                      <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider font-mono mb-1">
+                        Essential (1.0x)
+                      </div>
+                      <div className="font-mono font-bold text-2xl text-white mb-1">
+                        {calculations.symbol}{calculations.essential.toLocaleString()}
+                      </div>
+                      <div className="text-[11px] font-mono text-emerald-400/90 mb-2">
+                        50% Deposit: {calculations.symbol}{calculations.depositEssential.toLocaleString()}
+                      </div>
+                      <p className="text-[11px] text-slate-400 leading-snug mb-3">
+                        Barebones core scope. Strict 1 revision round. Covers your floor.
+                      </p>
                     </div>
-                    <div className="font-mono font-bold text-2xl text-white mb-2">
-                      {calculations.symbol}{calculations.essential.toLocaleString()}
-                    </div>
-                    <p className="text-[11px] text-slate-400 leading-snug mb-3">
-                      Barebones core scope. Strict 1 revision round. Covers your floor.
-                    </p>
-                    <div className="text-[10px] text-slate-500 font-mono flex items-center gap-1">
+                    <div className="text-[10px] text-slate-500 font-mono flex items-center gap-1 pt-2 border-t border-slate-800/80">
                       <Check className="w-3 h-3 text-emerald-400" />
                       <span>Zero margin bleed</span>
                     </div>
                   </div>
 
                   {/* Tier 2: Growth (Recommended) */}
-                  <div className="p-4 rounded-xl bg-gradient-to-b from-emerald-950/40 to-slate-900/90 border border-emerald-500/40 relative shadow-[0_0_20px_rgba(16,185,129,0.15)]">
+                  <div className="p-4 rounded-xl bg-gradient-to-b from-emerald-950/40 to-slate-900/90 border border-emerald-500/40 relative shadow-[0_0_20px_rgba(16,185,129,0.15)] flex flex-col justify-between">
                     <div className="absolute -top-2.5 right-3 px-2 py-0.5 bg-emerald-500 text-slate-950 text-[10px] font-bold rounded-full uppercase tracking-wider">
-                      Most Clients Pick
+                      Most Picked
                     </div>
-                    <div className="text-xs font-bold text-emerald-400 uppercase tracking-wider font-mono mb-1">
-                      Tier 2: Growth
+                    <div>
+                      <div className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider font-mono mb-1">
+                        Growth (1.4x)
+                      </div>
+                      <div className="font-mono font-bold text-2xl text-emerald-300 mb-1">
+                        {calculations.symbol}{calculations.growth.toLocaleString()}
+                      </div>
+                      <div className="text-[11px] font-mono text-emerald-400 mb-2">
+                        50% Deposit: {calculations.symbol}{calculations.depositGrowth.toLocaleString()}
+                      </div>
+                      <p className="text-[11px] text-slate-300 leading-snug mb-2">
+                        Core + SEO speed tune, 2 revisions & priority 7-day turnaround.
+                      </p>
+                      <div className="text-[10px] text-cyan-300 font-mono mb-3">
+                        + Retainer upsell: {calculations.symbol}{calculations.retainer.toLocaleString()}/mo
+                      </div>
                     </div>
-                    <div className="font-mono font-bold text-2xl text-emerald-300 mb-2">
-                      {calculations.symbol}{calculations.growth.toLocaleString()}
-                    </div>
-                    <p className="text-[11px] text-slate-300 leading-snug mb-3">
-                      Core + SEO speed tune, 2 revisions & priority 7-day turnaround.
-                    </p>
-                    <div className="text-[10px] text-emerald-400 font-mono flex items-center gap-1">
+                    <div className="text-[10px] text-emerald-400 font-mono flex items-center gap-1 pt-2 border-t border-emerald-500/20">
                       <Check className="w-3 h-3 text-emerald-400" />
                       <span>+40% profit margin</span>
                     </div>
                   </div>
 
                   {/* Tier 3: VIP */}
-                  <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-colors">
-                    <div className="text-xs font-bold text-amber-400 uppercase tracking-wider font-mono mb-1">
-                      Tier 3: VIP Anchor
+                  <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-colors flex flex-col justify-between">
+                    <div>
+                      <div className="text-[11px] font-bold text-amber-400 uppercase tracking-wider font-mono mb-1">
+                        VIP Sprint (2.2x)
+                      </div>
+                      <div className="font-mono font-bold text-2xl text-white mb-1">
+                        {calculations.symbol}{calculations.vip.toLocaleString()}
+                      </div>
+                      <div className="text-[11px] font-mono text-amber-400/90 mb-2">
+                        50% Deposit: {calculations.symbol}{calculations.depositVip.toLocaleString()}
+                      </div>
+                      <p className="text-[11px] text-slate-400 leading-snug mb-3">
+                        Turnkey + 30-day warranty, analytics dashboard & 24/7 Slack.
+                      </p>
                     </div>
-                    <div className="font-mono font-bold text-2xl text-white mb-2">
-                      {calculations.symbol}{calculations.vip.toLocaleString()}
-                    </div>
-                    <p className="text-[11px] text-slate-400 leading-snug mb-3">
-                      Turnkey + 30-day warranty, analytics dashboard & 24/7 Slack.
-                    </p>
-                    <div className="text-[10px] text-cyan-400 font-mono flex items-center gap-1">
+                    <div className="text-[10px] text-cyan-400 font-mono flex items-center gap-1 pt-2 border-t border-slate-800/80">
                       <Check className="w-3 h-3 text-cyan-400" />
                       <span>2.2x anchor leverage</span>
                     </div>
@@ -961,11 +1033,11 @@ Our protected baseline floor rate is calculated at ${calculations.symbol}${calcu
                     The 6-Input Price Engine
                   </h3>
                   <p className="text-slate-300 text-sm mt-1">
-                    Calculates your survival hourly rate, tax cushion, and walk-away floor price with pure mathematical rigor.
+                    Takes your 6 raw project variables and calculates your true hourly survival rate, tax/gateway buffers, walk-away floor, and 1.5x overtime rate.
                   </p>
                 </div>
                 <div className="px-4 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-mono">
-                  ⏱️ Fill Time: 60 Seconds
+                  ⏱️ Fill Time: Under 3 Minutes
                 </div>
               </div>
 
@@ -973,34 +1045,34 @@ Our protected baseline floor rate is calculated at ${calculations.symbol}${calcu
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {[
                   {
-                    title: "1. Desired Net Monthly Income",
-                    desc: "Your real-world target for living, saving, and investing ($4,000 default).",
-                    badge: "Cash in Hand"
+                    title: "1. Target Monthly Income",
+                    desc: "Your net take-home cash requirement for living, saving, and operations.",
+                    badge: "Input #1"
                   },
                   {
-                    title: "2. Monthly Billable Capacity",
-                    desc: "Accounts for the hard truth: you can only bill ~20-25 hrs/wk, not 40 hrs.",
-                    badge: "Reality Factor"
+                    title: "2. Billable Hours Per Week",
+                    desc: "Realistic billable cap (usually 20-25 hrs/wk), accounting for unpaid admin/hunting.",
+                    badge: "Input #2"
                   },
                   {
-                    title: "3. Income Tax & Self-Employment",
-                    desc: "Auto-deducts 20-28% so tax season never blind-sides your bank account.",
-                    badge: "IRS / GST Shield"
+                    title: "3. Project Build Hours",
+                    desc: "Estimated heads-down production time to build and deliver the agreed milestone.",
+                    badge: "Input #3"
                   },
                   {
-                    title: "4. Software & Tech Stack Cost",
-                    desc: "Includes Figma, Webflow, Adobe, AI tokens, hosting, and accounting tools.",
-                    badge: "Operating Cost"
+                    title: "4. Direct Costs & Software Stack",
+                    desc: "Hosting, domain, Figma, Adobe, Cursor AI, or paid plugin subscriptions.",
+                    badge: "Input #4"
                   },
                   {
-                    title: "5. Gateway Transaction Fees",
-                    desc: "Factors in Stripe, Razorpay, or PayPal (3-4%) without eating into your wage.",
-                    badge: "Merchant Cover"
+                    title: "5. Tax & Gateway Fee Buffer %",
+                    desc: "Auto-deducts 20-28% self-employment taxes + 3-4% Stripe/Razorpay processing.",
+                    badge: "Input #5"
                   },
                   {
-                    title: "6. Client Revision Risk Factor",
-                    desc: "Calculates the dynamic cushion multiplier based on client difficulty rating.",
-                    badge: "Protection"
+                    title: "6. Client Revision Risk Multiplier",
+                    desc: "Risk multiplier cushion that scales depending on how chaotic the client scope is.",
+                    badge: "Input #6"
                   }
                 ].map((item, idx) => (
                   <div key={idx} className="p-4 rounded-2xl bg-slate-950/70 border border-slate-800/80">
@@ -1015,26 +1087,29 @@ Our protected baseline floor rate is calculated at ${calculations.symbol}${calcu
                 ))}
               </div>
 
-              {/* Spreadsheet Output Banner */}
-              <div className="p-5 rounded-2xl bg-slate-950 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center shrink-0">
-                    <TrendingUp className="w-5 h-5" />
+              {/* Computed Outputs Grid Banner */}
+              <div className="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+                <span className="text-xs font-mono text-emerald-400 uppercase tracking-wider block">
+                  AUTOMATED FORMULA OUTPUTS PRODUCED:
+                </span>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+                  <div className="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                    <span className="text-[10px] font-mono text-slate-400 uppercase block">Survival Rate</span>
+                    <span className="text-emerald-400 font-mono font-bold text-sm sm:text-base">$57/hr</span>
                   </div>
-                  <div>
-                    <span className="text-xs font-mono text-slate-400">INSTANT COMPUTED OUTPUT:</span>
-                    <p className="text-sm font-semibold text-white">
-                      Never wonder "what should I charge?" again. You know the exact dollar amount before sending any quote.
-                    </p>
+                  <div className="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                    <span className="text-[10px] font-mono text-slate-400 uppercase block">1.5x Overtime Rate</span>
+                    <span className="text-amber-400 font-mono font-bold text-sm sm:text-base">$86/hr</span>
+                  </div>
+                  <div className="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                    <span className="text-[10px] font-mono text-slate-400 uppercase block">Tax/Fee Cushion</span>
+                    <span className="text-cyan-400 font-mono font-bold text-sm sm:text-base">+27% Reserve</span>
+                  </div>
+                  <div className="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                    <span className="text-[10px] font-mono text-slate-400 uppercase block">Walk-Away Floor</span>
+                    <span className="text-white font-mono font-bold text-sm sm:text-base">$1,905 Min</span>
                   </div>
                 </div>
-                <a
-                  href={checkoutUrl}
-                  onClick={handleCtaClick}
-                  className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold uppercase tracking-wider shrink-0 transition-all"
-                >
-                  Unlock Tab 1
-                </a>
               </div>
             </div>
           )}
@@ -1049,11 +1124,11 @@ Our protected baseline floor rate is calculated at ${calculations.symbol}${calcu
                     The 3-Tier Proposal Generator
                   </h3>
                   <p className="text-slate-300 text-sm mt-1">
-                    Instantly outputs Essential, Growth, and VIP packages + copy-paste WhatsApp/Email client message.
+                    Scales your floor price into Essential (1.0x), Growth (1.4x), and VIP Sprint (2.2x) with pre-calculated 50% deposits and retainer upsells.
                   </p>
                 </div>
                 <div className="px-4 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono">
-                  🚀 Conversion Booster: +40%
+                  Anchor Pricing Architecture
                 </div>
               </div>
 
@@ -1064,9 +1139,10 @@ Our protected baseline floor rate is calculated at ${calculations.symbol}${calcu
                 <div className="p-5 rounded-2xl bg-slate-950/70 border border-slate-800 flex flex-col justify-between">
                   <div>
                     <div className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider mb-1">
-                      Tier 1 · Minimum Floor
+                      Tier 1 · Minimum Floor (1.0x)
                     </div>
-                    <h4 className="text-xl font-bold text-white mb-2">Essential Package</h4>
+                    <h4 className="text-xl font-bold text-white mb-1">Essential Package</h4>
+                    <div className="text-xs font-mono text-emerald-400 mb-2">50% Deposit: $955</div>
                     <p className="text-xs text-slate-400 mb-4 leading-relaxed font-light">
                       Protects your walk-away price. Perfect for budget-conscious clients who only need the foundational deliverable.
                     </p>
@@ -1093,15 +1169,16 @@ Our protected baseline floor rate is calculated at ${calculations.symbol}${calcu
                 {/* Growth Package */}
                 <div className="p-5 rounded-2xl bg-gradient-to-b from-cyan-950/30 to-slate-950 border border-cyan-500/40 relative flex flex-col justify-between shadow-[0_0_25px_rgba(6,182,212,0.15)]">
                   <div className="absolute -top-3 right-4 px-2.5 py-0.5 bg-cyan-500 text-slate-950 text-[10px] font-bold rounded-full uppercase tracking-wider">
-                    Highest Margin
+                    Sweet Spot (1.4x)
                   </div>
                   <div>
                     <div className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider mb-1">
-                      Tier 2 · The Sweet Spot
+                      Tier 2 · Most Popular
                     </div>
-                    <h4 className="text-xl font-bold text-cyan-200 mb-2">Growth Package</h4>
+                    <h4 className="text-xl font-bold text-cyan-200 mb-1">Growth Package</h4>
+                    <div className="text-xs font-mono text-emerald-400 mb-2">50% Deposit: $1,335 • Retainer: $930/mo</div>
                     <p className="text-xs text-slate-300 mb-4 leading-relaxed font-light">
-                      Framed using contrast psychology so 70% of clients pick this tier without negotiation.
+                      Framed using contrast psychology so most clients select this tier without haggling.
                     </p>
                     <ul className="text-xs text-slate-200 space-y-2 mb-6">
                       <li className="flex items-center gap-2">
@@ -1118,7 +1195,7 @@ Our protected baseline floor rate is calculated at ${calculations.symbol}${calcu
                       </li>
                       <li className="flex items-center gap-2">
                         <Check className="w-3.5 h-3.5 text-cyan-400" />
-                        <span>14-day post-launch critical bug fix</span>
+                        <span>Pre-calculated monthly retainer upsell</span>
                       </li>
                     </ul>
                   </div>
@@ -1127,13 +1204,14 @@ Our protected baseline floor rate is calculated at ${calculations.symbol}${calcu
                   </div>
                 </div>
 
-                {/* VIP Package */}
+                {/* VIP Sprint Package */}
                 <div className="p-5 rounded-2xl bg-slate-950/70 border border-slate-800 flex flex-col justify-between">
                   <div>
                     <div className="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider mb-1">
-                      Tier 3 · The Anchor
+                      Tier 3 · Anchor Sprint (2.2x)
                     </div>
-                    <h4 className="text-xl font-bold text-white mb-2">VIP / Turnkey</h4>
+                    <h4 className="text-xl font-bold text-white mb-1">VIP Sprint</h4>
+                    <div className="text-xs font-mono text-amber-400 mb-2">50% Deposit: $2,095</div>
                     <p className="text-xs text-slate-400 mb-4 leading-relaxed font-light">
                       Acts as the psychological anchor that makes the Growth tier feel like an effortless bargain.
                     </p>
@@ -1152,7 +1230,7 @@ Our protected baseline floor rate is calculated at ${calculations.symbol}${calcu
                       </li>
                       <li className="flex items-center gap-2">
                         <Check className="w-3.5 h-3.5 text-amber-400" />
-                        <span>Conversion copywriting audit</span>
+                        <span>Expedited turnaround allocation</span>
                       </li>
                     </ul>
                   </div>
@@ -1164,11 +1242,11 @@ Our protected baseline floor rate is calculated at ${calculations.symbol}${calcu
               </div>
 
               {/* Ready-to-send Message Feature */}
-              <div className="p-5 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between gap-4">
+              <div className="p-5 rounded-2xl bg-slate-950 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <MessageSquare className="w-5 h-5 text-cyan-400 shrink-0" />
                   <span className="text-sm text-slate-300">
-                    <strong className="text-white">Auto Copy-Paste Message Generator:</strong> Generates ready-to-send WhatsApp, Email, and Slack proposal pitches with pre-filled numbers.
+                    <strong className="text-white">Copy-Paste Client Pitch Message:</strong> Pre-formatted WhatsApp, Email, or Notion pitch message with pre-filled 50% deposits and overtime rates.
                   </span>
                 </div>
                 <button
@@ -1176,7 +1254,7 @@ Our protected baseline floor rate is calculated at ${calculations.symbol}${calcu
                   onClick={handleCopyProposal}
                   className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold shrink-0 transition-colors"
                 >
-                  {copiedProposal ? '✓ Copied' : 'Preview Message'}
+                  {copiedProposal ? '✓ Copied' : 'Preview Pitch Message'}
                 </button>
               </div>
             </div>

@@ -115,10 +115,21 @@ Includes 4 Core Modules: The Reality Check (Aaina), Goal Deconstruction Engine, 
     id: 'prod-pricing-calculator',
     slug: 'pricing-calculator',
     title: 'The 3-Minute Freelancer & Agency Pricing Calculator',
-    tagline: 'Calculate your walk-away floor price, generate a 3-tier anchor proposal, and use automated scope-creep clauses.',
-    description: `Stop losing 30% of your income to underquoting, tax oversights, and free revisions. 
+    tagline: 'An automated multi-tab Google Sheet that eliminates guesswork pricing by calculating your exact walk-away floor and structuring a 3-tier anchor proposal in under 3 minutes.',
+    description: `An automated multi-tab Google Sheet that eliminates guesswork pricing by calculating your exact walk-away floor, structuring a 3-tier anchor proposal, and deploying pre-written scope-creep protection scripts in under 3 minutes.
 
-The 3-Minute Freelancer & Agency Pricing Calculator is a plug-and-play Google Sheet template engineered for solo operators, freelancers, and agency founders. It automatically computes your survival floor rate, factors in 20% taxes + payment gateway fees, generates psychology-backed 3-tier proposals (Essential, Growth, VIP), and gives you battle-tested scope-creep protection scripts.`,
+Designed specifically for freelancers, web developers, video editors, and solo agencies.
+
+WHAT IT IS:
+A battle-tested 3-Tab Master Google Sheet template (Price Engine, 3-Tier Proposal Generator, and Scope-Creep Shield). Works natively in Google Sheets, Microsoft Excel, and Notion.
+
+WHAT IT DOES:
+1. Takes 6 raw project inputs (target monthly income, billable hours per week, project build hours, direct costs, tax/gateway buffer %, and client revision risk multiplier) and calculates your exact Walk-Away Floor Price and 1.5x Overtime Rate.
+2. Automatically scales that floor into a professional 3-Tier Anchor Proposal (Essential 1.0x, Growth 1.4x, VIP Sprint 2.2x) with pre-calculated 50% deposits and monthly retainer upsells.
+3. Generates copy-paste WhatsApp/Email scripts and contract clauses that enforce out-of-scope billing ($87/hr) and project pause terms when clients stall or ask for extra work.
+
+WHAT IT IS NOT:
+It is NOT AI software, it is NOT an automated SaaS app, and it does NOT magically close clients for you. It is an advanced, automated calculation and proposal spreadsheet template.`,
     category: 'Dashboards',
     featured: true,
     isNew: true,
@@ -138,17 +149,17 @@ The 3-Minute Freelancer & Agency Pricing Calculator is a plug-and-play Google Sh
       '/pricing_calculator_mockup.jpg'
     ],
     deliverables: [
-      { name: 'The 6-Input Price Engine Spreadsheet', format: 'Google Sheets', size: '1-Click Copy' },
-      { name: 'The 3-Tier Proposal Generator Tab', format: 'Google Sheets', size: 'Included' },
-      { name: 'The Scope-Creep Shield & 4 Scripts', format: 'Text & Sheets', size: 'Included' },
-      { name: 'Video Walkthrough & Implementation Guide', format: 'HD Video', size: '12 Mins' }
+      { name: 'Tab 1: The 6-Input Price Engine', format: 'Google Sheets', size: '1-Click Copy' },
+      { name: 'Tab 2: The 3-Tier Proposal Generator', format: 'Google Sheets', size: 'Included' },
+      { name: 'Tab 3: The Scope-Creep Shield & 4 Scripts', format: 'Text & Sheets', size: 'Included' },
+      { name: 'Quick-Start Setup & Implementation Guide', format: 'PDF & Notion', size: 'Included' }
     ],
     features: [
-      'The 6-Input Price Engine: Computes survival hourly rate, tax buffer, and walk-away floor price.',
-      'The 3-Tier Proposal Generator: Outputs Essential, Growth, and VIP packages with anchor pricing psychology.',
-      'The Scope-Creep Shield: 4 battle-tested copy-paste scripts charging $87/hr for extra requests and project pause clauses.',
-      'Multi-Currency Support: Switch between USD ($) and INR (₹) or any international currency in seconds.',
-      'Zero Monthly Fees: Free forever on Google Sheets, Microsoft Excel, and importable to Notion.'
+      'Tab 1 (Price Engine): 6 raw inputs calculating true hourly survival rate, tax/gateway buffers, walk-away floor, and 1.5x overtime rate.',
+      'Tab 2 (3-Tier Proposal): Auto-generates Essential (1.0x), Growth (1.4x), and VIP Sprint (2.2x) packages + 50% deposits & client pitch message.',
+      'Tab 3 (Scope-Creep Shield): Pre-written negotiation and contract clauses charging $87/hr for extra requests and project pause terms.',
+      'Zero Software Subscriptions: 100% plug-and-play Google Sheet (works in Excel & Notion too).',
+      'Instant Automated Access: 1-click private Google Drive duplicate right after checkout.'
     ],
     techStack: ['Google Sheets', 'Microsoft Excel', 'Notion Compatible'],
     compatibility: ['Mac', 'Windows', 'iPhone', 'Android', 'iPad'],
@@ -162,7 +173,7 @@ The 3-Minute Freelancer & Agency Pricing Calculator is a plug-and-play Google Sh
         avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80',
         rating: 5,
         date: '3 days ago',
-        content: 'I closed a $3,400 project using the Growth tier anchor proposal from this sheet literally 4 hours after purchasing. The scope-creep script alone saved me from 3 weeks of free tweaks.'
+        content: 'I plugged in my numbers in Tab 1 and used the Growth tier anchor proposal from Tab 2. The out-of-scope script in Tab 3 gave me the exact words to charge for extra requests without feeling awkward.'
       },
       {
         id: 'rev-calc-2',
