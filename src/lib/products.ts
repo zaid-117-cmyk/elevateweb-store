@@ -122,7 +122,7 @@ The 3-Minute Freelancer & Agency Pricing Calculator is a plug-and-play Google Sh
     category: 'Dashboards',
     featured: true,
     isNew: true,
-    paymentUrl: 'https://rzp.io/rzp/your-checkout-url',
+    paymentUrl: 'https://rzp.io/rzp/uk5DvJq',
     price: {
       standard: 1499
     },

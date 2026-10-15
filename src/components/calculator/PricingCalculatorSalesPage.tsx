@@ -33,7 +33,7 @@ export interface PricingCalculatorSalesPageProps {
 }
 
 export const PricingCalculatorSalesPage: React.FC<PricingCalculatorSalesPageProps> = ({
-  checkoutUrl = 'https://rzp.io/rzp/your-checkout-url',
+  checkoutUrl = 'https://rzp.io/rzp/uk5DvJq',
   auditBookingUrl = 'https://elevateweb.me/#audit',
   supportEmail = 'zaid@elevateweb.me',
   onBuyClick
