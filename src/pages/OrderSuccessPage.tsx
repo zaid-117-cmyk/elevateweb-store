@@ -9,7 +9,8 @@ import {
   FileText, 
   ShieldCheck, 
   Copy, 
-  Check
+  Check,
+  ExternalLink
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useCart } from '../hooks/useCart';
@@ -148,7 +149,7 @@ export const OrderSuccessPage: React.FC = () => {
                   Instant Asset Downloads
                 </h3>
                 <p className="text-xs text-slate-400">
-                  Full source code, production builds, and Figma master files.
+                  Full source code, production builds, and Google Sheet templates.
                 </p>
               </div>
             </div>
@@ -191,13 +192,25 @@ export const OrderSuccessPage: React.FC = () => {
                   </div>
 
                   <div className="flex items-center gap-2 self-end sm:self-center">
-                    <button
-                      onClick={() => handleDownloadAsset(`${item.product.slug}-package.zip`)}
-                      className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-obsidian-950 font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all"
-                    >
-                      <Download className="w-3.5 h-3.5" />
-                      <span>Download ZIP</span>
-                    </button>
+                    {item.product.slug === 'pricing-calculator' ? (
+                      <a
+                        href="https://docs.google.com/spreadsheets/d/1cyEPd3jksDKxH9ZhPFf0X5tKjEib0BjwFqfbSFS6wq8/copy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5" />
+                        <span>Copy Google Sheet</span>
+                      </a>
+                    ) : (
+                      <button
+                        onClick={() => handleDownloadAsset(`${item.product.slug}-package.zip`)}
+                        className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-obsidian-950 font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all"
+                      >
+                        <Download className="w-3.5 h-3.5" />
+                        <span>Download ZIP</span>
+                      </button>
+                    )}
                   </div>
                 </div>
               ))

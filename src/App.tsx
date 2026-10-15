@@ -12,6 +12,8 @@ import { OrderSuccessPage } from './pages/OrderSuccessPage';
 import { CheckoutPage } from './pages/CheckoutPage';
 import { MeditationLandingPage } from './pages/MeditationLandingPage';
 import { PricingCalculatorPage } from './pages/PricingCalculatorPage';
+import { PricingCalculatorAccessPage } from './pages/PricingCalculatorAccessPage';
+import { SheetRedirectPage } from './pages/SheetRedirectPage';
 import { CartDrawer } from './components/CartDrawer';
 
 const AppContent: React.FC = () => {
@@ -22,7 +24,8 @@ const AppContent: React.FC = () => {
   const isCalculatorPage = 
     location.pathname.startsWith('/pricing-calculator') || 
     location.pathname.startsWith('/calculator') || 
-    location.pathname.startsWith('/freelance-pricing-calculator');
+    location.pathname.startsWith('/freelance-pricing-calculator') ||
+    location.pathname.startsWith('/sheet');
 
   return (
     <div className={`flex flex-col min-h-screen ${isCalculatorPage ? 'bg-[#070b14] text-slate-100' : 'bg-white text-black'} selection:bg-emerald-500 selection:text-slate-950`}>
@@ -37,7 +40,11 @@ const AppContent: React.FC = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/pricing-calculator" element={<PricingCalculatorPage />} />
+          <Route path="/pricing-calculator/access" element={<PricingCalculatorAccessPage />} />
           <Route path="/calculator" element={<PricingCalculatorPage />} />
+          <Route path="/calculator/access" element={<PricingCalculatorAccessPage />} />
+          <Route path="/sheet" element={<SheetRedirectPage />} />
+          <Route path="/sheet/copy" element={<SheetRedirectPage />} />
           <Route path="/freelance-pricing-calculator" element={<PricingCalculatorPage />} />
           <Route path="/product/:slug" element={<ProductDetailPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
