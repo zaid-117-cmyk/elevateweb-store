@@ -186,7 +186,7 @@ export const OrderSuccessPage: React.FC = () => {
                           {item.license} License
                         </span>
                         <span>•</span>
-                        <span>Version {item.product.version}</span>
+                        <span>Version {item.product.version || '1.0.0'}</span>
                       </div>
                     </div>
                   </div>

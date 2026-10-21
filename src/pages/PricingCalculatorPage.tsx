@@ -5,7 +5,7 @@ export const PricingCalculatorPage: React.FC = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "The 3-Minute Freelancer & Agency Pricing Calculator — ElevateWeb";
+    document.title = "The 3-Minute Web Designer Pricing OS & Scope Shield — ElevateWeb";
   }, []);
 
   return (

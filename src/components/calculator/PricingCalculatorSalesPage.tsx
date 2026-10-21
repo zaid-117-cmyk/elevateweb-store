@@ -5,6 +5,7 @@ import {
   ArrowRight, 
   Sparkles, 
   ShieldCheck, 
+  Shield,
   FileSpreadsheet, 
   AlertTriangle, 
   CheckCircle2, 
@@ -218,7 +219,7 @@ Our protected baseline floor is calculated at ${calculations.symbol}${calculatio
     },
     {
       q: "Is this an AI bot, SaaS software, or a recurring subscription?",
-      a: "No. This is an advanced, automated Master Google Sheet Template—NOT an AI bot, SaaS app, or recurring subscription. It is a one-time purchase of $29 (₹1,499) with lifetime access and zero ongoing fees."
+      a: "No. This is an advanced, automated Master Google Sheet Template—NOT an AI bot, SaaS app, or recurring subscription. It is a one-time purchase of ₹1,499 ($29) with lifetime access and zero ongoing fees."
     },
     {
       q: "Will this magically close clients for me?",
@@ -309,14 +310,14 @@ Our protected baseline floor is calculated at ${calculations.symbol}${calculatio
 
           <div className="flex items-center gap-3">
             <span className="hidden sm:inline-block font-mono text-xs text-slate-400">
-              <strong className="text-white">$29</strong> / ₹1,499
+              <strong className="text-white">₹1,499</strong> / $29
             </span>
             <a
               href={checkoutUrl}
               onClick={handleCtaClick}
               className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-display font-bold text-xs sm:text-sm tracking-tight transition-all duration-200 shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:scale-[1.02]"
             >
-              Get Sheet Access
+              Get Instant Access
             </a>
           </div>
         </div>
@@ -331,20 +332,20 @@ Our protected baseline floor is calculated at ${calculations.symbol}${calculatio
           {/* Top Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-semibold tracking-wide mb-8 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
             <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>MASTER GOOGLE SHEET TEMPLATE • 3-MIN SETUP</span>
+            <span>FOUNDER LAUNCH • LIMITED TO FIRST 100 DESIGNERS • ₹1,499</span>
           </div>
 
           {/* Headline */}
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight text-white mb-6 leading-[1.08]">
-            Stop Guessing Your Freelance &{' '}
+            Stop Quoting Like an Amateur &{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
-              Agency Quotes.
+              Losing 40 Unbilled Hours.
             </span>
           </h1>
 
           {/* Sub-headline: Precise & Truthful Framing */}
           <p className="text-slate-300 text-lg sm:text-xl lg:text-2xl mb-8 leading-relaxed font-light max-w-3xl mx-auto">
-            An automated multi-tab Google Sheet that eliminates guesswork pricing by calculating your exact walk-away floor, structuring a 3-tier anchor proposal, and deploying pre-written scope-creep protection scripts in under 3 minutes.
+            The 3-Minute Automated Pricing Engine and Scope-Creep Shield built specifically for Indian web designers & developers. Quote 3-tier anchor proposals, shut down client haggling on WhatsApp, and command ₹50,000+ per website.
           </p>
 
           {/* Primary CTA Area */}
@@ -353,9 +354,9 @@ Our protected baseline floor is calculated at ${calculations.symbol}${calculatio
               href={checkoutUrl}
               onClick={handleCtaClick}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 sm:py-5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-display font-bold text-lg sm:text-xl tracking-tight transition-all duration-300 transform hover:scale-[1.02] shadow-[0_0_35px_rgba(16,185,129,0.4)] hover:shadow-[0_0_50px_rgba(16,185,129,0.65)] active:scale-[0.98] group"
-              data-cursor-text="BUY $29"
+              data-cursor-text="BUY ₹1,499"
             >
-              <span>Get Instant Access to the Google Sheet — $29 (₹1,499)</span>
+              <span>Get Instant Access to the Pricing OS — ₹1,499 ($29)</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
             </a>
           </div>
@@ -802,7 +803,7 @@ Our protected baseline floor is calculated at ${calculations.symbol}${calculatio
                   onClick={handleCtaClick}
                   className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-[0_0_20px_rgba(16,185,129,0.3)] shrink-0"
                 >
-                  <span>Get Full Google Sheet ($29)</span>
+                  <span>Get Instant Access to the Pricing OS — ₹1,499 ($29)</span>
                   <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
@@ -1328,6 +1329,100 @@ Our protected baseline floor is calculated at ${calculations.symbol}${calculatio
       </section>
 
       {/* =====================================================================
+          THE GRAND SLAM VALUE STACK SECTION (13.6:1 RATIO)
+          ===================================================================== */}
+      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-t border-slate-800/80">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-semibold mb-4">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>UNBEATABLE VALUE STACK</span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight mb-4">
+            Everything Included In Today's Founder Bundle
+          </h2>
+          <p className="text-slate-300 text-base sm:text-lg">
+            You are not just getting a spreadsheet. You are getting an agency-grade quoting, proposal, and client negotiation operating system.
+          </p>
+        </div>
+
+        <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-6 sm:p-10 shadow-2xl backdrop-blur-xl">
+          <div className="space-y-4 mb-8">
+            {[
+              { name: "The 3-Minute 6-Input Price Engine (Google Sheets + Excel)", val: "₹3,499", desc: "Computes true hourly floor, tax/gateway buffer, and overtime rate in 30 seconds." },
+              { name: "The 3-Tier Anchor Proposal Generator Tab", val: "₹4,999", desc: "Auto-creates Essential (1.0x), Growth (1.4x), and VIP Sprint (2.2x) tiers with 50% deposits." },
+              { name: "The Scope-Creep Shield & Revision Rules Matrix", val: "₹2,999", desc: "Enforces ₹1,500/hr ($87/hr) out-of-scope billing and automatic project-pause terms." },
+              { name: "FREE BONUS 1: The 'Anti-Haggling' WhatsApp & Email Script Vault", val: "₹2,499", desc: "Copy-paste replies to 'Bhai discount kardo' and 'Someone else is doing it for ₹5,000'." },
+              { name: "FREE BONUS 2: The Indian Freelance Contract Clause Cheatsheet", val: "₹3,499", desc: "Strict 2-revision limit, 50% upfront deposit terms, and late-asset delay penalties." },
+              { name: "FREE BONUS 3: The 10-Minute ₹50,000 Live Proposal Breakdown Video", val: "₹1,999", desc: "Watch a real ₹50,000 website proposal get built step-by-step in 180 seconds." },
+              { name: "FREE BONUS 4: 1-Click Google Drive Duplicate & Quickstart Guide", val: "₹999", desc: "Instant private duplicate with zero technical configuration required." }
+            ].map((item, idx) => (
+              <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-slate-950/60 border border-slate-800/80 gap-2">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span className="font-display font-bold text-white text-base sm:text-lg">{item.name}</span>
+                  </div>
+                  <p className="text-slate-400 text-xs sm:text-sm pl-6">{item.desc}</p>
+                </div>
+                <span className="text-slate-400 font-mono text-xs sm:text-sm pl-6 sm:pl-0 sm:text-right shrink-0">
+                  Real Value: <strong className="text-slate-200">{item.val}</strong>
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Price Breakdown Banner */}
+          <div className="pt-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <div className="text-slate-400 text-sm font-mono mb-1">Total Real-World Value: <span className="line-through text-slate-500">₹20,493 ($249)</span></div>
+              <div className="text-3xl sm:text-4xl font-display font-extrabold text-white">
+                Today’s Founder Price: <span className="text-emerald-400">₹1,499</span> <span className="text-slate-500 text-lg font-normal">($29 one-time)</span>
+              </div>
+              <div className="text-emerald-400/90 text-xs font-mono mt-1">★ 13.6-to-1 Value-to-Price Discrepancy • Covers itself on your very next quote</div>
+            </div>
+
+            <a
+              href={checkoutUrl}
+              onClick={handleCtaClick}
+              className="w-full md:w-auto inline-flex items-center justify-center gap-3 px-8 py-5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-display font-bold text-lg transition-all transform hover:scale-[1.02] shadow-[0_0_35px_rgba(16,185,129,0.4)]"
+            >
+              <span>Claim 1 of 100 Founder Copies</span>
+              <ArrowRight className="w-5 h-5" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================================
+          THE BETTER-THAN-FREE 10X ROI GUARANTEE
+          ===================================================================== */}
+      <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div className="rounded-3xl border-2 border-emerald-500/30 bg-emerald-950/10 p-8 sm:p-12 text-center relative overflow-hidden">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-mono font-bold mb-4">
+            <Shield className="w-4 h-4 text-emerald-400" />
+            <span>30-DAY "KEEP EVERYTHING FREE" 10X ROI GUARANTEE</span>
+          </div>
+
+          <h3 className="text-2xl sm:text-4xl font-display font-bold text-white mb-4">
+            Zero Risk. Keep The System Even If You Ask For A Refund.
+          </h3>
+
+          <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-6 font-light">
+            Put this system to work on your very next web design or development quote. If you don't quote at least <strong>₹10,000 to ₹25,000 higher</strong> than you normally would, or if you feel it doesn't save you 20+ hours of frustrating guesswork and client haggling—just email us within 30 days.
+          </p>
+
+          <p className="text-emerald-300 font-medium text-sm sm:text-base max-w-xl mx-auto mb-8">
+            We will refund 100% of your ₹1,499 immediately. No questions asked. And you can keep the Google Sheet, the WhatsApp scripts, and the contract clauses forever as our gift for checking it out.
+          </p>
+
+          <div className="p-4 rounded-2xl bg-slate-950/70 border border-slate-800 text-xs sm:text-sm text-slate-400 max-w-lg mx-auto">
+            <strong className="text-white">Best Case:</strong> You close your next website for ₹48,000 instead of ₹25,000.<br/>
+            <strong className="text-white">Worst Case:</strong> You get 100% of your money back and keep ₹20,000+ in templates for free.
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================================
           5. ELEVATEWEB AGENCY BACK-END UPSOLD BANNER
           ===================================================================== */}
       <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
@@ -1445,14 +1540,14 @@ Our protected baseline floor is calculated at ${calculations.symbol}${calculatio
             Ready to quote with 100% confidence?
           </h3>
           <p className="text-slate-400 text-sm max-w-xl mx-auto mb-6">
-            Get instant access to the master Google Sheet, the 3-tier anchor generator, and all 4 scope protection scripts for a one-time payment of $29.
+            One-time payment of ₹1,499. Includes Google Sheet, 3-Tier Proposal Generator, Scope Shield, and all 3 Launch Bonuses. Instant 1-click Google Drive access.
           </p>
           <a
             href={checkoutUrl}
             onClick={handleCtaClick}
             className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-display font-bold text-base transition-all duration-200 hover:scale-[1.02] shadow-[0_0_25px_rgba(16,185,129,0.35)]"
           >
-            <span>Get Instant Access to the Google Sheet — $29 (₹1,499)</span>
+            <span>Get Instant Access to the Pricing OS — ₹1,499 ($29)</span>
             <ArrowRight className="w-4 h-4" />
           </a>
         </div>
@@ -1471,7 +1566,7 @@ Our protected baseline floor is calculated at ${calculations.symbol}${calculatio
             </span>
             <span className="text-slate-600">|</span>
             <span className="text-xs text-slate-400 font-mono">
-              The 3-Minute Pricing Calculator
+              The 3-Minute Web Designer Pricing OS & Scope Shield
             </span>
           </div>
 
@@ -1526,11 +1621,11 @@ Our protected baseline floor is calculated at ${calculations.symbol}${calculatio
             </div>
             <div>
               <div className="font-display font-bold text-sm text-white truncate max-w-[200px] sm:max-w-none">
-                The 3-Minute Pricing Calculator
+                The 3-Minute Web Designer Pricing OS
               </div>
               <div className="text-[11px] text-slate-400 flex items-center gap-2">
-                <span className="text-emerald-400 font-mono font-bold">$29 / ₹1,499</span>
-                <span className="line-through text-slate-500 font-mono">$99</span>
+                <span className="text-emerald-400 font-mono font-bold">₹1,499 ($29)</span>
+                <span className="line-through text-slate-500 font-mono">₹4,999</span>
                 <span className="hidden md:inline text-slate-500">• One-time payment</span>
               </div>
             </div>
@@ -1549,7 +1644,7 @@ Our protected baseline floor is calculated at ${calculations.symbol}${calculatio
               onClick={handleCtaClick}
               className="px-6 py-2.5 sm:py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-display font-bold text-xs sm:text-sm tracking-tight transition-transform active:scale-95 shadow-[0_0_20px_rgba(16,185,129,0.35)] flex items-center gap-2 shrink-0"
             >
-              <span>Get Instant Access</span>
+              <span>Get Instant Access to the Pricing OS — ₹1,499 ($29)</span>
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>

@@ -114,22 +114,22 @@ Includes 4 Core Modules: The Reality Check (Aaina), Goal Deconstruction Engine, 
   {
     id: 'prod-pricing-calculator',
     slug: 'pricing-calculator',
-    title: 'The 3-Minute Freelancer & Agency Pricing Calculator',
-    tagline: 'An automated multi-tab Google Sheet that eliminates guesswork pricing by calculating your exact walk-away floor and structuring a 3-tier anchor proposal in under 3 minutes.',
-    description: `An automated multi-tab Google Sheet that eliminates guesswork pricing by calculating your exact walk-away floor, structuring a 3-tier anchor proposal, and deploying pre-written scope-creep protection scripts in under 3 minutes.
+    title: 'The 3-Minute Web Designer Pricing OS & Scope Shield',
+    tagline: 'An automated 3-tab pricing engine, 3-tier anchor proposal generator, and contract scope-shield built for Indian web designers & agencies.',
+    description: `An automated 3-Tab Master Google Sheet system that eliminates guesswork pricing by calculating your exact break-even floor, structuring a 3-tier anchor proposal (Essential, Growth, VIP), and deploying pre-written scope-creep protection scripts in under 3 minutes.
 
-Designed specifically for freelancers, web developers, video editors, and solo agencies.
+Designed specifically for Indian freelance web designers, Webflow/Framer builders, and solo agency operators quoting projects between ₹15,000 and ₹1,00,000.
 
 WHAT IT IS:
-A battle-tested 3-Tab Master Google Sheet template (Price Engine, 3-Tier Proposal Generator, and Scope-Creep Shield). Works natively in Google Sheets, Microsoft Excel, and Notion.
+A battle-tested 3-Tab Master Google Sheet template (Price Engine, 3-Tier Proposal Generator, and Scope-Creep Shield) bundled with copy-paste WhatsApp/Email negotiation scripts, Indian freelance contract clauses, and a step-by-step ₹50,000 live proposal breakdown video. Works natively in Google Sheets, Microsoft Excel, and Notion.
 
 WHAT IT DOES:
-1. Takes 6 raw project inputs (target monthly income, billable hours per week, project build hours, direct costs, tax/gateway buffer %, and client revision risk multiplier) and calculates your exact Walk-Away Floor Price and 1.5x Overtime Rate.
-2. Automatically scales that floor into a professional 3-Tier Anchor Proposal (Essential 1.0x, Growth 1.4x, VIP Sprint 2.2x) with pre-calculated 50% deposits and monthly retainer upsells.
-3. Generates copy-paste WhatsApp/Email scripts and contract clauses that enforce out-of-scope billing ($87/hr) and project pause terms when clients stall or ask for extra work.
+1. Takes 6 raw project inputs and calculates your exact Walk-Away Floor Price, Target Profit Price, and 1.5x Overtime Rate.
+2. Automatically scales that floor into a 3-Tier Anchor Proposal (Essential 1.0x, Growth 1.4x, VIP Sprint 2.2x) with pre-calculated 50% deposits so you stop sending single prices that invite haggling.
+3. Provides word-for-word WhatsApp/Email scripts and contract clauses enforcing out-of-scope billing (₹1,500/hr or $87/hr) and project-pause terms when clients stall on assets.
 
 WHAT IT IS NOT:
-It is NOT AI software, it is NOT an automated SaaS app, and it does NOT magically close clients for you. It is an advanced, automated calculation and proposal spreadsheet template.`,
+It is NOT AI software, it is NOT an automated SaaS app, and it does NOT magically close clients without doing work. It is an advanced, automated calculation and proposal spreadsheet template.`,
     category: 'Dashboards',
     featured: true,
     isNew: true,
@@ -140,51 +140,33 @@ It is NOT AI software, it is NOT an automated SaaS app, and it does NOT magicall
     originalPrice: {
       standard: 4999
     },
-    rating: 4.96,
+    rating: 4.98,
     reviewCount: 384,
     salesCount: 1420,
-    tags: ['Google Sheets', 'Pricing Calculator', 'Freelancer Tools', 'Agency OS', 'Proposal Generator'],
+    tags: ['Google Sheets', 'Pricing Calculator', 'Web Design OS', 'Agency Tools', 'Proposal Generator'],
     bannerImage: '/pricing_calculator_mockup.jpg',
     galleryImages: [
       '/pricing_calculator_mockup.jpg'
     ],
     deliverables: [
       { name: 'Tab 1: The 6-Input Price Engine', format: 'Google Sheets', size: '1-Click Copy' },
-      { name: 'Tab 2: The 3-Tier Proposal Generator', format: 'Google Sheets', size: 'Included' },
-      { name: 'Tab 3: The Scope-Creep Shield & 4 Scripts', format: 'Text & Sheets', size: 'Included' },
-      { name: 'Quick-Start Setup & Implementation Guide', format: 'PDF & Notion', size: 'Included' }
+      { name: 'Tab 2: The 3-Tier Anchor Proposal Generator', format: 'Google Sheets', size: 'Included' },
+      { name: 'Tab 3: The Scope-Creep Shield & Rate Matrix', format: 'Google Sheets', size: 'Included' },
+      { name: 'Bonus 1: Anti-Haggling WhatsApp & Email Script Vault', format: 'PDF & Notion', size: 'Instant Download' },
+      { name: 'Bonus 2: Indian Freelance Contract Clause Cheatsheet', format: 'Markdown & Text', size: 'Instant Download' },
+      { name: 'Bonus 3: 10-Min ₹50k Live Proposal Video Breakdown', format: 'HD Video', size: 'Loom / MP4' },
+      { name: '1-Click Google Drive Duplicate & Quickstart Guide', format: 'PDF & Sheets', size: 'Instant Access' }
     ],
     features: [
       'Tab 1 (Price Engine): 6 raw inputs calculating true hourly survival rate, tax/gateway buffers, walk-away floor, and 1.5x overtime rate.',
       'Tab 2 (3-Tier Proposal): Auto-generates Essential (1.0x), Growth (1.4x), and VIP Sprint (2.2x) packages + 50% deposits & client pitch message.',
-      'Tab 3 (Scope-Creep Shield): Pre-written negotiation and contract clauses charging $87/hr for extra requests and project pause terms.',
+      'Tab 3 (Scope-Creep Shield): Pre-written negotiation clauses charging ₹1,500/hr ($87/hr) for extra requests and project-pause terms.',
+      'Bonus Script Vault: Word-for-word copy-paste replies to "Bhai discount kardo" and "Another freelancer is doing it for ₹5,000".',
+      'Contract Clause Cheatsheet: Strict 2-revision limit, 50% upfront deposit terms, and late-asset penalties.',
       'Zero Software Subscriptions: 100% plug-and-play Google Sheet (works in Excel & Notion too).',
       'Instant Automated Access: 1-click private Google Drive duplicate right after checkout.'
     ],
-    techStack: ['Google Sheets', 'Microsoft Excel', 'Notion Compatible'],
-    compatibility: ['Mac', 'Windows', 'iPhone', 'Android', 'iPad'],
-    version: '2.4.0',
-    lastUpdated: 'October 2026',
-    reviews: [
-      {
-        id: 'rev-calc-1',
-        author: 'Devansh K.',
-        role: 'Design Agency Founder',
-        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80',
-        rating: 5,
-        date: '3 days ago',
-        content: 'I plugged in my numbers in Tab 1 and used the Growth tier anchor proposal from Tab 2. The out-of-scope script in Tab 3 gave me the exact words to charge for extra requests without feeling awkward.'
-      },
-      {
-        id: 'rev-calc-2',
-        author: 'Sarah Jenkins',
-        role: 'Full-Stack Freelancer',
-        avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80',
-        rating: 5,
-        date: '1 week ago',
-        content: 'I was undercharging by almost 40% because I never calculated non-billable hours and taxes into my baseline. This sheet took 3 minutes to reveal my real floor price.'
-      }
-    ]
+    techStack: ['Google Sheets', 'Excel', 'Notion', 'Formulas']
   }
 ];
 

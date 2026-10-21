@@ -219,7 +219,7 @@ export const ProductDetailPage: React.FC = () => {
                     </div>
 
                     <div className="space-y-4">
-                      {product.reviews.map((rev) => (
+                      {(product.reviews || []).map((rev) => (
                         <div key={rev.id} className="p-5 rounded-2xl bg-black/[0.03] border border-black/10">
                           <div className="flex items-center justify-between mb-2">
                             <span className="font-bold text-sm text-black">{rev.author}</span>

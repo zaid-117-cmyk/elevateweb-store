@@ -51,10 +51,10 @@ export interface Product {
   deliverables: ProductDeliverable[];
   features: string[];
   techStack: string[];
-  compatibility: string[];
-  version: string;
-  lastUpdated: string;
-  reviews: ProductReview[];
+  compatibility?: string[];
+  version?: string;
+  lastUpdated?: string;
+  reviews?: ProductReview[];
 }
 
 export interface CartItem {
