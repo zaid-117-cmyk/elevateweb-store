@@ -2,6 +2,85 @@ import { Product, ProductCategory } from '../types';
 
 export const PRODUCTS: Product[] = [
   {
+    id: 'prod-self-trust-protocol',
+    slug: 'the-self-trust-protocol',
+    title: 'The Self-Trust Protocol',
+    tagline: 'Rewire focus, break dopamine addiction, and build unshakeable confidence in a distracted world.',
+    description: `Modern society has engineered a psychological trap: billion-dollar algorithms designed to fragment your attention, paired with an unedited highlight reel on social media that fuels chronic self-doubt.
+
+The Self-Trust Protocol is a comprehensive, 49-page illustrated eBook written specifically for ages 16–30 who are tired of feeling like spectators in their own lives. It dismantles the myth of "laziness" and gives you the exact biological protocols to defeat dopamine addiction, close the Intention-Action Gap, and build quiet, unshakeable confidence.
+
+WHAT'S INSIDE THIS 49-PAGE ILLUSTRATED MASTER EBOOK:
+• 10 Neuro-Informed Chapters: Plain-English neuroscience without academic jargon.
+• 11 High-Resolution Custom Illustrations: Visual mental models mapping your brain's reward circuits.
+• The 20-Foot Phone Air-Gap & 45-Minute Morning Shield: Reclaiming baseline sensory focus.
+• Overcoming Emotional Task-Aversion: Why procrastination is an emotional defense, not poor time management.
+• The 5-Minute Micro-Ramp: Using kinetic momentum and the Zeigarnik effect to start anything without overthinking.
+• The Self-Trust Ledger: Replacing empty mirror affirmations with undeniable historical proof of your integrity.
+• The 4-Tier Graduated Social Exposure Ladder: Overcoming social freezing and speaking up with calm authority.
+• The Three-Anchor Daily Rhythm: Realistic routines that fit real students, 9-to-5s, and freelance creators.
+• Printable 30-Day Self-Trust Scorecard & Emergency Action Worksheets right inside the book.`,
+    category: 'Master eBooks',
+    featured: true,
+    isNew: true,
+    paymentUrl: 'https://whop.com/elevateweb-b83f/the-self-trust-protocol-illustrated-master-ebook',
+    price: {
+      standard: 299
+    },
+    originalPrice: {
+      standard: 999
+    },
+    rating: 4.96,
+    reviewCount: 88,
+    salesCount: 420,
+    tags: ['EBook', 'Discipline', 'Confidence', 'Focus', 'Dopamine Detox', 'Self-Trust'],
+    bannerImage: '/self_trust_banner.jpg',
+    galleryImages: [
+      '/self_trust_cover.jpg',
+      '/self_trust_3d_mockup.jpg',
+      '/self_trust_tablet_mockup.jpg',
+      '/self_trust_banner.jpg',
+      '/self_trust_desk.jpg'
+    ],
+    deliverables: [
+      { name: 'The Self-Trust Protocol Master eBook (49 Pages)', format: 'Illustrated PDF', size: '10.6 MB' },
+      { name: 'Printable 30-Day Self-Trust Scorecard & Worksheets', format: 'PDF (Included in Book)', size: 'Instant Download' }
+    ],
+    features: [
+      '10 Neuro-Informed Chapters: Grounded in prefrontal cortex biology and dopamine regulation.',
+      '11 Custom Editorial Illustrations: Visual mental models for instant understanding.',
+      'The Three-Anchor Protocol: Protect your morning, execute 90-minute deep work, and shut down cleanly.',
+      'The 5-Minute Micro-Ramp: Overcome starting friction and activate kinetic momentum.',
+      'The Self-Trust Ledger: Mathematically calculate internal integrity and outwork your self-doubt.',
+      'The 4-Tier Exposure Ladder: Eliminate public freezing and speak with quiet authority.',
+      'Instant Automated Delivery via Whop: Instant 1-click PDF download immediately upon checkout.'
+    ],
+    techStack: ['Illustrated PDF', 'Print-Ready A4', 'Mobile Optimized'],
+    compatibility: ['Mac', 'Windows', 'iPhone', 'Android', 'iPad'],
+    version: '1.0.0',
+    lastUpdated: 'October 2026',
+    reviews: [
+      {
+        id: 'rev-self-trust-1',
+        author: 'Rohan Sharma',
+        role: 'University Student & Creator',
+        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80',
+        rating: 5,
+        date: '3 days ago',
+        content: 'The concept of the Self-Trust Ledger completely rewired how I view confidence. I stopped saying affirmations and started making small daily deposits. The 20-foot phone air-gap alone doubled my study time.'
+      },
+      {
+        id: 'rev-self-trust-2',
+        author: 'Ananya Verma',
+        role: 'Early Career Analyst',
+        avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80',
+        rating: 5,
+        date: '1 week ago',
+        content: 'The 61/57 Exposure Paradox described my exact issue: confident in private, freezing in meetings. The graduated exposure ladder and 3-second rule gave me practical courage that actually works.'
+      }
+    ]
+  },
+  {
     id: 'prod-15-min-meditation',
     slug: 'the-15-minute-meditation',
     title: 'The 15-Minute Meditation',

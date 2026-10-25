@@ -11,6 +11,7 @@ import { ProductDetailPage } from './pages/ProductDetailPage';
 import { OrderSuccessPage } from './pages/OrderSuccessPage';
 import { CheckoutPage } from './pages/CheckoutPage';
 import { MeditationLandingPage } from './pages/MeditationLandingPage';
+import { SelfTrustLandingPage } from './pages/SelfTrustLandingPage';
 import { PricingCalculatorPage } from './pages/PricingCalculatorPage';
 import { PricingCalculatorAccessPage } from './pages/PricingCalculatorAccessPage';
 import { SheetRedirectPage } from './pages/SheetRedirectPage';
@@ -25,7 +26,9 @@ const AppContent: React.FC = () => {
     location.pathname.startsWith('/pricing-calculator') || 
     location.pathname.startsWith('/calculator') || 
     location.pathname.startsWith('/freelance-pricing-calculator') ||
-    location.pathname.startsWith('/sheet');
+    location.pathname.startsWith('/sheet') ||
+    location.pathname.startsWith('/self-trust') ||
+    location.pathname.startsWith('/the-self-trust-protocol');
 
   return (
     <div className={`flex flex-col min-h-screen ${isCalculatorPage ? 'bg-[#070b14] text-slate-100' : 'bg-white text-black'} selection:bg-emerald-500 selection:text-slate-950`}>
@@ -49,6 +52,9 @@ const AppContent: React.FC = () => {
           <Route path="/product/:slug" element={<ProductDetailPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/meditation" element={<MeditationLandingPage />} />
+          <Route path="/self-trust" element={<SelfTrustLandingPage />} />
+          <Route path="/the-self-trust-protocol" element={<SelfTrustLandingPage />} />
+          <Route path="/self-trust-protocol" element={<SelfTrustLandingPage />} />
           <Route path="/order-success" element={<OrderSuccessPage />} />
         </Routes>
       </main>
