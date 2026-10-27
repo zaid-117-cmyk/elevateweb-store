@@ -140,7 +140,7 @@ export const ProductDetailPage: React.FC = () => {
                         : 'text-black/40 hover:text-black'
                     }`}
                   >
-                    {tab === 'features' ? 'Features & Syllabus' : tab === 'tech' ? 'Deliverables' : 'Operator Reviews'}
+                    {tab === 'features' ? 'Features & Syllabus' : tab === 'tech' ? 'Deliverables' : 'Reader Reviews'}
                     {activeTab === tab && (
                       <motion.span
                         layoutId="activeTabIndicator"
@@ -215,7 +215,7 @@ export const ProductDetailPage: React.FC = () => {
                         ))}
                       </div>
                       <span className="font-display font-bold text-black">{product.rating} / 5.0</span>
-                      <span className="text-xs text-black/50 font-mono">({product.reviewCount} verified operator reviews)</span>
+                      <span className="text-xs text-black/50 font-mono">({product.reviewCount} verified reader reviews)</span>
                     </div>
 
                     <div className="space-y-4">
@@ -320,9 +320,52 @@ export const ProductDetailPage: React.FC = () => {
               </div>
 
               <div className="flex items-center justify-center gap-2 text-xs text-black/50 pt-2 border-t border-black/10">
-                <ShieldCheck className="w-4 h-4 text-black/70" />
-                <span>Instant Download • 30-Day Money-Back Guarantee</span>
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                <span>Instant 1-Click PDF Access • Lifetime Revisions Included</span>
               </div>
+
+              {/* Reader Testimonials Directly Below Buy Button (Immediate Social Proof) */}
+              {product.reviews && product.reviews.length > 0 && (
+                <div className="pt-4 border-t border-black/10 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-black/50 font-bold">
+                      Reader Results
+                    </span>
+                    <div className="flex items-center gap-1 text-amber-500">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-3 h-3 fill-amber-500 text-amber-500" />
+                      ))}
+                      <span className="text-black font-bold font-mono text-[11px] ml-1">
+                        {product.rating} / 5.0
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2.5">
+                    {product.reviews.slice(0, 2).map((rev) => (
+                      <div
+                        key={rev.id}
+                        className="p-3.5 rounded-2xl bg-white border border-black/10 shadow-xs text-xs space-y-1.5"
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <img
+                              src={rev.avatar}
+                              alt={rev.author}
+                              className="w-5 h-5 rounded-full object-cover border border-black/10"
+                            />
+                            <span className="font-bold text-black text-xs">{rev.author}</span>
+                          </div>
+                          <span className="text-[10px] text-black/40 font-mono">{rev.role}</span>
+                        </div>
+                        <p className="text-black/80 text-[11px] leading-relaxed italic">
+                          "{rev.content}"
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 

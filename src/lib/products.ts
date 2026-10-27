@@ -34,13 +34,13 @@ WHAT'S INSIDE THIS 49-PAGE ILLUSTRATED MASTER EBOOK:
     reviewCount: 88,
     salesCount: 420,
     tags: ['EBook', 'Discipline', 'Confidence', 'Focus', 'Dopamine Detox', 'Self-Trust'],
-    bannerImage: '/self_trust_banner.jpg',
+    bannerImage: '/self_trust_tablet_mockup.jpg',
     galleryImages: [
-      '/self_trust_cover.jpg',
-      '/self_trust_3d_mockup.jpg',
       '/self_trust_tablet_mockup.jpg',
-      '/self_trust_banner.jpg',
-      '/self_trust_desk.jpg'
+      '/self_trust_3d_mockup.jpg',
+      '/self_trust_cover.jpg',
+      '/self_trust_desk.jpg',
+      '/self_trust_banner.jpg'
     ],
     deliverables: [
       { name: 'The Self-Trust Protocol Master eBook (49 Pages)', format: 'Illustrated PDF', size: '10.6 MB' },
@@ -53,7 +53,7 @@ WHAT'S INSIDE THIS 49-PAGE ILLUSTRATED MASTER EBOOK:
       'The 5-Minute Micro-Ramp: Overcome starting friction and activate kinetic momentum.',
       'The Self-Trust Ledger: Mathematically calculate internal integrity and outwork your self-doubt.',
       'The 4-Tier Exposure Ladder: Eliminate public freezing and speak with quiet authority.',
-      'Instant Automated Delivery via Whop: Instant 1-click PDF download immediately upon checkout.'
+      'Instant 1-Click PDF Access: Delivered to your screen and email immediately after UPI payment.'
     ],
     techStack: ['Illustrated PDF', 'Print-Ready A4', 'Mobile Optimized'],
     compatibility: ['Mac', 'Windows', 'iPhone', 'Android', 'iPad'],

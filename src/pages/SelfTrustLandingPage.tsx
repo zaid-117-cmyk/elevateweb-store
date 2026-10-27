@@ -36,7 +36,7 @@ export const SelfTrustLandingPage: React.FC = () => {
   const faqs = [
     {
       q: 'How do I receive the eBook after purchase?',
-      a: 'Instantly via Whop! As soon as your payment completes, you are redirected to your Whop member hub where you can download the 49-page PDF with 1 click. You also receive an instant confirmation email with your permanent download link.'
+      a: 'Immediately after UPI payment! As soon as your payment completes, you are redirected to your digital dashboard where you can download the 49-page PDF with 1 click. You also receive an instant confirmation email with your permanent download link.'
     },
     {
       q: 'Is this a recurring subscription or a one-time purchase?',
@@ -61,7 +61,7 @@ export const SelfTrustLandingPage: React.FC = () => {
       
       {/* TOP ANNOUNCEMENT BAR */}
       <div className="bg-gradient-to-r from-cyan-950 via-slate-900 to-amber-950 border-b border-cyan-500/20 py-2.5 px-4 text-center text-xs sm:text-sm font-medium text-cyan-300">
-        <span>⚡ THE 49-PAGE ILLUSTRATED MASTER EBOOK • INSTANT WHOP DOWNLOAD</span>
+        <span>⚡ THE 49-PAGE ILLUSTRATED MASTER EBOOK • INSTANT DIGITAL DOWNLOAD</span>
       </div>
 
       {/* HERO SECTION */}
@@ -116,7 +116,7 @@ export const SelfTrustLandingPage: React.FC = () => {
 
               <div className="flex items-center gap-2 text-xs text-slate-400 px-2">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>Instant 1-Click PDF Download via Whop</span>
+                <span>Instant 1-Click PDF Access Delivered Immediately</span>
               </div>
             </div>
 
@@ -284,7 +284,7 @@ export const SelfTrustLandingPage: React.FC = () => {
               <div className="p-6 rounded-xl bg-slate-950/80 border border-slate-800 text-center space-y-2">
                 <div className="text-slate-400 line-through text-sm">Regular Price: ₹999 ($29)</div>
                 <div className="text-4xl font-extrabold text-white">₹299 <span className="text-sm font-normal text-slate-400">($19)</span></div>
-                <p className="text-xs text-emerald-400 font-medium">Instant 1-Click PDF Access via Whop</p>
+                <p className="text-xs text-emerald-400 font-medium">Instant 1-Click PDF Access</p>
               </div>
             </div>
           </div>
@@ -300,7 +300,7 @@ export const SelfTrustLandingPage: React.FC = () => {
               <span>Download The Master eBook Now</span>
               <ArrowRight className="w-5 h-5" />
             </a>
-            <p className="text-xs text-slate-400 mt-3">Instant download delivered securely to your device immediately via Whop.</p>
+            <p className="text-xs text-slate-400 mt-3">Instant download delivered to your screen and email immediately after UPI payment.</p>
           </div>
 
         </div>
@@ -325,7 +325,7 @@ export const SelfTrustLandingPage: React.FC = () => {
 
       {/* FOOTER */}
       <footer className="max-w-6xl mx-auto px-6 pt-12 border-t border-slate-800/60 text-center text-xs text-slate-400">
-        <p>© 2026 ElevateWeb. All rights reserved. Delivered securely via Whop.</p>
+        <p>© 2026 ElevateWeb. All rights reserved. Instant 1-click digital delivery.</p>
       </footer>
 
     </div>
