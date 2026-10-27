@@ -1,69 +1,36 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { CartProvider } from './hooks/useCart';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useLenis } from './hooks/useLenis';
-import { CubertoNav } from './components/CubertoNav';
-import { CubertoFooter } from './components/CubertoFooter';
-import { CubertoCursor } from './components/CubertoCursor';
-import { useLocation } from 'react-router-dom';
-import { HomePage } from './pages/HomePage';
-import { ProductDetailPage } from './pages/ProductDetailPage';
-import { OrderSuccessPage } from './pages/OrderSuccessPage';
-import { CheckoutPage } from './pages/CheckoutPage';
-import { MeditationLandingPage } from './pages/MeditationLandingPage';
 import { SelfTrustLandingPage } from './pages/SelfTrustLandingPage';
-import { PricingCalculatorPage } from './pages/PricingCalculatorPage';
-import { PricingCalculatorAccessPage } from './pages/PricingCalculatorAccessPage';
-import { SheetRedirectPage } from './pages/SheetRedirectPage';
-import { CartDrawer } from './components/CartDrawer';
+import { UserDashboardPage } from './pages/UserDashboardPage';
+import { PartnerDashboardPage } from './pages/PartnerDashboardPage';
 
 const AppContent: React.FC = () => {
-  // Initialize Lenis + GSAP buttery smooth scrolling
+  // Initialize Lenis buttery smooth scrolling
   useLenis();
-  const location = useLocation();
-
-  const isCalculatorPage = 
-    location.pathname.startsWith('/pricing-calculator') || 
-    location.pathname.startsWith('/calculator') || 
-    location.pathname.startsWith('/freelance-pricing-calculator') ||
-    location.pathname.startsWith('/sheet') ||
-    location.pathname.startsWith('/self-trust') ||
-    location.pathname.startsWith('/the-self-trust-protocol');
 
   return (
-    <div className={`flex flex-col min-h-screen ${isCalculatorPage ? 'bg-[#070b14] text-slate-100' : 'bg-white text-black'} selection:bg-emerald-500 selection:text-slate-950`}>
-      {/* Cuberto Custom Magnetic Follower Cursor */}
-      <CubertoCursor />
-
-      {/* Global Navigation (omitted on dedicated SaaS dark landing pages) */}
-      {!isCalculatorPage && <CubertoNav />}
-
-      {/* Main View */}
+    <div className="flex flex-col min-h-screen bg-[#050811] text-slate-100 selection:bg-rose-500 selection:text-white">
       <main className="flex-1">
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/pricing-calculator" element={<PricingCalculatorPage />} />
-          <Route path="/pricing-calculator/access" element={<PricingCalculatorAccessPage />} />
-          <Route path="/calculator" element={<PricingCalculatorPage />} />
-          <Route path="/calculator/access" element={<PricingCalculatorAccessPage />} />
-          <Route path="/sheet" element={<SheetRedirectPage />} />
-          <Route path="/sheet/copy" element={<SheetRedirectPage />} />
-          <Route path="/freelance-pricing-calculator" element={<PricingCalculatorPage />} />
-          <Route path="/product/:slug" element={<ProductDetailPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/meditation" element={<MeditationLandingPage />} />
+          {/* Main Funnel Landing Page (Exclusively for Self-Trust OS) */}
+          <Route path="/" element={<SelfTrustLandingPage />} />
           <Route path="/self-trust" element={<SelfTrustLandingPage />} />
           <Route path="/the-self-trust-protocol" element={<SelfTrustLandingPage />} />
           <Route path="/self-trust-protocol" element={<SelfTrustLandingPage />} />
-          <Route path="/order-success" element={<OrderSuccessPage />} />
+          
+          {/* User Streak & Execution Dashboard */}
+          <Route path="/dashboard" element={<UserDashboardPage />} />
+          <Route path="/self-trust/dashboard" element={<UserDashboardPage />} />
+
+          {/* Confidential YouTuber Affiliate Revenue Dashboard (@youthphilosophy22) */}
+          <Route path="/partner-dashboard" element={<PartnerDashboardPage />} />
+          <Route path="/partner" element={<PartnerDashboardPage />} />
+
+          {/* Any legacy product route redirects cleanly to the main funnel */}
+          <Route path="*" element={<Navigate to="/self-trust" replace />} />
         </Routes>
       </main>
-
-      {/* Global Footer (omitted on dedicated SaaS dark landing pages with built-in footer) */}
-      {!isCalculatorPage && <CubertoFooter />}
-
-      {/* Global Cart Drawer */}
-      <CartDrawer />
     </div>
   );
 };
@@ -71,9 +38,7 @@ const AppContent: React.FC = () => {
 export const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <CartProvider>
-        <AppContent />
-      </CartProvider>
+      <AppContent />
     </BrowserRouter>
   );
 };
