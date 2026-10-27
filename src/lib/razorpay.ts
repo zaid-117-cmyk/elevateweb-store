@@ -1,5 +1,6 @@
 import { FunnelTier } from '../types/funnel';
 import { recordAffiliateSale } from './affiliate';
+import { dispatchOrderToAdmin } from './leadCapture';
 
 declare global {
   interface Window {
@@ -116,6 +117,17 @@ export const initiateCheckout = async (params: {
             telegramInviteLink
           });
 
+          // Dispatch order alert to admin Webhook & Telegram
+          dispatchOrderToAdmin({
+            orderId: paymentId,
+            name: customer.name,
+            email: customer.email,
+            phone: customer.phone,
+            tierName: tier.name,
+            amount: tier.price,
+            ref
+          });
+
           onSuccess({
             razorpay_payment_id: paymentId,
             razorpay_order_id: response.razorpay_order_id,
@@ -179,6 +191,17 @@ export const initiateCheckout = async (params: {
     tierId: tier.id,
     paymentId: simulatedPaymentId,
     telegramInviteLink
+  });
+
+  // Dispatch order alert to admin Webhook & Telegram
+  dispatchOrderToAdmin({
+    orderId: simulatedPaymentId,
+    name: customer.name,
+    email: customer.email,
+    phone: customer.phone,
+    tierName: tier.name,
+    amount: tier.price,
+    ref
   });
 
   onSuccess({

@@ -15,6 +15,7 @@ import { FUNNEL_TIERS } from '../lib/products';
 import { FunnelTier } from '../types/funnel';
 import { initAffiliateTracking, recordAffiliateLead } from '../lib/affiliate';
 import { initiateCheckout } from '../lib/razorpay';
+import { dispatchLeadToAdmin } from '../lib/leadCapture';
 import { useNavigate } from 'react-router-dom';
 
 export const SelfTrustLandingPage: React.FC = () => {
@@ -69,14 +70,17 @@ export const SelfTrustLandingPage: React.FC = () => {
     e.preventDefault();
     if (!leadForm.name || !leadForm.email) return;
 
-    recordAffiliateLead({
+    const newLead = {
       id: `lead_${Date.now()}`,
       name: leadForm.name,
       email: leadForm.email,
       whatsapp: leadForm.whatsapp || 'N/A',
       ref: refPartner,
       timestamp: new Date().toISOString()
-    });
+    };
+
+    recordAffiliateLead(newLead);
+    dispatchLeadToAdmin(newLead);
 
     setLeadDownloaded(true);
     // Trigger sample download
