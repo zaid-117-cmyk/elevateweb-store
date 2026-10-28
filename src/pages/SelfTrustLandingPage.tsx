@@ -164,6 +164,24 @@ export const SelfTrustLandingPage: React.FC = () => {
           <span>Launch Pricing Ends In: <strong className="text-amber-300">{countdownMinutes}m {countdownSeconds}s</strong></span>
         </div>
 
+        {/* Product Visual Showcase (The 2-in-1 Bundle Mockup) */}
+        <div className="pt-8 max-w-4xl mx-auto">
+          <div className="relative rounded-3xl overflow-hidden border border-slate-800/80 shadow-2xl shadow-rose-950/30 group">
+            <img 
+              src="/self_trust_bundle_mockup.jpg" 
+              alt="The Self-Trust Protocol & Notion OS Bundle Mockup" 
+              className="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-500"
+            />
+            <div className="absolute bottom-4 left-4 right-4 sm:left-6 sm:right-6 p-3 sm:p-4 rounded-2xl bg-slate-950/85 backdrop-blur-md border border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+              <span className="text-white font-medium flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                Official 2-in-1 Digital Bundle: 49-Page Master PDF + Interactive Notion OS
+              </span>
+              <span className="text-amber-300 font-bold bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">₹299 Instant 1-Click Access</span>
+            </div>
+          </div>
+        </div>
+
       </section>
 
       {/* 3-MINUTE INTERACTIVE VSL SECTION */}

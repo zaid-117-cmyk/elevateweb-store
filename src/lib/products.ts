@@ -36,9 +36,21 @@ export const PRODUCTS: Product[] = [
     slug: 'the-self-trust-protocol',
     title: 'The Self-Trust Protocol Bundle',
     tagline: 'Rewire focus, break dopamine addiction, and build unshakeable confidence in a distracted world.',
-    description: `Modern society has engineered a psychological trap: billion-dollar algorithms designed to fragment your attention, paired with an unedited highlight reel on social media that fuels chronic self-doubt.
+    description: `It’s 2:15 AM. The blue light from your phone is the only thing illuminating your dark room. Your eyes burn, your chest feels heavy with guilt, and in the back of your mind, a quiet voice whispers: "You did it again."
 
-The Self-Trust Protocol is a comprehensive, 49-page illustrated eBook and interactive Notion OS template written specifically for ages 16–30 who are tired of feeling like spectators in their own lives. It dismantles the myth of "laziness" and gives you the exact biological protocols to defeat dopamine addiction, close the Intention-Action Gap, and build quiet, unshakeable confidence.`,
+You swore today would be different. You promised you’d study, work out, and finally lock in. Instead, six hours vanished into mindless Reels, dopamine numbness, and cheap distractions.
+
+The worst part isn’t the wasted time. It’s the slow, humiliating death of your word to yourself. Every broken promise rewires your subconscious to believe one toxic lie: that you are someone who cannot be trusted.
+
+Here is the truth: You don’t lack willpower. You’re just fighting a rigged biological battle with stone-age brain circuits.
+
+The Self-Trust Protocol is the exact neuro-framework engineered for Indian Gen-Z to kill brain fog, shut down emotional task-aversion, and rebuild quiet, ironclad confidence.
+
+What You Get Inside (The Essential 2-in-1 Action Bundle):
+1. The 49-Page Master Illustrated PDF: 10 neuro-informed chapters and 11 mental model diagrams dismantling the Dopamine Trap, the 20-Foot Phone Air-Gap, and the 3-Anchor Daily Rhythm. No corporate Western fluff—pure execution.
+2. The Self-Trust Ledger (Interactive Notion OS): Your digital command center. Mathematically tracks every kept promise as a deposit, transforming discipline into undeniable proof of who you are.
+
+For ₹299—less than one fast-food order—stop being a spectator in your own life. Rebuild your self-trust. Lock in.`,
     category: 'Master eBooks',
     featured: true,
     isNew: true,
@@ -50,13 +62,13 @@ The Self-Trust Protocol is a comprehensive, 49-page illustrated eBook and intera
     reviewCount: 412,
     salesCount: 1240,
     tags: ['Berserk', 'Discipline', 'Confidence', 'Focus', 'Phone Detox', 'Self-Trust', 'Notion'],
-    bannerImage: '/self_trust_tablet_mockup.jpg',
+    bannerImage: '/self_trust_bundle_mockup.jpg',
     galleryImages: [
+      '/self_trust_bundle_mockup.jpg',
+      '/self_trust_hero_banner.jpg',
+      '/self_trust_notion_mockup.jpg',
       '/self_trust_tablet_mockup.jpg',
-      '/self_trust_3d_mockup.jpg',
-      '/self_trust_cover.jpg',
-      '/self_trust_desk.jpg',
-      '/self_trust_banner.jpg'
+      '/self_trust_3d_mockup.jpg'
     ],
     deliverables: [
       { name: 'The Self-Trust Protocol Master eBook (49 Pages)', format: 'Illustrated PDF', size: '10.6 MB' },
