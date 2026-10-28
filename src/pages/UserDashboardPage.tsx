@@ -9,9 +9,7 @@ import {
   Minus, 
   ShieldCheck, 
   Clock, 
-  BookOpen, 
-  Sparkles,
-  ArrowRight
+  BookOpen
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { LedgerEntry, UserStreakProfile } from '../types/funnel';
@@ -195,10 +193,6 @@ export const UserDashboardPage: React.FC = () => {
     setTimeout(() => setDownloadSuccess(false), 3000);
   };
 
-  const handleUpgradeToVIP = () => {
-    const checkoutUrl = 'https://whop.com/elevateweb-b83f/the-self-trust-protocol-illustrated-master-ebook';
-    window.open(checkoutUrl, '_blank', 'noopener,noreferrer');
-  };
 
   const totalPoints = profile.totalDeposits + profile.totalWithdrawals;
   const selfTrustRatio = totalPoints > 0 
@@ -223,12 +217,8 @@ export const UserDashboardPage: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-2">
-            <span className={`px-3 py-1 rounded-full text-xs font-mono font-bold border ${
-              profile.tier === 'tier-2-core-os'
-                ? 'bg-rose-500/10 border-rose-500/30 text-rose-300'
-                : 'bg-cyan-500/10 border-cyan-500/30 text-cyan-300'
-            }`}>
-              {profile.tier === 'tier-2-core-os' ? 'VIP TELEGRAM TIER' : 'STARTER TIER'}
+            <span className="px-3 py-1 rounded-full text-xs font-mono font-bold border bg-rose-500/10 border-rose-500/30 text-rose-300">
+              SELF-TRUST OS MEMBER
             </span>
           </div>
         </div>
@@ -388,64 +378,41 @@ export const UserDashboardPage: React.FC = () => {
           {/* Right Column (5 cols): VIP Telegram Gate & Digital Vault */}
           <div className="lg:col-span-5 space-y-6">
             
-            {/* VIP Telegram Gate Card */}
-            {profile.telegramUnlocked ? (
-              <div className="p-6 rounded-3xl bg-gradient-to-br from-slate-900 to-sky-950/40 border border-sky-500/30 shadow-xl space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-mono">
-                    <Send className="w-3.5 h-3.5" />
-                    <span>PRIVATE TELEGRAM TRIBE</span>
-                  </div>
-                  <span className="text-[11px] font-mono text-amber-400 flex items-center gap-1">
-                    <Clock className="w-3 h-3" />
-                    <span>Link expires in {timeLeft}</span>
-                  </span>
+            {/* VIP Telegram Gate Card (Included with The Self-Trust OS) */}
+            <div className="p-6 rounded-3xl bg-gradient-to-br from-slate-900 to-sky-950/40 border border-sky-500/30 shadow-xl space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-mono">
+                  <Send className="w-3.5 h-3.5" />
+                  <span>PRIVATE TELEGRAM TRIBE</span>
                 </div>
-
-                <div>
-                  <h3 className="text-lg font-bold text-white">VIP Daily Accountability Circle</h3>
-                  <p className="text-xs text-slate-300 leading-relaxed mt-1">
-                    Automated check-ins at 8:00 AM & 9:00 PM. No toxic noise. High-conviction creators and students executing together.
-                  </p>
-                </div>
-
-                <a
-                  href={profile.telegramInviteLink || 'https://t.me/+SelfTrustVIP'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-sky-500/25 transition-all"
-                >
-                  <Send className="w-4 h-4" />
-                  <span>Join VIP Telegram Group (1-Click)</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-
-                <div className="text-[10px] text-slate-500 font-mono text-center">
-                  Single-use invite link stamped specifically to {profile.email}
-                </div>
+                <span className="text-[11px] font-mono text-amber-400 flex items-center gap-1">
+                  <Clock className="w-3 h-3" />
+                  <span>Link expires in {timeLeft}</span>
+                </span>
               </div>
-            ) : (
-              /* Upgrade to Telegram Gate Card (For ₹99 Buyers) */
-              <div className="p-6 rounded-3xl bg-slate-900/80 border border-slate-800 space-y-4">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-mono">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>COMMUNITY UPGRADE AVAILABLE</span>
-                </div>
 
-                <h3 className="text-base font-bold text-white">Join the VIP Telegram Tribe</h3>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  You are currently on the Starter tier. Upgrade now to get the 8:00 AM & 9:00 PM Accountability Bot, community moderation, and weekly live AMAs.
+              <div>
+                <h3 className="text-lg font-bold text-white">VIP Daily Accountability Circle</h3>
+                <p className="text-xs text-slate-300 leading-relaxed mt-1">
+                  Automated check-ins at 8:00 AM & 9:00 PM. No toxic noise. High-conviction creators and students executing together.
                 </p>
-
-                <button
-                  onClick={handleUpgradeToVIP}
-                  className="w-full py-3 rounded-xl bg-gradient-to-r from-rose-600 to-amber-500 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all"
-                >
-                  <span>Upgrade to VIP OS — Just ₹400</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
               </div>
-            )}
+
+              <a
+                href={profile.telegramInviteLink || 'https://t.me/+SelfTrustVIP'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-sky-500/25 transition-all"
+              >
+                <Send className="w-4 h-4" />
+                <span>Join VIP Telegram Group (1-Click)</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+
+              <div className="text-[10px] text-slate-500 font-mono text-center">
+                Single-use invite link stamped specifically to {profile.email}
+              </div>
+            </div>
 
             {/* My Digital Vault (Downloads & External Templates) */}
             <div className="p-6 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-4">

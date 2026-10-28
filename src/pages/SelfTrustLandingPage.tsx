@@ -4,38 +4,25 @@ import {
   ArrowRight, 
   CheckCircle2, 
   Play, 
-  Check, 
-  Download, 
   MessageSquare, 
   Clock, 
   Sparkles
 } from 'lucide-react';
 import { FUNNEL_TIERS } from '../lib/products';
 import { FunnelTier } from '../types/funnel';
-import { initAffiliateTracking, recordAffiliateLead } from '../lib/affiliate';
-import { dispatchLeadToAdmin } from '../lib/leadCapture';
+import { initAffiliateTracking } from '../lib/affiliate';
 
 export const SelfTrustLandingPage: React.FC = () => {
-  const [refPartner, setRefPartner] = useState('youthphilosophy');
-  
-  // Free Lead Magnet Modal State
-  const [showLeadModal, setShowLeadModal] = useState(false);
-  const [leadForm, setLeadForm] = useState({ name: '', email: '', whatsapp: '' });
-  const [leadDownloaded, setLeadDownloaded] = useState(false);
-
   // VSL State
   const [isPlayingVSL, setIsPlayingVSL] = useState(false);
 
-  // 15-Minute Countdown Timer for Tripwire Upsell
+  // 15-Minute Countdown Timer for Launch Special
   const [countdownMinutes, setCountdownMinutes] = useState(14);
   const [countdownSeconds, setCountdownSeconds] = useState(59);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const activeRef = initAffiliateTracking();
-    if (activeRef) {
-      setRefPartner(activeRef);
-    }
+    initAffiliateTracking();
 
     // 15-min countdown interval
     const timer = setInterval(() => {
@@ -50,38 +37,8 @@ export const SelfTrustLandingPage: React.FC = () => {
   }, []);
 
   const handleOpenCheckout = (tier: FunnelTier) => {
-    if (tier.price === 0) {
-      setShowLeadModal(true);
-      return;
-    }
     const checkoutUrl = tier.checkoutUrl || 'https://whop.com/elevateweb-b83f/the-self-trust-protocol-illustrated-master-ebook';
     window.open(checkoutUrl, '_blank', 'noopener,noreferrer');
-  };
-
-  const handleLeadSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!leadForm.name || !leadForm.email) return;
-
-    const newLead = {
-      id: `lead_${Date.now()}`,
-      name: leadForm.name,
-      email: leadForm.email,
-      whatsapp: leadForm.whatsapp || 'N/A',
-      ref: refPartner,
-      timestamp: new Date().toISOString()
-    };
-
-    recordAffiliateLead(newLead);
-    dispatchLeadToAdmin(newLead);
-
-    setLeadDownloaded(true);
-    // Trigger sample download
-    const link = document.createElement('a');
-    link.href = '/self_trust_tablet_mockup.jpg';
-    link.download = 'The_Self_Trust_Protocol_Chapters_1_3_Sample.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
   };
 
   const youtubeComments = [
@@ -151,10 +108,10 @@ export const SelfTrustLandingPage: React.FC = () => {
             User Login / Dashboard
           </a>
           <button
-            onClick={() => handleOpenCheckout(FUNNEL_TIERS[1])}
+            onClick={() => handleOpenCheckout(FUNNEL_TIERS[0])}
             className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-rose-600/30"
           >
-            <span>Start for ₹99</span>
+            <span>Get Access — ₹499</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
@@ -198,19 +155,11 @@ export const SelfTrustLandingPage: React.FC = () => {
         {/* Hero CTA Block with Urgency Timer */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
           <button
-            onClick={() => handleOpenCheckout(FUNNEL_TIERS[1])}
-            className="w-full sm:w-auto px-9 py-4 rounded-2xl bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 hover:from-rose-500 hover:to-amber-400 text-white font-extrabold text-base tracking-wide uppercase transition-all duration-300 shadow-xl shadow-rose-600/30 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
+            onClick={() => handleOpenCheckout(FUNNEL_TIERS[0])}
+            className="w-full sm:w-auto px-10 py-4 rounded-2xl bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 hover:from-rose-500 hover:to-amber-400 text-white font-extrabold text-base tracking-wide uppercase transition-all duration-300 shadow-xl shadow-rose-600/30 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
           >
-            <span>Get The Berserk Starter — Only ₹99</span>
+            <span>Get The Self-Trust OS — Only ₹499</span>
             <ArrowRight className="w-4 h-4" />
-          </button>
-
-          <button
-            onClick={() => setShowLeadModal(true)}
-            className="w-full sm:w-auto px-7 py-4 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-slate-200 font-bold text-sm tracking-wider uppercase transition-all flex items-center justify-center gap-2"
-          >
-            <Download className="w-4 h-4 text-cyan-400" />
-            <span>Free Sample (Chapters 1–3)</span>
           </button>
         </div>
 
@@ -310,108 +259,98 @@ export const SelfTrustLandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* PRODUCT TIERS & PRICING TABLE (THE 3 TIERS) */}
+      {/* PRODUCT PRICING (THE COMPLETE OS - ₹499) */}
       <section id="pricing" className="max-w-6xl mx-auto px-6 py-16">
-        <div className="text-center mb-14 space-y-3">
-          <span className="px-3.5 py-1 rounded-full bg-rose-500/10 text-rose-400 font-mono text-xs uppercase tracking-wider">
-            Clear, Frictionless Pricing
+        <div className="text-center mb-12 space-y-3">
+          <span className="px-3.5 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 font-mono text-xs uppercase tracking-wider">
+            All-In-One Execution System
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-            Choose Your Execution Tier
+            Get The Complete Self-Trust OS
           </h2>
           <p className="text-sm sm:text-base text-slate-400 max-w-xl mx-auto">
-            Engineered for Indian students and creators. Instant 1-click access via UPI, Netbanking, or Cards.
+            Everything you need to rebuild your focus, eliminate dopamine loops, and hold yourself accountable. No hidden fees. Instant digital delivery.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-          {FUNNEL_TIERS.map((tier) => {
-            const isTripwire = tier.id === 'tier-1-starter';
-            const isVIP = tier.id === 'tier-2-core-os';
+        <div className="max-w-2xl mx-auto">
+          {FUNNEL_TIERS.map((tier) => (
+            <div
+              key={tier.id}
+              className="rounded-3xl p-8 sm:p-10 flex flex-col justify-between relative bg-gradient-to-b from-slate-900 via-slate-900/95 to-rose-950/40 border-2 border-rose-500/80 shadow-2xl shadow-rose-500/20"
+            >
+              {/* Badge */}
+              {tier.badge && (
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-gradient-to-r from-rose-600 to-amber-500 text-white shadow-md">
+                  {tier.badge}
+                </div>
+              )}
 
-            return (
-              <div
-                key={tier.id}
-                className={`rounded-3xl p-8 flex flex-col justify-between relative transition-all duration-300 ${
-                  isTripwire
-                    ? 'bg-gradient-to-b from-slate-900 via-slate-900 to-rose-950/40 border-2 border-rose-500 shadow-2xl shadow-rose-500/20 lg:-translate-y-2'
-                    : isVIP
-                    ? 'bg-gradient-to-b from-slate-900 to-slate-950 border border-sky-500/40 shadow-xl'
-                    : 'bg-slate-900/50 border border-slate-800'
-                }`}
-              >
-                {/* Popular Badge */}
-                {tier.badge && (
-                  <div className={`absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider ${
-                    isTripwire 
-                      ? 'bg-gradient-to-r from-rose-600 to-amber-500 text-white shadow-md' 
-                      : isVIP 
-                      ? 'bg-sky-500 text-slate-950' 
-                      : 'bg-slate-800 text-slate-300'
-                  }`}>
-                    {tier.badge}
-                  </div>
-                )}
+              <div className="space-y-6">
+                <div className="text-center sm:text-left">
+                  <h3 className="text-2xl sm:text-3xl font-black text-white mb-2">{tier.name}</h3>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">{tier.headline}</p>
+                </div>
 
-                <div className="space-y-6">
+                {/* Price Display */}
+                <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-1">{tier.name}</h3>
-                    <p className="text-xs text-slate-400 leading-relaxed">{tier.headline}</p>
-                  </div>
-
-                  {/* Price */}
-                  <div className="pb-4 border-b border-slate-800">
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-4xl sm:text-5xl font-black text-white font-mono">
-                        {tier.price === 0 ? 'FREE' : `₹${tier.price}`}
+                    <div className="flex items-baseline gap-3">
+                      <span className="text-5xl font-black text-white font-mono">
+                        ₹{tier.price}
                       </span>
-                      {tier.originalPrice > tier.price && (
-                        <span className="text-base text-slate-500 line-through font-mono">
-                          ₹{tier.originalPrice}
-                        </span>
-                      )}
+                      <span className="text-lg text-slate-500 line-through font-mono">
+                        ₹{tier.originalPrice}
+                      </span>
+                      <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold">
+                        SAVE 75%
+                      </span>
                     </div>
-                    <span className="text-[11px] text-slate-400 font-mono block mt-1">
-                      {tier.price === 0 ? 'Instant Download to your Device' : 'One-time payment • Lifetime access'}
+                    <span className="text-xs text-slate-400 font-mono block mt-1.5">
+                      One-time payment • Lifetime access & future updates
                     </span>
                   </div>
 
-                  {/* Feature Checklist */}
-                  <div className="space-y-3">
-                    <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500 block">
-                      What's Included:
+                  <div className="text-right hidden sm:block">
+                    <span className="text-[11px] font-mono text-amber-300 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20 block">
+                      ⚡ Instant 1-Click Access
                     </span>
+                  </div>
+                </div>
+
+                {/* What's Included */}
+                <div className="space-y-3 pt-2">
+                  <span className="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold block">
+                    Everything Included in The Package:
+                  </span>
+                  <div className="grid grid-cols-1 gap-2.5">
                     {tier.features.map((feat, idx) => (
-                      <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-300">
-                        <CheckCircle2 className={`w-4 h-4 mt-0.5 shrink-0 ${
-                          isTripwire ? 'text-rose-400' : isVIP ? 'text-sky-400' : 'text-emerald-400'
-                        }`} />
-                        <span>{feat}</span>
+                      <div key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-200">
+                        <CheckCircle2 className="w-4 h-4 mt-0.5 shrink-0 text-emerald-400" />
+                        <span className="leading-snug">{feat}</span>
                       </div>
                     ))}
                   </div>
                 </div>
-
-                {/* CTA Button */}
-                <div className="pt-8 mt-6 border-t border-slate-800/80">
-                  <button
-                    onClick={() => handleOpenCheckout(tier)}
-                    className={`w-full py-4 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2 shadow-lg ${
-                      isTripwire
-                        ? 'bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 hover:from-rose-500 hover:to-amber-400 text-white shadow-rose-600/30 active:scale-95'
-                        : isVIP
-                        ? 'bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-slate-950 shadow-sky-500/25 active:scale-95'
-                        : 'bg-slate-800 hover:bg-slate-700 text-white active:scale-95'
-                    }`}
-                  >
-                    <span>{tier.ctaText}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-
               </div>
-            );
-          })}
+
+              {/* Checkout CTA Button */}
+              <div className="pt-8 mt-6 border-t border-slate-800/80 space-y-3">
+                <button
+                  onClick={() => handleOpenCheckout(tier)}
+                  className="w-full py-4 sm:py-4.5 rounded-2xl font-extrabold text-sm uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-xl bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 hover:from-rose-500 hover:to-amber-400 text-white shadow-rose-600/30 active:scale-95 hover:scale-[1.01]"
+                >
+                  <span>{tier.ctaText}</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+
+                <p className="text-[11px] text-center text-slate-400 font-mono leading-relaxed">
+                  🔒 Instant Delivery: Delivered to your screen & email immediately after payment via UPI, Cards, or Netbanking.
+                </p>
+              </div>
+
+            </div>
+          ))}
         </div>
       </section>
 
@@ -456,115 +395,6 @@ export const SelfTrustLandingPage: React.FC = () => {
           Helpline references: KIRAN (1800-599-0019) • AASRA (+91-9820466726). Strictly anti-piracy secured via dynamic user watermarking.
         </p>
       </footer>
-
-      {/* MODAL 1: FREE LEAD MAGNET CAPTURE */}
-      {showLeadModal && (
-        <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-5 shadow-2xl">
-            {!leadDownloaded ? (
-              <>
-                <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
-                  <Download className="w-6 h-6" />
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-bold text-white">Download Free Chapters 1–3</h3>
-                  <p className="text-xs text-slate-400 mt-1">
-                    Enter your details to receive the 13-page sample PDF + the 5-Minute Micro-Ramp guide instantly.
-                  </p>
-                </div>
-
-                <form onSubmit={handleLeadSubmit} className="space-y-3.5">
-                  <div>
-                    <label className="block text-[11px] font-mono text-slate-400 mb-1">Your Full Name</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Rahul Sharma"
-                      value={leadForm.name}
-                      onChange={(e) => setLeadForm({ ...leadForm, name: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white outline-none focus:border-cyan-500"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[11px] font-mono text-slate-400 mb-1">Email Address</label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="rahul@example.com"
-                      value={leadForm.email}
-                      onChange={(e) => setLeadForm({ ...leadForm, email: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white outline-none focus:border-cyan-500"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[11px] font-mono text-slate-400 mb-1">WhatsApp Number (Optional)</label>
-                    <input
-                      type="tel"
-                      placeholder="+91 98765 43210"
-                      value={leadForm.whatsapp}
-                      onChange={(e) => setLeadForm({ ...leadForm, whatsapp: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white outline-none focus:border-cyan-500"
-                    />
-                  </div>
-
-                  <div className="flex items-center gap-2 pt-2">
-                    <button
-                      type="button"
-                      onClick={() => setShowLeadModal(false)}
-                      className="flex-1 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs text-slate-300 font-bold"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="submit"
-                      className="flex-1 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-xs text-slate-950 font-bold tracking-wide uppercase"
-                    >
-                      Download Sample PDF
-                    </button>
-                  </div>
-                </form>
-              </>
-            ) : (
-              /* Immediate Upsell to Tier 1 (₹99) */
-              <div className="text-center space-y-4">
-                <div className="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mx-auto">
-                  <Check className="w-6 h-6" />
-                </div>
-
-                <h3 className="text-xl font-bold text-white">Your Sample is Downloading!</h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  You now have Chapters 1–3. But don't stop halfway. For the price of a cup of coffee (₹99), unlock the full 49-page master eBook and the Digital Notion/Sheets Ledger.
-                </p>
-
-                <div className="p-3.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-mono">
-                  ⚡ 80% OFF SPECIAL: ₹99 ONLY (Next 15 Minutes)
-                </div>
-
-                <button
-                  onClick={() => {
-                    setShowLeadModal(false);
-                    const checkoutUrl = FUNNEL_TIERS[1].checkoutUrl || 'https://whop.com/elevateweb-b83f/the-self-trust-protocol-illustrated-master-ebook';
-                    window.open(checkoutUrl, '_blank', 'noopener,noreferrer');
-                  }}
-                  className="w-full py-4 rounded-xl bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-rose-600/30"
-                >
-                  Upgrade to Full Protocol — ₹99
-                </button>
-
-                <button
-                  onClick={() => setShowLeadModal(false)}
-                  className="text-xs text-slate-500 hover:text-slate-300 underline font-mono block mx-auto"
-                >
-                  I'll stick with the 3 chapters for now
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
 
     </div>
   );

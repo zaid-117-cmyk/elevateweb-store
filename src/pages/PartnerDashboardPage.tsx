@@ -51,16 +51,16 @@ export const PartnerDashboardPage: React.FC = () => {
   };
 
   // Test simulation tool for the YouTuber to see live updates
-  const handleSimulateSale = (tierId: 'tier-1-starter' | 'tier-2-core-os') => {
-    const amount = tierId === 'tier-1-starter' ? 99 : 499;
-    const tierName = tierId === 'tier-1-starter' ? 'The Berserk Starter (PDF + Ledger)' : 'The Self-Trust OS (VIP Telegram)';
+  const handleSimulateSale = () => {
+    const amount = 499;
+    const tierName = 'The Self-Trust OS';
     const indianCities = ['Mumbai', 'Delhi', 'Jaipur', 'Pune', 'Lucknow', 'Kota', 'Indore', 'Hyderabad'];
     const randomCity = indianCities[Math.floor(Math.random() * indianCities.length)];
     const randomNames = ['Aarav', 'Dev', 'Aditya', 'Vikram', 'Sahil', 'Pranav'];
     const customerName = `${randomNames[Math.floor(Math.random() * randomNames.length)]} (${randomCity})`;
 
     recordAffiliateSale({
-      tierId,
+      tierId: 'tier-2-core-os',
       tierName,
       amount,
       customerName,
@@ -191,7 +191,7 @@ export const PartnerDashboardPage: React.FC = () => {
                 <span className="text-sm text-slate-400 font-mono">INR</span>
               </div>
               <p className="text-sm text-slate-300 leading-relaxed max-w-xl">
-                Calculated in real-time from all attributed conversions across Tier 1 (₹99) and Tier 2 (₹499). Paid out directly to your registered UPI ID every Monday.
+                Calculated in real-time from all attributed conversions of The Self-Trust OS (₹499). Paid out directly to your registered UPI ID every Monday.
               </p>
             </div>
 
@@ -242,7 +242,7 @@ export const PartnerDashboardPage: React.FC = () => {
               <TrendingUp className="w-4 h-4 text-emerald-400" />
             </div>
             <div className="text-3xl font-black text-white">{stats.totalSales.toLocaleString()}</div>
-            <p className="text-[11px] text-slate-500 font-mono">{stats.tier1Sales} Starter • {stats.tier2Sales} VIP</p>
+            <p className="text-[11px] text-slate-500 font-mono">The Self-Trust OS (₹499)</p>
           </div>
 
           <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
@@ -318,18 +318,11 @@ export const PartnerDashboardPage: React.FC = () => {
             <div className="flex items-center gap-2">
               <span className="text-[11px] text-slate-500 font-mono">Operator Test:</span>
               <button
-                onClick={() => handleSimulateSale('tier-1-starter')}
-                className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-mono transition-colors"
-                title="Test ₹99 referral order"
+                onClick={() => handleSimulateSale()}
+                className="px-3.5 py-1.5 rounded-lg bg-rose-950/60 border border-rose-500/30 hover:bg-rose-900/60 text-rose-300 text-xs font-mono transition-colors"
+                title="Test ₹499 OS referral order"
               >
-                + Test ₹99 Sale
-              </button>
-              <button
-                onClick={() => handleSimulateSale('tier-2-core-os')}
-                className="px-3 py-1.5 rounded-lg bg-rose-950/60 border border-rose-500/30 hover:bg-rose-900/60 text-rose-300 text-xs font-mono transition-colors"
-                title="Test ₹499 VIP order"
-              >
-                + Test ₹499 VIP Sale
+                + Test ₹499 Sale (50% Split)
               </button>
             </div>
           </div>
