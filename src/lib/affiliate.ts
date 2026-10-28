@@ -10,13 +10,13 @@ const DEFAULT_YOUTHPHILOSOPHY_STATS: AffiliateStats = {
   partnerName: 'Youth Philosophy',
   channel: '@youthphilosophy22',
   totalClicks: 3420,
-  freeLeads: 814,
+  freeLeads: 0,
   totalSales: 247,
-  tier1Sales: 189, // ₹99
-  tier2Sales: 58,  // ₹499
-  grossRevenue: (189 * 99) + (58 * 499), // 18,711 + 28,942 = ₹47,653
+  tier1Sales: 0,
+  tier2Sales: 247, // ₹299 bundle
+  grossRevenue: 247 * 299, // ₹73,853
   partnerCommissionRate: 0.50, // 50%
-  partnerPayout: Math.round(((189 * 99) + (58 * 499)) * 0.50), // ₹23,827
+  partnerPayout: Math.round((247 * 299) * 0.50), // ₹36,927
 };
 
 const DEFAULT_SALES: AffiliateSaleRecord[] = [
@@ -25,9 +25,9 @@ const DEFAULT_SALES: AffiliateSaleRecord[] = [
     timestamp: '12 mins ago',
     customerName: 'Aman Deep (Delhi)',
     tierId: 'tier-2-core-os',
-    tierName: 'The Self-Trust OS (VIP Telegram)',
-    amount: 499,
-    commission: 249.50,
+    tierName: 'The Self-Trust Protocol Bundle (PDF + Notion)',
+    amount: 299,
+    commission: 149.50,
     ref: 'youthphilosophy',
     paymentId: 'pay_UPI_98210931'
   },
@@ -35,10 +35,10 @@ const DEFAULT_SALES: AffiliateSaleRecord[] = [
     id: 'sale-9820',
     timestamp: '44 mins ago',
     customerName: 'Siddharth M. (Pune)',
-    tierId: 'tier-1-starter',
-    tierName: 'The Berserk Starter (PDF + Ledger)',
-    amount: 99,
-    commission: 49.50,
+    tierId: 'tier-2-core-os',
+    tierName: 'The Self-Trust Protocol Bundle (PDF + Notion)',
+    amount: 299,
+    commission: 149.50,
     ref: 'youthphilosophy',
     paymentId: 'pay_UPI_98204812'
   },
@@ -47,33 +47,11 @@ const DEFAULT_SALES: AffiliateSaleRecord[] = [
     timestamp: '2 hours ago',
     customerName: 'Harsh Vardhan (Kota)',
     tierId: 'tier-2-core-os',
-    tierName: 'The Self-Trust OS (VIP Telegram)',
-    amount: 499,
-    commission: 249.50,
+    tierName: 'The Self-Trust Protocol Bundle (PDF + Notion)',
+    amount: 299,
+    commission: 149.50,
     ref: 'youthphilosophy',
     paymentId: 'pay_UPI_98195420'
-  },
-  {
-    id: 'sale-9818',
-    timestamp: '3 hours ago',
-    customerName: 'Kabir Verma (Bengaluru)',
-    tierId: 'tier-1-starter',
-    tierName: 'The Berserk Starter (PDF + Ledger)',
-    amount: 99,
-    commission: 49.50,
-    ref: 'youthphilosophy',
-    paymentId: 'pay_UPI_98187741'
-  },
-  {
-    id: 'sale-9817',
-    timestamp: '5 hours ago',
-    customerName: 'Ritesh K. (Kanpur)',
-    tierId: 'tier-1-starter',
-    tierName: 'The Berserk Starter (PDF + Ledger)',
-    amount: 99,
-    commission: 49.50,
-    ref: 'youthphilosophy',
-    paymentId: 'pay_UPI_98172901'
   }
 ];
 

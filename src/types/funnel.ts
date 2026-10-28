@@ -4,8 +4,8 @@ export interface FunnelTier {
   id: FunnelTierId;
   name: string;
   badge?: string;
-  price: number; // 0, 99, 499
-  originalPrice: number; // 299, 499, 1999
+  price: number; // 299
+  originalPrice: number; // 999
   headline: string;
   subheadline: string;
   features: string[];
