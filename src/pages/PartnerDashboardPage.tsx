@@ -52,8 +52,8 @@ export const PartnerDashboardPage: React.FC = () => {
 
   // Test simulation tool for the YouTuber to see live updates
   const handleSimulateSale = () => {
-    const amount = 499;
-    const tierName = 'The Self-Trust OS';
+    const amount = 299;
+    const tierName = 'The Self-Trust Protocol Bundle';
     const indianCities = ['Mumbai', 'Delhi', 'Jaipur', 'Pune', 'Lucknow', 'Kota', 'Indore', 'Hyderabad'];
     const randomCity = indianCities[Math.floor(Math.random() * indianCities.length)];
     const randomNames = ['Aarav', 'Dev', 'Aditya', 'Vikram', 'Sahil', 'Pranav'];
@@ -191,7 +191,7 @@ export const PartnerDashboardPage: React.FC = () => {
                 <span className="text-sm text-slate-400 font-mono">INR</span>
               </div>
               <p className="text-sm text-slate-300 leading-relaxed max-w-xl">
-                Calculated in real-time from all attributed conversions of The Self-Trust OS (₹499). Paid out directly to your registered UPI ID every Monday.
+                Calculated in real-time from all attributed conversions of The Self-Trust Protocol (₹299). Paid out directly to your registered UPI ID every Monday.
               </p>
             </div>
 
@@ -242,7 +242,7 @@ export const PartnerDashboardPage: React.FC = () => {
               <TrendingUp className="w-4 h-4 text-emerald-400" />
             </div>
             <div className="text-3xl font-black text-white">{stats.totalSales.toLocaleString()}</div>
-            <p className="text-[11px] text-slate-500 font-mono">The Self-Trust OS (₹499)</p>
+            <p className="text-[11px] text-slate-500 font-mono">The Self-Trust Protocol (₹299)</p>
           </div>
 
           <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
@@ -320,9 +320,9 @@ export const PartnerDashboardPage: React.FC = () => {
               <button
                 onClick={() => handleSimulateSale()}
                 className="px-3.5 py-1.5 rounded-lg bg-rose-950/60 border border-rose-500/30 hover:bg-rose-900/60 text-rose-300 text-xs font-mono transition-colors"
-                title="Test ₹499 OS referral order"
+                title="Test ₹299 bundle referral order"
               >
-                + Test ₹499 Sale (50% Split)
+                + Test ₹299 Sale (50% Split)
               </button>
             </div>
           </div>

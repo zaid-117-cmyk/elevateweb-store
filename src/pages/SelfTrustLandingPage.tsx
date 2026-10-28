@@ -57,7 +57,7 @@ export const SelfTrustLandingPage: React.FC = () => {
     {
       author: 'Priya K. (Tier-3 College)',
       time: '5 days ago',
-      content: 'The 8 AM needle-mover prompts are insane accountability. Jab pure group mein sab apna daily target daalte hain toh excuse banane ka mann nahi karta. Worth way more than ₹499.',
+      content: 'The Notion Self-Trust Ledger changed everything for me. Tracking deposits and withdrawals mathematically stopped me from making excuses for semester exams. Worth way more than ₹299.',
       likes: '254'
     },
     {
@@ -87,7 +87,7 @@ export const SelfTrustLandingPage: React.FC = () => {
       {/* TOP ANNOUNCEMENT BAR */}
       <div className="bg-gradient-to-r from-slate-950 via-rose-950/70 to-slate-950 border-b border-rose-500/20 py-2.5 px-4 text-center text-xs sm:text-sm font-medium text-rose-300 flex items-center justify-center gap-2">
         <Flame className="w-4 h-4 fill-rose-400 text-rose-400 animate-pulse" />
-        <span>⚡ THE SELF-TRUST PROTOCOL • 49-PAGE ILLUSTRATED MASTER EBOOK • 80% OFF LAUNCH SPECIAL</span>
+        <span>⚡ THE SELF-TRUST PROTOCOL • 49-PAGE ILLUSTRATED PDF + NOTION OS TEMPLATE • ₹299 ONLY</span>
         <Flame className="w-4 h-4 fill-rose-400 text-rose-400 animate-pulse" />
       </div>
 
@@ -97,7 +97,7 @@ export const SelfTrustLandingPage: React.FC = () => {
           <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-rose-600 to-amber-500 flex items-center justify-center font-black text-white text-xs">
             OS
           </div>
-          <span className="font-bold text-white text-base tracking-tight">The Self-Trust OS</span>
+          <span className="font-bold text-white text-base tracking-tight">The Self-Trust Protocol</span>
         </div>
 
         <div className="flex items-center gap-3">
@@ -111,7 +111,7 @@ export const SelfTrustLandingPage: React.FC = () => {
             onClick={() => handleOpenCheckout(FUNNEL_TIERS[0])}
             className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-rose-600/30"
           >
-            <span>Get Access — ₹499</span>
+            <span>Get Access — ₹299</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
@@ -133,22 +133,18 @@ export const SelfTrustLandingPage: React.FC = () => {
         </h1>
 
         <p className="text-base sm:text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
-          Defeat 2 AM Reels doomscrolling, porn/lust addiction, and brain fog. Rebuild unshakeable focus with the prefrontal neuroscience of the <strong>Self-Trust OS</strong>. <em>Aag laga do. No bahana.</em>
+          Defeat 2 AM Reels doomscrolling, porn/lust addiction, and brain fog. Rebuild unshakeable focus with the prefrontal neuroscience of the <strong>Self-Trust Protocol & Notion OS</strong>. <em>Aag laga do. No bahana.</em>
         </p>
 
-        {/* 3 Main Action Pills */}
+        {/* 2 Main Action Pills (Only PDF + Notion Template) */}
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-2 text-xs font-mono text-slate-300">
-          <div className="px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 flex items-center gap-1.5">
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-            <span>49-Page Master Guide</span>
+          <div className="px-4 py-2 rounded-full bg-slate-900 border border-slate-800 flex items-center gap-2 shadow-sm">
+            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+            <span className="text-white font-medium">Benefit 1: 49-Page Master Illustrated PDF</span>
           </div>
-          <div className="px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 flex items-center gap-1.5">
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Interactive Notion/Sheets Ledger</span>
-          </div>
-          <div className="px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 flex items-center gap-1.5">
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-            <span>VIP Telegram Bot Accountability</span>
+          <div className="px-4 py-2 rounded-full bg-slate-900 border border-slate-800 flex items-center gap-2 shadow-sm">
+            <CheckCircle2 className="w-4 h-4 text-cyan-400" />
+            <span className="text-white font-medium">Benefit 2: Interactive Notion OS Ledger Template</span>
           </div>
         </div>
 
@@ -158,7 +154,7 @@ export const SelfTrustLandingPage: React.FC = () => {
             onClick={() => handleOpenCheckout(FUNNEL_TIERS[0])}
             className="w-full sm:w-auto px-10 py-4 rounded-2xl bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 hover:from-rose-500 hover:to-amber-400 text-white font-extrabold text-base tracking-wide uppercase transition-all duration-300 shadow-xl shadow-rose-600/30 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
           >
-            <span>Get The Self-Trust OS — Only ₹499</span>
+            <span>Get The Self-Trust Bundle — Only ₹299</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
@@ -259,17 +255,17 @@ export const SelfTrustLandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* PRODUCT PRICING (THE COMPLETE OS - ₹499) */}
+      {/* PRODUCT PRICING (THE ESSENTIAL BUNDLE - ₹299) */}
       <section id="pricing" className="max-w-6xl mx-auto px-6 py-16">
         <div className="text-center mb-12 space-y-3">
           <span className="px-3.5 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 font-mono text-xs uppercase tracking-wider">
-            All-In-One Execution System
+            The Essential 2-in-1 System
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-            Get The Complete Self-Trust OS
+            Get The Master PDF + Notion OS
           </h2>
           <p className="text-sm sm:text-base text-slate-400 max-w-xl mx-auto">
-            Everything you need to rebuild your focus, eliminate dopamine loops, and hold yourself accountable. No hidden fees. Instant digital delivery.
+            Direct 1-click access to the complete 49-page illustrated eBook and the interactive Notion Self-Trust Ledger. Zero recurring fees.
           </p>
         </div>
 
@@ -303,7 +299,7 @@ export const SelfTrustLandingPage: React.FC = () => {
                         ₹{tier.originalPrice}
                       </span>
                       <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold">
-                        SAVE 75%
+                        SAVE 70%
                       </span>
                     </div>
                     <span className="text-xs text-slate-400 font-mono block mt-1.5">
@@ -321,7 +317,7 @@ export const SelfTrustLandingPage: React.FC = () => {
                 {/* What's Included */}
                 <div className="space-y-3 pt-2">
                   <span className="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold block">
-                    Everything Included in The Package:
+                    The 2 Core Benefits Included:
                   </span>
                   <div className="grid grid-cols-1 gap-2.5">
                     {tier.features.map((feat, idx) => (

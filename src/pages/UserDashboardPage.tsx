@@ -3,12 +3,10 @@ import {
   Flame, 
   CheckCircle2, 
   Download, 
-  Send, 
   ExternalLink, 
   Plus, 
   Minus, 
   ShieldCheck, 
-  Clock, 
   BookOpen
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
@@ -75,7 +73,6 @@ export const UserDashboardPage: React.FC = () => {
   const [newTitle, setNewTitle] = useState('');
   const [newCategory, setNewCategory] = useState<any>('Deep Work');
   const [downloadSuccess, setDownloadSuccess] = useState(false);
-  const [timeLeft] = useState('21h 48m');
 
   const todayStr = new Date().toISOString().split('T')[0];
 
@@ -375,57 +372,21 @@ export const UserDashboardPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column (5 cols): VIP Telegram Gate & Digital Vault */}
+          {/* Right Column (5 cols): My Digital Deliverables */}
           <div className="lg:col-span-5 space-y-6">
             
-            {/* VIP Telegram Gate Card (Included with The Self-Trust OS) */}
-            <div className="p-6 rounded-3xl bg-gradient-to-br from-slate-900 to-sky-950/40 border border-sky-500/30 shadow-xl space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-mono">
-                  <Send className="w-3.5 h-3.5" />
-                  <span>PRIVATE TELEGRAM TRIBE</span>
-                </div>
-                <span className="text-[11px] font-mono text-amber-400 flex items-center gap-1">
-                  <Clock className="w-3 h-3" />
-                  <span>Link expires in {timeLeft}</span>
-                </span>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-white">VIP Daily Accountability Circle</h3>
-                <p className="text-xs text-slate-300 leading-relaxed mt-1">
-                  Automated check-ins at 8:00 AM & 9:00 PM. No toxic noise. High-conviction creators and students executing together.
-                </p>
-              </div>
-
-              <a
-                href={profile.telegramInviteLink || 'https://t.me/+SelfTrustVIP'}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-sky-500/25 transition-all"
-              >
-                <Send className="w-4 h-4" />
-                <span>Join VIP Telegram Group (1-Click)</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
-
-              <div className="text-[10px] text-slate-500 font-mono text-center">
-                Single-use invite link stamped specifically to {profile.email}
-              </div>
-            </div>
-
-            {/* My Digital Vault (Downloads & External Templates) */}
+            {/* My Digital Vault (The 2 Core Deliverables) */}
             <div className="p-6 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-4">
               <h3 className="text-base font-bold text-white flex items-center gap-2">
                 <BookOpen className="w-4 h-4 text-cyan-400" />
-                <span>My Product Deliverables</span>
+                <span>My Product Deliverables (2-in-1 Bundle)</span>
               </h3>
 
-              {/* Watermarked Master PDF Download */}
+              {/* 1. Watermarked Master PDF Download */}
               <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
                 <div className="flex items-start justify-between">
                   <div>
-                    <h4 className="text-sm font-bold text-white">The Self-Trust Protocol (49-Page PDF)</h4>
+                    <h4 className="text-sm font-bold text-white">1. The Self-Trust Protocol (49-Page PDF)</h4>
                     <p className="text-[11px] text-slate-400">Localized Indian Gen-Z Edition • 10.6 MB</p>
                   </div>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
@@ -447,37 +408,21 @@ export const UserDashboardPage: React.FC = () => {
                 </button>
               </div>
 
-              {/* Digital Notion Template Link */}
+              {/* 2. Digital Notion Template Link */}
               <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between">
                 <div>
-                  <h4 className="text-sm font-bold text-white">The Self-Trust Ledger (Notion OS)</h4>
-                  <p className="text-[11px] text-slate-400">1-Click Duplicate to your Notion workspace</p>
+                  <h4 className="text-sm font-bold text-white">2. The Self-Trust Ledger (Notion OS)</h4>
+                  <p className="text-[11px] text-slate-400">1-Click Duplicate to your personal Notion workspace</p>
                 </div>
                 <a
                   href="https://notion.so"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white transition-colors"
+                  className="p-2.5 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 transition-colors flex items-center gap-1.5 text-xs font-mono"
                   title="Open Notion Template"
                 >
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-              </div>
-
-              {/* Google Sheets Tracker Link */}
-              <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between">
-                <div>
-                  <h4 className="text-sm font-bold text-white">Daily Habit Matrix (Google Sheet)</h4>
-                  <p className="text-[11px] text-slate-400">Pre-built formulas for deposits/withdrawals</p>
-                </div>
-                <a
-                  href="https://docs.google.com/spreadsheets"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white transition-colors"
-                  title="Open Google Sheet"
-                >
-                  <ExternalLink className="w-4 h-4" />
+                  <span>Open Template</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>
 
