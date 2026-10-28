@@ -62,13 +62,15 @@ For ₹299—less than one fast-food order—stop being a spectator in your own 
     reviewCount: 412,
     salesCount: 1240,
     tags: ['Berserk', 'Discipline', 'Confidence', 'Focus', 'Phone Detox', 'Self-Trust', 'Notion'],
-    bannerImage: '/self_trust_bundle_mockup.jpg',
+    bannerImage: '/self_trust_epic_explosion.jpg',
     galleryImages: [
+      '/self_trust_epic_explosion.jpg',
+      '/self_trust_berserk_station.jpg',
+      '/self_trust_ecosystem_suite.jpg',
+      '/self_trust_reading_pov.jpg',
       '/self_trust_bundle_mockup.jpg',
       '/self_trust_hero_banner.jpg',
-      '/self_trust_notion_mockup.jpg',
-      '/self_trust_tablet_mockup.jpg',
-      '/self_trust_3d_mockup.jpg'
+      '/self_trust_notion_mockup.jpg'
     ],
     deliverables: [
       { name: 'The Self-Trust Protocol Master eBook (49 Pages)', format: 'Illustrated PDF', size: '10.6 MB' },

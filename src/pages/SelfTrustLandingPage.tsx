@@ -20,6 +20,40 @@ export const SelfTrustLandingPage: React.FC = () => {
   const [countdownMinutes, setCountdownMinutes] = useState(14);
   const [countdownSeconds, setCountdownSeconds] = useState(59);
 
+  // Epic Mockups Showcase State
+  const [activeMockupIdx, setActiveMockupIdx] = useState(0);
+
+  const epicMockups = [
+    {
+      id: 'explosion',
+      label: '⚡ 3D System Breakdown',
+      title: 'The 3D Holographic System Explosion',
+      image: '/self_trust_epic_explosion.jpg',
+      badge: '49-Page Master PDF + Notion Engine'
+    },
+    {
+      id: 'berserk',
+      label: '🌙 Berserk Desk Setup',
+      title: 'Midnight Deep Work Station',
+      image: '/self_trust_berserk_station.jpg',
+      badge: 'Zero-Distraction Focus Sanctuary'
+    },
+    {
+      id: 'ecosystem',
+      label: '💻 Complete Device Suite',
+      title: 'Full Multi-Device Digital Ecosystem',
+      image: '/self_trust_ecosystem_suite.jpg',
+      badge: 'Mac, iPad & iPhone Sync'
+    },
+    {
+      id: 'reading-pov',
+      label: '📖 Reading POV',
+      title: 'First-Person Tablet Reading Experience',
+      image: '/self_trust_reading_pov.jpg',
+      badge: 'High-Contrast Dark Mode Study'
+    }
+  ];
+
   useEffect(() => {
     window.scrollTo(0, 0);
     initAffiliateTracking();
@@ -164,18 +198,36 @@ export const SelfTrustLandingPage: React.FC = () => {
           <span>Launch Pricing Ends In: <strong className="text-amber-300">{countdownMinutes}m {countdownSeconds}s</strong></span>
         </div>
 
-        {/* Product Visual Showcase (The 2-in-1 Bundle Mockup) */}
-        <div className="pt-8 max-w-4xl mx-auto">
-          <div className="relative rounded-3xl overflow-hidden border border-slate-800/80 shadow-2xl shadow-rose-950/30 group">
+        {/* Product Visual Showcase (Interactive Epic Mockups) */}
+        <div className="pt-8 max-w-4xl mx-auto space-y-4">
+          
+          {/* Mockup Angle Selector Tabs */}
+          <div className="flex items-center justify-center gap-2 overflow-x-auto pb-1 px-2">
+            {epicMockups.map((mockup, idx) => (
+              <button
+                key={mockup.id}
+                onClick={() => setActiveMockupIdx(idx)}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all duration-200 border whitespace-nowrap ${
+                  activeMockupIdx === idx
+                    ? 'bg-rose-500/15 border-rose-500 text-rose-300 font-bold shadow-md shadow-rose-500/20 scale-[1.02]'
+                    : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:text-white hover:border-slate-700'
+                }`}
+              >
+                <span>{mockup.label}</span>
+              </button>
+            ))}
+          </div>
+
+          <div className="relative rounded-3xl overflow-hidden border border-slate-800/80 shadow-2xl shadow-rose-950/40 group bg-slate-950">
             <img 
-              src="/self_trust_bundle_mockup.jpg" 
-              alt="The Self-Trust Protocol & Notion OS Bundle Mockup" 
-              className="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-500"
+              src={epicMockups[activeMockupIdx].image} 
+              alt={epicMockups[activeMockupIdx].title} 
+              className="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-all duration-500"
             />
             <div className="absolute bottom-4 left-4 right-4 sm:left-6 sm:right-6 p-3 sm:p-4 rounded-2xl bg-slate-950/85 backdrop-blur-md border border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
               <span className="text-white font-medium flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                Official 2-in-1 Digital Bundle: 49-Page Master PDF + Interactive Notion OS
+                {epicMockups[activeMockupIdx].title} • {epicMockups[activeMockupIdx].badge}
               </span>
               <span className="text-amber-300 font-bold bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">₹299 Instant 1-Click Access</span>
             </div>
