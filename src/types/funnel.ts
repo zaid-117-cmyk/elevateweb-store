@@ -12,6 +12,7 @@ export interface FunnelTier {
   ctaText: string;
   popular?: boolean;
   upiEnabled?: boolean;
+  checkoutUrl?: string;
 }
 
 export interface LeadCapture {

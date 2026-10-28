@@ -43,7 +43,8 @@ export const FUNNEL_TIERS: FunnelTier[] = [
     ],
     ctaText: 'Get The Berserk Starter — ₹99',
     popular: true,
-    upiEnabled: true
+    upiEnabled: true,
+    checkoutUrl: 'https://whop.com/elevateweb-b83f/the-self-trust-protocol-illustrated-master-ebook'
   },
   {
     id: 'tier-2-core-os',
@@ -65,7 +66,8 @@ export const FUNNEL_TIERS: FunnelTier[] = [
     ],
     ctaText: 'Unlock Full Self-Trust OS — ₹499',
     popular: false,
-    upiEnabled: true
+    upiEnabled: true,
+    checkoutUrl: 'https://whop.com/elevateweb-b83f/the-self-trust-protocol-illustrated-master-ebook'
   }
 ];
 
@@ -82,7 +84,7 @@ The Self-Trust Protocol is a comprehensive, 49-page illustrated eBook written sp
     category: 'Master eBooks',
     featured: true,
     isNew: true,
-    paymentUrl: '',
+    paymentUrl: 'https://whop.com/elevateweb-b83f/the-self-trust-protocol-illustrated-master-ebook',
     demoUrl: undefined,
     price: { standard: 99 },
     originalPrice: { standard: 499 },

@@ -15,9 +15,6 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { LedgerEntry, UserStreakProfile } from '../types/funnel';
-import { initiateCheckout } from '../lib/razorpay';
-import { FUNNEL_TIERS } from '../lib/products';
-import { getStoredAffiliateRef } from '../lib/affiliate';
 
 export const UserDashboardPage: React.FC = () => {
   // Load or initialize user profile from storage
@@ -199,21 +196,8 @@ export const UserDashboardPage: React.FC = () => {
   };
 
   const handleUpgradeToVIP = () => {
-    const tier2 = FUNNEL_TIERS.find(t => t.id === 'tier-2-core-os')!;
-    initiateCheckout({
-      tier: { ...tier2, price: 400 }, // discount for existing tier 1 buyer
-      customer: { name: profile.name, email: profile.email, phone: profile.whatsapp },
-      ref: getStoredAffiliateRef(),
-      onSuccess: () => {
-        saveProfile({
-          ...profile,
-          tier: 'tier-2-core-os',
-          telegramUnlocked: true,
-          telegramInviteLink: 'https://t.me/+SelfTrustVIP_upgraded'
-        });
-        alert('🎉 Upgrade successful! Welcome to the VIP Telegram Circle.');
-      }
-    });
+    const checkoutUrl = 'https://whop.com/elevateweb-b83f/the-self-trust-protocol-illustrated-master-ebook';
+    window.open(checkoutUrl, '_blank', 'noopener,noreferrer');
   };
 
   const totalPoints = profile.totalDeposits + profile.totalWithdrawals;

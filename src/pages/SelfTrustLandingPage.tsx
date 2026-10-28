@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Flame, 
-  ShieldCheck, 
   ArrowRight, 
   CheckCircle2, 
   Play, 
@@ -14,23 +13,15 @@ import {
 import { FUNNEL_TIERS } from '../lib/products';
 import { FunnelTier } from '../types/funnel';
 import { initAffiliateTracking, recordAffiliateLead } from '../lib/affiliate';
-import { initiateCheckout } from '../lib/razorpay';
 import { dispatchLeadToAdmin } from '../lib/leadCapture';
-import { useNavigate } from 'react-router-dom';
 
 export const SelfTrustLandingPage: React.FC = () => {
-  const navigate = useNavigate();
   const [refPartner, setRefPartner] = useState('youthphilosophy');
   
-  // Checkout & Lead Magnet Modals
+  // Free Lead Magnet Modal State
   const [showLeadModal, setShowLeadModal] = useState(false);
   const [leadForm, setLeadForm] = useState({ name: '', email: '', whatsapp: '' });
   const [leadDownloaded, setLeadDownloaded] = useState(false);
-
-  // Razorpay Checkout Modal
-  const [selectedTier, setSelectedTier] = useState<FunnelTier | null>(null);
-  const [customerForm, setCustomerForm] = useState({ name: '', email: '', phone: '' });
-  const [isProcessing, setIsProcessing] = useState(false);
 
   // VSL State
   const [isPlayingVSL, setIsPlayingVSL] = useState(false);
@@ -63,7 +54,8 @@ export const SelfTrustLandingPage: React.FC = () => {
       setShowLeadModal(true);
       return;
     }
-    setSelectedTier(tier);
+    const checkoutUrl = tier.checkoutUrl || 'https://whop.com/elevateweb-b83f/the-self-trust-protocol-illustrated-master-ebook';
+    window.open(checkoutUrl, '_blank', 'noopener,noreferrer');
   };
 
   const handleLeadSubmit = (e: React.FormEvent) => {
@@ -92,30 +84,6 @@ export const SelfTrustLandingPage: React.FC = () => {
     document.body.removeChild(link);
   };
 
-  const handleProcessPayment = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!selectedTier || !customerForm.name || !customerForm.email || !customerForm.phone) {
-      alert('Please fill out your Name, Email, and WhatsApp number for instant delivery.');
-      return;
-    }
-
-    setIsProcessing(true);
-    await initiateCheckout({
-      tier: selectedTier,
-      customer: customerForm,
-      ref: refPartner,
-      onSuccess: () => {
-        setIsProcessing(false);
-        setSelectedTier(null);
-        navigate('/dashboard');
-      },
-      onError: () => {
-        setIsProcessing(false);
-        alert('Payment could not be completed. Please retry using UPI.');
-      }
-    });
-  };
-
   const youtubeComments = [
     {
       author: 'Aman Verma (@aman_v2005)',
@@ -132,7 +100,7 @@ export const SelfTrustLandingPage: React.FC = () => {
     {
       author: 'Priya K. (Tier-3 College)',
       time: '5 days ago',
-      content: 'Telegram bot ke 8 AM needle-mover prompts are insane accountability. Jab pure group mein sab apna daily target daalte hain toh excuse banane ka mann nahi karta. Worth way more than ₹499.',
+      content: 'The 8 AM needle-mover prompts are insane accountability. Jab pure group mein sab apna daily target daalte hain toh excuse banane ka mann nahi karta. Worth way more than ₹499.',
       likes: '254'
     },
     {
@@ -159,10 +127,10 @@ export const SelfTrustLandingPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#050811] text-slate-100 font-sans selection:bg-rose-500 selection:text-white pb-24">
       
-      {/* TOP ANNOUNCEMENT BAR (PARTNERED CAMPAIGN) */}
+      {/* TOP ANNOUNCEMENT BAR */}
       <div className="bg-gradient-to-r from-slate-950 via-rose-950/70 to-slate-950 border-b border-rose-500/20 py-2.5 px-4 text-center text-xs sm:text-sm font-medium text-rose-300 flex items-center justify-center gap-2">
         <Flame className="w-4 h-4 fill-rose-400 text-rose-400 animate-pulse" />
-        <span>OFFICIAL PARTNERSHIP WITH <strong>@YOUTHPHILOSOPHY22</strong> • BERSERK WINTER ARC 2026</span>
+        <span>⚡ THE SELF-TRUST PROTOCOL • 49-PAGE ILLUSTRATED MASTER EBOOK • 80% OFF LAUNCH SPECIAL</span>
         <Flame className="w-4 h-4 fill-rose-400 text-rose-400 animate-pulse" />
       </div>
 
@@ -277,7 +245,7 @@ export const SelfTrustLandingPage: React.FC = () => {
                   A 3-minute psychological breakdown of the <strong>Intention-Action Gap</strong> and how the <strong>Self-Trust Ledger</strong> rebuilds discipline mathematically.
                 </p>
                 <div className="inline-flex items-center gap-2 text-[11px] font-mono text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
-                  <span>Creator Briefing by @youthphilosophy22</span>
+                  <span>Neuroscience & Executive Focus Briefing</span>
                 </div>
               </div>
             ) : (
@@ -287,7 +255,7 @@ export const SelfTrustLandingPage: React.FC = () => {
                     <span>AUDIO VSL • ACTIVE PLAYBACK</span>
                     <span>03:14</span>
                   </div>
-                  <h4 className="font-bold text-white text-base">Key Insight from Youth Philosophy:</h4>
+                  <h4 className="font-bold text-white text-base">Key Neuro-Biological Insight:</h4>
                   <p className="text-xs text-slate-300 leading-relaxed italic">
                     "Jab tum raat ko 2 AM pe Reels dekh rahe hote ho ya lust trap mein phas rahe hote ho, it's not because you are weak. Your stone-age dopamine circuits are simply over-stimulated. The 20-foot phone air-gap physically severs that loop before willpower is even needed."
                   </p>
@@ -318,7 +286,7 @@ export const SelfTrustLandingPage: React.FC = () => {
             <span>Community Verified Feedback</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-            What The Tribe Is Saying on YouTube
+            What The Tribe Is Saying
           </h2>
         </div>
 
@@ -335,7 +303,7 @@ export const SelfTrustLandingPage: React.FC = () => {
               <div className="flex items-center gap-2 text-[11px] font-mono text-rose-400 pt-1">
                 <span>❤️ {comment.likes} likes</span>
                 <span>•</span>
-                <span>Pinned by @youthphilosophy22</span>
+                <span>Top Reader Feedback</span>
               </div>
             </div>
           ))}
@@ -352,7 +320,7 @@ export const SelfTrustLandingPage: React.FC = () => {
             Choose Your Execution Tier
           </h2>
           <p className="text-sm sm:text-base text-slate-400 max-w-xl mx-auto">
-            Engineered for Indian students and creators. Instant 1-click UPI checkout (GPay, PhonePe, Paytm).
+            Engineered for Indian students and creators. Instant 1-click access via UPI, Netbanking, or Cards.
           </p>
         </div>
 
@@ -404,7 +372,7 @@ export const SelfTrustLandingPage: React.FC = () => {
                       )}
                     </div>
                     <span className="text-[11px] text-slate-400 font-mono block mt-1">
-                      {tier.price === 0 ? 'Instant WhatsApp / Email Download' : 'One-time payment • Lifetime access'}
+                      {tier.price === 0 ? 'Instant Download to your Device' : 'One-time payment • Lifetime access'}
                     </span>
                   </div>
 
@@ -479,11 +447,11 @@ export const SelfTrustLandingPage: React.FC = () => {
         <div className="flex flex-wrap items-center justify-center gap-6 text-slate-400 font-mono">
           <a href="/dashboard" className="hover:text-white">User Dashboard</a>
           <span>•</span>
-          <a href="/partner-dashboard" className="hover:text-white">Creator Partner Portal</a>
+          <a href="/partner-dashboard" className="hover:text-white">Partner Portal</a>
           <span>•</span>
           <a href="#pricing" className="hover:text-white">Pricing</a>
         </div>
-        <p>© 2026 ElevateWeb in partnership with @youthphilosophy22. All rights reserved.</p>
+        <p>© 2026 ElevateWeb. All rights reserved.</p>
         <p className="text-[11px] text-slate-600 max-w-md mx-auto">
           Helpline references: KIRAN (1800-599-0019) • AASRA (+91-9820466726). Strictly anti-piracy secured via dynamic user watermarking.
         </p>
@@ -578,7 +546,8 @@ export const SelfTrustLandingPage: React.FC = () => {
                 <button
                   onClick={() => {
                     setShowLeadModal(false);
-                    setSelectedTier(FUNNEL_TIERS[1]);
+                    const checkoutUrl = FUNNEL_TIERS[1].checkoutUrl || 'https://whop.com/elevateweb-b83f/the-self-trust-protocol-illustrated-master-ebook';
+                    window.open(checkoutUrl, '_blank', 'noopener,noreferrer');
                   }}
                   className="w-full py-4 rounded-xl bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-rose-600/30"
                 >
@@ -593,90 +562,6 @@ export const SelfTrustLandingPage: React.FC = () => {
                 </button>
               </div>
             )}
-          </div>
-        </div>
-      )}
-
-      {/* MODAL 2: RAZORPAY UPI CHECKOUT MODAL */}
-      {selectedTier && (
-        <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-5 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-              <div>
-                <span className="text-[10px] font-mono uppercase text-slate-400 block">Selected Tier</span>
-                <h3 className="text-lg font-bold text-white">{selectedTier.name}</h3>
-              </div>
-              <div className="text-right">
-                <span className="text-2xl font-black text-white font-mono">₹{selectedTier.price}</span>
-              </div>
-            </div>
-
-            <form onSubmit={handleProcessPayment} className="space-y-3.5">
-              <div>
-                <label className="block text-[11px] font-mono text-slate-400 mb-1">Your Full Name (For Watermark)</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Siddharth Verma"
-                  value={customerForm.name}
-                  onChange={(e) => setCustomerForm({ ...customerForm, name: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white outline-none focus:border-rose-500"
-                  autoFocus
-                />
-              </div>
-
-              <div>
-                <label className="block text-[11px] font-mono text-slate-400 mb-1">Email (Instant Delivery)</label>
-                <input
-                  type="email"
-                  required
-                  placeholder="siddharth@example.com"
-                  value={customerForm.email}
-                  onChange={(e) => setCustomerForm({ ...customerForm, email: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white outline-none focus:border-rose-500"
-                />
-              </div>
-
-              <div>
-                <label className="block text-[11px] font-mono text-slate-400 mb-1">WhatsApp Mobile (For UPI & Security Stamp)</label>
-                <input
-                  type="tel"
-                  required
-                  placeholder="9876543210"
-                  value={customerForm.phone}
-                  onChange={(e) => setCustomerForm({ ...customerForm, phone: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white outline-none focus:border-rose-500"
-                />
-              </div>
-
-              <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-[11px] font-mono text-slate-400 space-y-1">
-                <div className="flex items-center gap-1.5 text-emerald-400">
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                  <span>Instant UPI Purchase (GPay, PhonePe, Paytm, BHIM)</span>
-                </div>
-                <p className="text-[10px] text-slate-500">
-                  Anti-piracy license dynamically watermarked with your contact details.
-                </p>
-              </div>
-
-              <div className="flex items-center gap-2 pt-2">
-                <button
-                  type="button"
-                  onClick={() => setSelectedTier(null)}
-                  disabled={isProcessing}
-                  className="flex-1 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs text-slate-300 font-bold"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  disabled={isProcessing}
-                  className="flex-1 py-3 rounded-xl bg-gradient-to-r from-rose-600 to-amber-500 hover:from-rose-500 hover:to-amber-400 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-rose-600/30 flex items-center justify-center gap-1.5"
-                >
-                  {isProcessing ? 'Processing UPI...' : `Pay ₹${selectedTier.price} via UPI`}
-                </button>
-              </div>
-            </form>
           </div>
         </div>
       )}
